@@ -19,8 +19,25 @@
  */
 package com.colt.nicity.core.observer;
 
+/**
+ *
+ * @author Administrator
+ */
 public interface IObservable {
+    /**
+     *
+     * @return
+     */
     public boolean isBeingObserved();
+    /**
+     *
+     * @param _observer
+     * @return
+     */
     public IObserver bind(IObserver _observer);
+    /**
+     *
+     * @param _observer
+     */
     public void release(IObserver _observer);
 }

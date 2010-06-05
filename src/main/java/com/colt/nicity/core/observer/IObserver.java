@@ -19,8 +19,24 @@
  */
 package com.colt.nicity.core.observer;
 
+/**
+ *
+ * @author Administrator
+ */
 public interface IObserver {
+    /**
+     *
+     * @param _change
+     */
     public void change(Change _change);
+    /**
+     *
+     * @param _observable
+     */
     public void bound(IObservable _observable);
+    /**
+     *
+     * @param _observable
+     */
     public void released(IObservable _observable);
 }

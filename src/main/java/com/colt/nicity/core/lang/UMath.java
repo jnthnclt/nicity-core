@@ -24,9 +24,19 @@ import com.colt.nicity.core.memory.struct.XYWH_I;
 import com.colt.nicity.core.memory.struct.XY_I;
 import java.awt.Polygon;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UMath {
     // Taimoto presence of absence
 
+    /**
+     *
+     * @param v1
+     * @param v2
+     * @return
+     */
     static public double tanamotoCorrelation(double[] v1, double[] v2) {
         double c1 = 0;
         double c2 = 0;
@@ -48,6 +58,12 @@ public class UMath {
     // Pearson Correlation
     // v1.length must equal v2.length
     // 0 worst 1 best
+    /**
+     *
+     * @param v1
+     * @param v2
+     * @return
+     */
     static public double pearsonCorrelation(double[] v1, double[] v2) {
         double sum1 = sum(v1);
         double sum2 = sum(v2);
@@ -63,6 +79,11 @@ public class UMath {
         return numerator / denominator;
     }
 
+    /**
+     *
+     * @param vs
+     * @return
+     */
     static public double sum(double... vs) {
         double v = 0;
         for (double add : vs) {
@@ -71,6 +92,12 @@ public class UMath {
         return v;
     }
 
+    /**
+     *
+     * @param _power
+     * @param vs
+     * @return
+     */
     static public double powerSum(double _power, double... vs) {
         double v = 0;
         for (double add : vs) {
@@ -80,6 +107,12 @@ public class UMath {
     }
     // v1.length must equal v2.length
 
+    /**
+     *
+     * @param v1
+     * @param v2
+     * @return
+     */
     static public double productSum(double[] v1, double[] v2) {
         double v = 0;
         for (int i = 0; i < v1.length; i++) {
@@ -88,6 +121,16 @@ public class UMath {
         return v;
     }
 
+    /**
+     *
+     * @param _bx
+     * @param _by
+     * @param _bw
+     * @param _bh
+     * @param _x
+     * @param _y
+     * @return
+     */
     public static boolean pointContainedByRectOval(double _bx, double _by, double _bw, double _bh, double _x, double _y) {
         double xc = _bx + (_bw / 2);
         double yc = _by + (_bh / 2);
@@ -98,14 +141,30 @@ public class UMath {
         return ((dx / _bw) * (dx / _bw) + (dy / _bh) * (dy / _bh)) <= 0.25;
     }
 
+    /**
+     *
+     * @param _circumference
+     * @return
+     */
     public static double circumferenceToDiameter(double _circumference) {
         return _circumference / Math.PI;
     }
 
+    /**
+     *
+     * @param _diameter
+     * @return
+     */
     public static double circumference(double _diameter) {
         return Math.PI * _diameter;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     final public static double computeAngle(double x, double y) {
         double angle = Math.atan(y / x);
         if (x == 0) {
@@ -121,10 +180,25 @@ public class UMath {
         return angle;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     final public static double pathagorus(double x, double y) {
         return Math.sqrt((x * x) + (y * y));
     }
 
+    /**
+     *
+     * @param ls
+     * @param le
+     * @param px
+     * @param py
+     * @param allowOnExtension
+     * @return
+     */
     public static XY_I getClosestPoint(XY_I ls, XY_I le, double px, double py, boolean allowOnExtension) {
         // If the two points represent the same point then
         // they are the closest point.
@@ -158,6 +232,12 @@ public class UMath {
         return (int) (v + 0.5);
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static boolean equalSign(double _a, double _b) {
         if (_a == _b) {
             return true;
@@ -171,10 +251,20 @@ public class UMath {
         return false;
     }
 
+    /**
+     *
+     * @param _r
+     * @return
+     */
     public static double circleArea(double _r) {
         return Math.PI * Math.pow(_r, 2);
     }
 
+    /**
+     *
+     * @param _length
+     * @return
+     */
     public static long powerFit(long _length) {
         long blockPower = 0;
         for (long i = 1; i < 65; i++) { // 2^64 == long so why go anyfuther
@@ -185,6 +275,13 @@ public class UMath {
         return 64;
     }
 
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static boolean inRange(int _v, int _min, int _max) {
         if (_v < _min) {
             return false;
@@ -195,10 +292,23 @@ public class UMath {
         return true;
     }
 
+    /**
+     *
+     * @param _angle
+     * @param _length
+     * @return
+     */
     public static double[] vector(double _angle, double _length) {
         return vector(_angle, _length, new double[2]);
     }
 
+    /**
+     *
+     * @param _radians
+     * @param _length
+     * @param _xy
+     * @return
+     */
     public static double[] vector(double _radians, double _length, double[] _xy) {
         _radians -= Math.PI;
         _xy[0] = (Math.cos(_radians) * _length);
@@ -206,11 +316,25 @@ public class UMath {
         return _xy;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public static double angle(double x, double y) {// 0 to 2pi radians relative to center at .5,.5 using points between 0-1
 
         return angle(x, y, .5d, .5d);
     }
 
+    /**
+     *
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2
+     * @return
+     */
     public static double angle(double x1, double y1, double x2, double y2) {// 0-360 angle between any two points
         //!! validated to return correct angle using java convention where zero is at 3:00 and increases clockwise thru full circle
         // atan is never called with args that could result in NaN
@@ -271,10 +395,23 @@ public class UMath {
     }
     }
      */
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static double middle(double a, double b) {
         return middle(a, b, 0.5d);
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @param _percentage
+     * @return
+     */
     public static double middle(double a, double b, double _percentage) {
         //double gap = Math.max(a,b)-Math.min(a,b);
         //double mid = Math.min(a,b)+(gap*_percentage);
@@ -285,18 +422,48 @@ public class UMath {
         return mid;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     final public static double fastMiddle(double a, double b) {
         return (a + b) / 2;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @param _percentage
+     * @return
+     */
     final public static double fastMiddle(double a, double b, double _percentage) {
         return (a + b) * _percentage;
     }
 
+    /**
+     *
+     * @param sx
+     * @param sy
+     * @param ex
+     * @param ey
+     * @return
+     */
     public static double[] middle(double sx, double sy, double ex, double ey) {
         return middle(sx, sy, ex, ey, 0.5d);
     }
 
+    /**
+     *
+     * @param sx
+     * @param sy
+     * @param ex
+     * @param ey
+     * @param _percentage
+     * @return
+     */
     public static double[] middle(double sx, double sy, double ex, double ey, double _percentage) {
         double gapX = (ex - sx);
         double gapY = (ey - sy);
@@ -305,14 +472,35 @@ public class UMath {
         return new double[]{midX, midY};
     }
 
+    /**
+     *
+     * @param sx
+     * @param sy
+     * @param ex
+     * @param ey
+     * @return
+     */
     final public static double[] fastMiddle(double sx, double sy, double ex, double ey) {
         return new double[]{fastMiddle(sx, ex), fastMiddle(sy, ey)};
     }
 
+    /**
+     *
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static double circumscribeRadius(double _w, double _h) {
         return Math.sqrt(Math.pow(_w / 2, 2) + Math.pow(_h / 2, 2));
     }
 
+    /**
+     *
+     * @param _w
+     * @param _h
+     * @param _radians
+     * @return
+     */
     public static double[] rectanglePerimeter(double _w, double _h, double _radians) {
         if (_w == 0 || _h == 0) {
             return new double[]{0, 0};
@@ -368,6 +556,11 @@ public class UMath {
         }
     }
 
+    /**
+     *
+     * @param _radians
+     * @return
+     */
     public static double normalizeAngle(double _radians) {
         if (Math.abs(_radians) > (Math.PI * 2)) {
             long count = (long) (_radians / (Math.PI * 2));
@@ -379,22 +572,50 @@ public class UMath {
         return _radians;
     }
 
+    /**
+     *
+     * @param _s
+     * @param _e
+     * @return
+     */
     public static double distance(double _s, double _e) {
         return Math.abs(_s - _e);
     }
 
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _x2
+     * @param _y2
+     * @return
+     */
     public static double distance(double _x1, double _y1, double _x2, double _y2) {
         double x = _x1 - _x2;
         double y = _y1 - _y2;
         return Math.sqrt((x * x) + (y * y));
     }
 
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _x2
+     * @param _y2
+     * @return
+     */
     public static int distance(int _x1, int _y1, int _x2, int _y2) {
         int x = _x1 - _x2;
         int y = _y1 - _y2;
         return (int) Math.sqrt((x * x) + (y * y));
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static double nDimDistance(double[] _a, double[] _b) {
         int l = _a.length;
         double squaredTotal = 0;
@@ -406,6 +627,16 @@ public class UMath {
     }
 
     // some 3D math functions; use instead of the threeD.XYZ methods
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _z1
+     * @param _x2
+     * @param _y2
+     * @param _z2
+     * @return
+     */
     final public static double distance(double _x1, double _y1, double _z1, double _x2, double _y2, double _z2) {
         double x = _x1 - _x2;
         double y = _y1 - _y2;
@@ -414,6 +645,13 @@ public class UMath {
     }
 
     // return a unit vector
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _z1
+     * @return
+     */
     public static double[] normalize(double _x1, double _y1, double _z1) {
         double[] result = new double[3];
         double d = distance(_x1, _y1, _z1, 0, 0, 0);
@@ -423,11 +661,31 @@ public class UMath {
         return result;
     }
 
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _z1
+     * @param _x2
+     * @param _y2
+     * @param _z2
+     * @return
+     */
     public static double dot(double _x1, double _y1, double _z1, double _x2, double _y2, double _z2) {
         return (_x1 * _x2) + (_y1 * _y2) + (_z1 * _z2);
     }
 
     // cross product returns vector that is orthogonal to other two vectors
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _z1
+     * @param _x2
+     * @param _y2
+     * @param _z2
+     * @return
+     */
     public static double[] cross(double _x1, double _y1, double _z1, double _x2, double _y2, double _z2) {
         double[] result = new double[3];
         result[0] = (_y1 * _z2) - (_z1 * _y2);
@@ -472,6 +730,16 @@ public class UMath {
     }*/
     //!! bug?? does not agree with 2d angle; see test main	
     // angle = acos(dot(_xyz1,_xyz2) / (distance(_xyz1,center)*distance(_xyz1,center)); 	
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _z1
+     * @param _x2
+     * @param _y2
+     * @param _z2
+     * @return
+     */
     public static double angle(double _x1, double _y1, double _z1, double _x2, double _y2, double _z2) {
         double dot = dot(_x1, _y1, _z1, _x2, _y2, _z2);
         double d1 = distance(_x1, _y1, _z1, 0, 0, 0);
@@ -483,6 +751,12 @@ public class UMath {
         return Math.acos(dot / (d1 * d2));
     }
 
+    /**
+     *
+     * @param _samples
+     * @param _window
+     * @return
+     */
     public static double correlation(double[] _samples, int _window) {
         // _samples are ANY doubles (not necessarily between 0 and 1)
         // returns 0 if perfect negative correlation
@@ -513,6 +787,12 @@ public class UMath {
         return cc / count;
     }
 
+    /**
+     *
+     * @param _samples
+     * @param _window
+     * @return
+     */
     public static double correlation2(double[] _samples, int _window) {
         // _samples are ANY doubles (not necessarily between 0 and 1)
         // returns 0 if perfect negative correlation
@@ -554,6 +834,13 @@ public class UMath {
         return actual / possible;
     }
 
+    /**
+     *
+     * @param _samples
+     * @param _windows
+     * @param _correlations
+     * @return
+     */
     public static int[] bestCorrelation(double[] _samples, int[] _windows, double[] _correlations) {
         int bestWindow = 0;
         int worstWindow = 0;
@@ -610,6 +897,13 @@ public class UMath {
     System.out.println("best="+correlations[result[0]]+" at window="+result[0]);
     System.out.println("worst="+correlations[result[1]]+" at window="+result[1]);
     }
+     */
+    /**
+     *
+     * @param _set
+     * @param _num
+     * @param _max
+     * @return
      */
     public static CArray permutations(Object[] _set, int _num, int _max) {
         // given a collection of _set things (like cards), returns all the unordered permutations
@@ -671,6 +965,13 @@ public class UMath {
     }					
     }
      */
+    /**
+     *
+     * @param _set
+     * @param _num
+     * @param _max
+     * @return
+     */
     public static CArray combinations(Object[] _set, int _num, int _max) {
         // like permutations but considers order too, so returns A,B AND B,A
         CArray result = new CArray();
@@ -731,6 +1032,16 @@ public class UMath {
     }					
     }
      */
+    /**
+     *
+     * @param _type
+     * @param _samples
+     * @param _start
+     * @param _length
+     * @param _cycle
+     * @param _amplitude
+     * @param _offset
+     */
     public static void wave(
             int _type, double[] _samples,
             int _start, int _length,
@@ -779,6 +1090,11 @@ public class UMath {
     }
      */
 
+    /**
+     *
+     * @param _d
+     * @return
+     */
     public static double signChanges(double[] _d) {
         if (_d.length < 3) {
             return 0;
@@ -797,6 +1113,11 @@ public class UMath {
         return result;
     }
 
+    /**
+     *
+     * @param _d
+     * @return
+     */
     public static double[] deltas(double[] _d) {
         if (_d.length < 2) {
             return new double[]{0};
@@ -809,6 +1130,12 @@ public class UMath {
     }
 
     // input: equal number of raw x,y coordinates
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @return
+     */
     public static double[] slopes(double[] _x, double[] _y) {
         if (_x.length < 2) {
             return new double[]{0};
@@ -828,6 +1155,12 @@ public class UMath {
     }
 
     // input: equal number of raw x,y coordinates
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @return
+     */
     public static double[] distances(double[] _x, double[] _y) {
         if (_x.length < 2) {
             return new double[]{0};
@@ -841,6 +1174,12 @@ public class UMath {
 
     // input: two arbitrary sets of values, any size; output: 0-1 correlation of bell curves 
     // correlates standard deviations by comparing the _a and _b bell curves with the composite bell curve  
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static double stdCorrelation(double[] _a, double[] _b) {
 
         double sumA = 0;
@@ -876,8 +1215,18 @@ public class UMath {
 
         return correlateDeviations(deviationsA, deviationsB);
     }
+    /**
+     *
+     */
     public static final int numStdDeviations = 10;
 
+    /**
+     *
+     * @param _d
+     * @param _std
+     * @param _ave
+     * @return
+     */
     public static double[] stdDeviations(double[] _d, double _std, double _ave) {
         double[] d = new double[numStdDeviations]; // d[4] d[5] is bell curve += 1/2 of one standard deviation
 
@@ -911,6 +1260,12 @@ public class UMath {
         return d;
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static double correlateDeviations(double[] _a, double[] _b) {
         double result = 0;
         for (int i = 0; i < numStdDeviations; i++) {
@@ -928,6 +1283,12 @@ public class UMath {
         return result;
     }
 
+    /**
+     *
+     * @param _carrier
+     * @param _signal
+     * @return
+     */
     public static double[] extractSignal(double[] _carrier, double[] _signal) {
         double[] results = new double[_signal.length];
         for (int i = 0; i < _signal.length; i++) {
@@ -940,6 +1301,15 @@ public class UMath {
         return results;
     }
 
+    /**
+     *
+     * @param _carrier
+     * @param _signal
+     * @param _down
+     * @param _off
+     * @param _up
+     * @return
+     */
     public static double[] extractCrossings(
             double[] _carrier, double[] _signal,
             double _down, double _off, double _up) {
@@ -971,6 +1341,11 @@ public class UMath {
     // ~ 4.2% of the data are between +- 2 and 3 standard deviations of the mean.
     // ~  .3% of the data are beyond  +- 3 standard deviations of the mean.
     // a standard statistical function
+    /**
+     *
+     * @param _d
+     * @return
+     */
     public static double mean(double[] _d) {
         double mean = 0;
         for (int i = 0; i < _d.length; i++) {
@@ -981,11 +1356,22 @@ public class UMath {
     }
 
     // a standard statistical function
+    /**
+     *
+     * @param _d
+     * @return
+     */
     public static double std(double[] _d) {
         return std(_d, mean(_d));
     }
 
     // a standard statistical function
+    /**
+     *
+     * @param _d
+     * @param _mean
+     * @return
+     */
     public static double std(double[] _d, double _mean) {
         if (_d.length < 2) {
             return 0;
@@ -998,11 +1384,22 @@ public class UMath {
     }
 
     // a standard statistical function
+    /**
+     *
+     * @param _d
+     * @return
+     */
     public static double variance(double[] _d) {
         return variance(_d, mean(_d));
     }
 
     // a standard statistical function
+    /**
+     *
+     * @param _d
+     * @param _mean
+     * @return
+     */
     public static double variance(double[] _d, double _mean) {
         if (_d.length < 2) {
             return 0;
@@ -1025,6 +1422,12 @@ public class UMath {
     }
 
     // a standard statistical function; returns 0 to +1; 0 means zero correlation
+    /**
+     *
+     * @param _d1
+     * @param _d2
+     * @return
+     */
     public static double correlationCoefficient(double[] _d1, double[] _d2) {
         if (_d1.length != _d2.length || _d1.length < 3) {
             return 0;
@@ -1048,6 +1451,16 @@ public class UMath {
     }
 
     // faster correlationCoefficient for callers who cache std and mean
+    /**
+     *
+     * @param _d1
+     * @param _d2
+     * @param _std1
+     * @param _std2
+     * @param _mean1
+     * @param _mean2
+     * @return
+     */
     public static double correlationCoefficient(
             double[] _d1, double[] _d2,
             double _std1, double _std2,
@@ -1088,6 +1501,12 @@ public class UMath {
     }
      */
 
+    /**
+     *
+     * @param _d
+     * @param _numStds
+     * @return
+     */
     public static double[] extractInflection(double[] _d, double _numStds) {
         double mean = 0;
         for (int i = 0; i < _d.length; i++) {
@@ -1109,6 +1528,13 @@ public class UMath {
     }
 
     // similar to extractChiSquaredWave; since ChiSquared has been more thoroughly analyzed by statiticians, it is preferred
+    /**
+     *
+     * @param _d
+     * @param _numStds
+     * @param _cumulative
+     * @return
+     */
     public static double[] extractDeviationWave(double[] _d, double _numStds, boolean _cumulative) {
         double[] results = new double[_d.length];
         double mean = 0;
@@ -1159,6 +1585,13 @@ public class UMath {
 
     // ChiSquared is a a standard statistical function ("Z"); 
     // extractChiSquaredWave accumulates ChiSquareds and dampens the accumulation into a wave
+    /**
+     *
+     * @param _d
+     * @param _damp
+     * @param _cumulative
+     * @return
+     */
     public static double[] extractChiSquaredWave(double[] _d, double _damp, boolean _cumulative) {
         if (_d.length < 1) {
             return new double[0];
@@ -1210,6 +1643,12 @@ public class UMath {
         return results;
     }
 
+    /**
+     *
+     * @param _d
+     * @param _numStds
+     * @return
+     */
     public static double[] extractStdWave(double[] _d, double _numStds) {
         double mean = 0;
         for (int i = 0; i < _d.length; i++) {
@@ -1227,6 +1666,13 @@ public class UMath {
     }
 
     // returns 0 to 1; 0=>extremely unlikely; 1=>most likely
+    /**
+     *
+     * @param _count
+     * @param _total
+     * @param _std
+     * @return
+     */
     public static double significance(double _count, double _total, double _std) {
         double std = 0;
         if (_std < 0) {
@@ -1264,6 +1710,13 @@ public class UMath {
      */
     // return duration to reverse one trend (_slope1,_duration1) with another trend (_slope2)
     // returns zero if reversal is not possible (because both trends are in same direction)
+    /**
+     *
+     * @param _slope1
+     * @param _duration1
+     * @param _slope2
+     * @return
+     */
     public static double getTimeToReverseTrend(double _slope1, double _duration1, double _slope2) {
         double duration2 = -((_slope1 * _duration1) / _slope2);
         if (duration2 < 0) {
@@ -1273,6 +1726,13 @@ public class UMath {
     }
 
     // return slope to reverse one trend (_slope1,_duration1) with another duration (_duration2)
+    /**
+     *
+     * @param _slope1
+     * @param _duration1
+     * @param _duration2
+     * @return
+     */
     public static double getSlopeToReverseTrend(double _slope1, double _duration1, double _duration2) {
         double slope2 = -((_slope1 * _duration1) / _duration2);
         return slope2;
@@ -1297,6 +1757,17 @@ public class UMath {
     }
      */
     // returns null if circles do not intersect
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _r1
+     * @param _x2
+     * @param _y2
+     * @param _r2
+     * @param imaginary
+     * @return
+     */
     public static double[] intersectCircles(
             double _x1, // center 1 x
             double _y1, // center 1 y
@@ -1379,6 +1850,15 @@ public class UMath {
         return result;
     }
 
+    /**
+     *
+     * @param _sample
+     * @param _start
+     * @param _len
+     * @param _step
+     * @param _reference
+     * @return
+     */
     public static double[] analyzeSlopes(
             double[] _sample,
             int _start,
@@ -1411,10 +1891,32 @@ public class UMath {
         return result;
     }
     // adapted from equation #7 http://www.cs.princeton.edu/introcs/33modular/
+    /**
+     *
+     */
     final public static int cParallel = -1;
+    /**
+     *
+     */
     final public static int cFalse = 0;
+    /**
+     *
+     */
     final public static int cTrue = 1;
 
+    /**
+     *
+     * @param ax
+     * @param ay
+     * @param bx
+     * @param by
+     * @param cx
+     * @param cy
+     * @param dx
+     * @param dy
+     * @param intersect
+     * @return
+     */
     final public static int linesIntersect(// does line a-b intersect line c-d?
             double ax, double ay, double bx, double by,
             double cx, double cy, double dx, double dy,
@@ -1451,6 +1953,18 @@ public class UMath {
     }
     // optimized
 
+    /**
+     *
+     * @param ax
+     * @param ay
+     * @param bx
+     * @param by
+     * @param cx
+     * @param cy
+     * @param dx
+     * @param dy
+     * @return
+     */
     final public static double[] linesIntersect(// does line a-b intersect line c-d?
             double ax, double ay, double bx, double by,
             double cx, double cy, double dx, double dy) {
@@ -1478,6 +1992,13 @@ public class UMath {
         return null;
     }
 
+    /**
+     *
+     * @param p
+     * @param p0
+     * @param p1
+     * @return
+     */
     static public boolean isPointRightOfLine(XY_I p, XY_I p0, XY_I p1) {// p=point; p0 <-> p1 = line
         XY_I a = new XY_I(p1.x - p0.x, p1.y - p0.y);
         XY_I b = new XY_I(p.x - p0.x, p.y - p0.y);
@@ -1488,6 +2009,12 @@ public class UMath {
         return false;
     }
 
+    /**
+     *
+     * @param p0
+     * @param p1
+     * @return
+     */
     static public double distance(XY_I p0, XY_I p1) {
         double xd = p0.x - p1.x;
         if (xd < 0) {
@@ -1500,6 +2027,11 @@ public class UMath {
         return java.lang.Math.sqrt(xd * xd + yd * yd);
     }
 
+    /**
+     *
+     * @param _rects
+     * @return
+     */
     static public CArray getRectanglesPoints(CArray _rects) {// adk.view.XYWH_I
         Object[] ra = _rects.getAll();
         XY_I[] pa = new XY_I[ra.length * 4];
@@ -1516,14 +2048,29 @@ public class UMath {
         return a;
     }
 
+    /**
+     *
+     * @param _rects
+     * @return
+     */
     static public CArray wrapRectangles(CArray _rects) {// adk.view.XYWH_I
         return wrap(getRectanglesPoints(_rects));
     }
 
+    /**
+     *
+     * @param _p
+     * @return
+     */
     static public CArray wrap(CArray _p) { // _p is array of XY_I
         return wrap(_p.getAll());
     }
 
+    /**
+     *
+     * @param _p
+     * @return
+     */
     static public CArray wrap(Object[] _p) { // _p is array of XY_I
         if (_p == null) {
             return null;
@@ -1567,6 +2114,11 @@ public class UMath {
         return null;
     }
 
+    /**
+     *
+     * @param _r
+     * @return
+     */
     public static CArray polyTraverseRectangles(CArray _r) {
         Object[] ra = _r.getAll();
         CArray centers = new CArray(ra.length);
@@ -1578,6 +2130,11 @@ public class UMath {
         return polyTraverse(centers);
     }
 
+    /**
+     *
+     * @param _p
+     * @return
+     */
     public static CArray polyTraverse(CArray _p) {// a pretty good and quick solution to the travelling salesman problem (TSP)
         if (_p == null || _p.getCount() < 2 || _p.getCount() > 5000) {
             return null; // >5000 takes hours!
@@ -1629,6 +2186,12 @@ public class UMath {
         return drawPoints;
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static Polygon removeAFromB(Polygon _a, Polygon _b) {
         if (_b == null) {
             return null;
@@ -1650,6 +2213,11 @@ public class UMath {
         return new Polygon(xs, ys, xs.length);
     }
 
+    /**
+     *
+     * @param _poly
+     * @return
+     */
     public static Polygon reverse(Polygon _poly) {
         Polygon poly = new Polygon();
         for (int i = _poly.npoints - 1; i > -1; i--) {
@@ -1658,6 +2226,12 @@ public class UMath {
         return poly;
     }
 
+    /**
+     *
+     * @param _points
+     * @param _closed
+     * @return
+     */
     public static Polygon toPoly(CArray _points, boolean _closed) {
         if (_points == null) {
             return null;

@@ -19,8 +19,19 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ * @param <I>
+ * @param <O>
+ */
 public interface ICallback<I, O> {
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public O callback(I value);
 }
 

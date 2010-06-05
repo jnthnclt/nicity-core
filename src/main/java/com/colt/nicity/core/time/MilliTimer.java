@@ -19,6 +19,10 @@
  */
 package com.colt.nicity.core.time;
 
+/**
+ *
+ * @author Administrator
+ */
 public class MilliTimer {
     private long start;
     private int duration = 0;
@@ -26,12 +30,21 @@ public class MilliTimer {
     private int min = Integer.MAX_VALUE;
     private int max = 0;
     private boolean running = false;
+    /**
+     *
+     */
     public MilliTimer() {
     }
+    /**
+     *
+     */
     public void start() {
         running = true;
         start = System.currentTimeMillis();
     }
+    /**
+     *
+     */
     public void stop() {
         if (!running) {
             return;
@@ -47,6 +60,9 @@ public class MilliTimer {
         count++;
         running = false;
     }
+    /**
+     *
+     */
     public void reset() {
         duration = 0;
         count = 0;
@@ -54,25 +70,53 @@ public class MilliTimer {
         max = 0;
     }
     // start-stop, start-stop, etc. accumulates a total duration; reset to zero
+    /**
+     *
+     * @return
+     */
     public int duration() {// milliseconds accumulation since reset
         return duration;
     }
+    /**
+     *
+     * @return
+     */
     public int count() {
         return count;
     }
+    /**
+     *
+     * @return
+     */
     public int min() {
         return min;
     }
+    /**
+     *
+     * @return
+     */
     public int max() {
         return max;
     }
+    /**
+     *
+     * @return
+     */
     public int ave() {
         return duration / count;
     }
+    /**
+     *
+     * @return
+     */
     public String stats() {
         return "Elapse:" + UTime.elapse(duration);
     }
     // if you want to glance at the stopwatch without stopping it
+    /**
+     *
+     * @return
+     */
     public int glance() {// milliseconds since first start after reset
         if (!running) {
             return duration;

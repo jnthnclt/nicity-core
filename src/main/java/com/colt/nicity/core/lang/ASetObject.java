@@ -25,6 +25,10 @@ package com.colt.nicity.core.lang;
  * @param <E>
  */
 abstract public class ASetObject<E> {
+    /**
+     *
+     * @return
+     */
     abstract public E hashObject();
 
     @Override

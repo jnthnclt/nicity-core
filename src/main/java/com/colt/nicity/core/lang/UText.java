@@ -24,7 +24,16 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UText {
+    /**
+     *
+     * @param _file
+     * @return
+     */
     public static String[] loadTextFile(File _file) {
         CArray<String> lines = new CArray<String>(String.class);
         RandomAccessFile filer = null;
@@ -46,6 +55,11 @@ public class UText {
         }
         return lines.getAll();
     }
+    /**
+     *
+     * @param _lines
+     * @param _file
+     */
     public static void saveTextFile(Object[] _lines, File _file) {
         RandomAccessFile filer = null;
         if (_lines == null) {
@@ -71,6 +85,11 @@ public class UText {
             x.printStackTrace();
         }
     }
+    /**
+     *
+     * @param _buffer
+     * @param _file
+     */
     public static void saveTextFile(StringBuffer _buffer, File _file) {
         RandomAccessFile filer = null;
         if (_file == null) {
@@ -87,9 +106,21 @@ public class UText {
             x.printStackTrace();
         }
     }
+    /**
+     *
+     * @param _line
+     * @param _file
+     */
     public static void appendTextFile(String _line, File _file) {
         appendTextFile(new String[]{_line}, 0, 1, _file);
     }
+    /**
+     *
+     * @param _lines
+     * @param _s
+     * @param _l
+     * @param _file
+     */
     public static void appendTextFile(String[] _lines, int _s, int _l, File _file) {
         try {
             UFile.ensureDirectory(_file);
@@ -104,6 +135,11 @@ public class UText {
             x.printStackTrace();
         }
     }
+    /**
+     *
+     * @param _buffer
+     * @param _file
+     */
     public static void appendTextFile(StringBuffer _buffer, File _file) {
         try {
             UFile.ensureDirectory(_file);
@@ -116,6 +152,11 @@ public class UText {
             x.printStackTrace();
         }
     }
+    /**
+     *
+     * @param _file
+     * @return
+     */
     public static String toString(File _file) {
         StringBuilder fileString = new StringBuilder();
         RandomAccessFile filer = null;
@@ -134,6 +175,11 @@ public class UText {
         }
         return fileString.toString();
     }
+    /**
+     *
+     * @param _file
+     * @return
+     */
     public static byte[] toBytes(File _file) {
         RandomAccessFile filer = null;
         byte[] bytes = null;
@@ -151,6 +197,12 @@ public class UText {
         }
         return bytes;
     }
+    /**
+     *
+     * @param _val
+     * @param _caseSensitive
+     * @return
+     */
     public static String[] tokenizeASCIIletters(String _val, boolean _caseSensitive) {
         // anything not a-z or A-Z is skipped and used as delimiter
         String[] results = new String[(_val.length() / 5) + 1];

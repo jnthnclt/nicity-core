@@ -59,5 +59,6 @@ public interface ISetOfLongs extends IHaveCount, IBackcall {
      */
     public boolean contains(long key);
 
+    @Override
     public long getCount();
 }

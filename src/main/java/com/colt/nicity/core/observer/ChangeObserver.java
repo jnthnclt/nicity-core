@@ -21,18 +21,39 @@ package com.colt.nicity.core.observer;
 
 import com.colt.nicity.core.collection.CSet;
 
+/**
+ *
+ * @author Administrator
+ */
 abstract public class ChangeObserver implements IObserver {
     private CSet<ChangeHandler> handlers = new CSet<ChangeHandler>();
+    /**
+     *
+     * @param _handler
+     */
     synchronized public void add(ChangeHandler _handler) {
         handlers.add(_handler);
     }
+    /**
+     *
+     * @param _handler
+     */
     synchronized public void remove(ChangeHandler _handler) {
         handlers.remove(_handler);
     }
+    /**
+     *
+     * @return
+     */
     synchronized public ChangeHandler[] all() {
         return handlers.getAll(ChangeHandler.class);
     }
     
+    /**
+     *
+     * @param _change
+     */
+    @Override
     synchronized public void change(Change _change) {
         ChangeHandler handler = handlers.get(_change.mode());
         if (handler != null) {

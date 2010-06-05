@@ -22,6 +22,13 @@ package com.colt.nicity.core.memory;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 
+/**
+ *
+ * @author Administrator
+ * @param <V>
+ * @param <K>
+ * @param <P>
+ */
 public class SoftIndexRef<V, K, P> extends SoftReference<V> {
 
     K _key;
@@ -33,14 +40,25 @@ public class SoftIndexRef<V, K, P> extends SoftReference<V> {
         _payload = payload;
     }
 
+    /**
+     *
+     * @return
+     */
     public P getPayload() {
         return _payload;
     }
 
+    /**
+     *
+     * @return
+     */
     public K getKey() {
         return _key;
     }
 
+    /**
+     *
+     */
     public void dispose() {
         _key = null;
         _payload = null;

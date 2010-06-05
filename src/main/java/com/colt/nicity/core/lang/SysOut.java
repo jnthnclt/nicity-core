@@ -19,13 +19,33 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class SysOut implements IOut {
+    /**
+     *
+     * @return
+     */
+    @Override
     public boolean canceled() {
         return false;
     }
+    /**
+     *
+     * @param _at
+     * @param _outof
+     */
+    @Override
     public void out(double _at, double _outof) {
         System.out.println(Thread.currentThread() + " progress " + ((_at / _outof) * 100d) + "%");
     }
+    /**
+     *
+     * @param _status
+     */
+    @Override
     public void out(Object... _status) {
         for (Object s : _status) {
             if (s instanceof Throwable) {

@@ -23,8 +23,17 @@ package com.colt.nicity.core.lang;
 // new UnorderedKeys(new Object[]{a,b}).equals(new UnorderedKeys(new Object[]{b,a})) == true
 // new UnorderedKeys(new Object[]{a,b}).hashCode() == new UnorderedKeys(new Object[]{b,a}).hashCode() == true
 
+/**
+ *
+ * @author Administrator
+ * @param <K>
+ */
 public class UnorderedKeys<K> extends ACompositeKey<K> {
 
+    /**
+     *
+     * @param _keys
+     */
     public UnorderedKeys(K... _keys) {
         super(_keys);
     }
@@ -77,6 +86,7 @@ public class UnorderedKeys<K> extends ACompositeKey<K> {
         return true;
     }
 
+    @Override
     public int compareTo(ACompositeKey<K> o) {
         if (!(o instanceof UnorderedKeys)) {
             return -1;

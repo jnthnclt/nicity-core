@@ -19,29 +19,63 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class USort {
     
     
     /*
     These sorters mirror the manipulation of the sorted array onto a secondary array
      */
+    /**
+     *
+     * @param _sort
+     * @param _keys
+     */
     public static void mirrorSort(double[] _sort, double[] _keys) {
         sortDD(_sort, _keys, 0, _sort.length);
     }
+    /**
+     *
+     * @param _sort
+     * @param _keys
+     */
     public static void mirrorSort(long[] _sort, long[] _keys) {
         sortLL(_sort, _keys, 0, _sort.length);
     }
+    /**
+     *
+     * @param _sort
+     * @param _keys
+     */
     public static void mirrorSort(long[] _sort, double[] _keys) {
         sortLD(_sort, _keys, 0, _sort.length);
     }
+    /**
+     *
+     * @param _sort
+     * @param _keys
+     */
     public static void mirrorSort(double[] _sort, long[] _keys) {
         sortDL(_sort, _keys, 0, _sort.length);
     }
 
+    /**
+     *
+     * @param _sort
+     * @param _keys
+     */
     public static void mirrorSort(double[] _sort, Object[] _keys) {
         sortDO(_sort, _keys, 0, _sort.length);
     }
 
+    /**
+     *
+     * @param _sort
+     * @param _keys
+     */
     public static void mirrorSort(long[] _sort, Object[] _keys) {
         sortLO(_sort, _keys, 0, _sort.length);
     }

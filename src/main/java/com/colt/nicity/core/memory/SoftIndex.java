@@ -27,27 +27,52 @@ import java.lang.ref.ReferenceQueue;
 
 /**
  * Must call closeIndex to release worker thread
+ * @param <V>
+ * @param <K>
+ * @param <P>
  */
 public class SoftIndex<V, K, P> {
 
     final private CSet<SoftIndexRef<V, K, P>> set = new CSet<SoftIndexRef<V, K, P>>();
     private ReferenceQueue softIndexQueue;
+    /**
+     *
+     */
     protected ICallback<SoftIndexRef<V, K, P>, SoftIndexRef<V, K, P>> released;
+    /**
+     *
+     */
     public Object name = "SoftIndex";
 
+    /**
+     *
+     */
     public SoftIndex() {
         this(null, (ICallback) null);
     }
 
+    /**
+     *
+     * @param _name
+     */
     public SoftIndex(Object _name) {
         this(_name, (ICallback) null);
     }
 
+    /**
+     *
+     * @param _released
+     */
     public SoftIndex(
         ICallback<SoftIndexRef<V, K, P>, SoftIndexRef<V, K, P>> _released) {
         this(null, _released);
     }
 
+    /**
+     *
+     * @param _name
+     * @param _released
+     */
     public SoftIndex(Object _name,
         ICallback<SoftIndexRef<V, K, P>, SoftIndexRef<V, K, P>> _released) {
         if (_name != null) {
@@ -58,6 +83,10 @@ public class SoftIndex<V, K, P> {
         cleaner();
     }
 
+    /**
+     *
+     * @param _released
+     */
     public void setReleaseCallback(
         ICallback<SoftIndexRef<V, K, P>, SoftIndexRef<V, K, P>> _released) {
         if (released == null) {
@@ -70,10 +99,19 @@ public class SoftIndex<V, K, P> {
         return name + " (" + set.getCount() + ")";
     }
 
+    /**
+     *
+     * @return
+     */
     public long getCount() {
         return set.getCount();
     }
 
+    /**
+     *
+     * @param _key
+     * @return
+     */
     public V get(K _key) {
         synchronized (set) {
             SoftIndexRef<V, K, P> ref = set.get(_key);
@@ -88,6 +126,10 @@ public class SoftIndex<V, K, P> {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Object[] getAll() {
         synchronized (set) {
             SoftIndexRef<V, K, P>[] all = set.getAll(SoftIndexRef.class);
@@ -106,10 +148,19 @@ public class SoftIndex<V, K, P> {
             return UArray.removeNulls(gots);
         }
     }
+    /**
+     *
+     * @param _
+     * @param callback
+     */
     public void getAll(IOut _,ICallback<SoftIndexRef<V, K, P>,SoftIndexRef<V, K, P>> callback) {
         set.backcall(_, callback);
     }
 
+    /**
+     *
+     * @return
+     */
     public Object[] removeAll() {
         synchronized (set) {
             Object[] all = set.removeAll();
@@ -130,6 +181,11 @@ public class SoftIndex<V, K, P> {
         }
     }
 
+    /**
+     *
+     * @param _key
+     * @return
+     */
     public SoftIndexRef<V, K, P> getRef(K _key) {
         synchronized (set) {
             SoftIndexRef<V, K, P> ref = set.get(_key);
@@ -144,6 +200,10 @@ public class SoftIndex<V, K, P> {
         }
     }
 
+    /**
+     *
+     * @param _key
+     */
     public void remove(K _key) {
         synchronized (set) {
             SoftIndexRef<V, K, P> ref = set.get(_key);
@@ -156,12 +216,25 @@ public class SoftIndex<V, K, P> {
         }
     }
 
+    /**
+     *
+     * @param _value
+     * @param _key
+     * @return
+     */
     public Object set(V _value, K _key) {
         synchronized (set) {
             return set(_value, _key, null);
         }
     }
 
+    /**
+     *
+     * @param _value
+     * @param _key
+     * @param _payload
+     * @return
+     */
     public V set(V _value, K _key, P _payload) {
         synchronized (set) {
             if (cleanerThreadRunning) {
@@ -188,6 +261,9 @@ public class SoftIndex<V, K, P> {
     }
     private boolean clearing = false;
 
+    /**
+     *
+     */
     public void clear() {
         synchronized (set) {
             clearing = true;
@@ -200,6 +276,10 @@ public class SoftIndex<V, K, P> {
         }
     }
 
+    /**
+     *
+     * @param _clear
+     */
     public void clearing(Object[] _clear) {
         if (released != null) {
             for (Object a : _clear) {
@@ -208,6 +288,9 @@ public class SoftIndex<V, K, P> {
         }
     }
 
+    /**
+     *
+     */
     public void closeIndex() {
         stopCleanerThread = true;
         while (isCleanerThreadRunning()) {
@@ -219,6 +302,10 @@ public class SoftIndex<V, K, P> {
         clear();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isIndexValid() {
         synchronized (set) {
             return clearing ? false : cleanerThreadRunning;

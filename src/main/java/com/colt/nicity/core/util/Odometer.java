@@ -3,18 +3,33 @@ package com.colt.nicity.core.util;
 import com.colt.nicity.core.lang.UArray;
 import com.colt.nicity.core.value.Value;
 
+/**
+ *
+ * @author Administrator
+ */
 public class Odometer {
 
+    /**
+     *
+     */
     public int roleOver = 0;
     private int index = 0;
     private Object[] values;
     private Odometer next;
     private Value done;
 
+    /**
+     *
+     * @param _values
+     */
     public Odometer(Object[] _values) {
         values = _values;
     }
 
+    /**
+     *
+     * @param _index
+     */
     public void setIndex(int _index) {
         if (_index < 0) {
             _index = 0;
@@ -25,19 +40,36 @@ public class Odometer {
         index = _index;
     }
 
+    /**
+     *
+     * @param _odometer
+     * @return
+     */
     public Odometer setNext(Odometer _odometer) {
         next = _odometer;
         return next;
     }
 
+    /**
+     *
+     * @return
+     */
     public Odometer getNext() {
         return next;
     }
 
+    /**
+     *
+     * @param _done
+     */
     public void setDone(Value _done) {
         done = _done;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean inc() {
         index++;
         if (index >= values.length) {
@@ -54,6 +86,10 @@ public class Odometer {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     public Object[] toArray() {
         if (next == null) {
             return new Object[]{values[index]};

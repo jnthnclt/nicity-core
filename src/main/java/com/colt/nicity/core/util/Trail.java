@@ -1,5 +1,9 @@
 package com.colt.nicity.core.util;
 
+/**
+ *
+ * @author Administrator
+ */
 public class Trail {
 
     private Object[] trail;
@@ -9,10 +13,17 @@ public class Trail {
     private int max;
     private int count;
 
+    /**
+     *
+     */
     public Trail() {
         this(8);
     }
 
+    /**
+     *
+     * @param _max
+     */
     public Trail(int _max) {
         if (_max < 1) {
             max = 8;
@@ -27,10 +38,18 @@ public class Trail {
         count = 0;
     }
 
+    /**
+     *
+     * @return
+     */
     public Object[] trail() {
         return trail;
     }
 
+    /**
+     *
+     * @param _object
+     */
     public void mark(Object _object) {
         if (current() == _object) {
             return;
@@ -56,10 +75,18 @@ public class Trail {
         trail[current] = _object;
     }
 
+    /**
+     *
+     * @return
+     */
     public Object current() {
         return trail[current];
     }
 
+    /**
+     *
+     * @return
+     */
     public Object backward() {
         if (count == 0) {
             return null;
@@ -71,6 +98,10 @@ public class Trail {
         return trail[current];
     }
 
+    /**
+     *
+     * @return
+     */
     public Object forward() {
         if (count == 0) {
             return null;

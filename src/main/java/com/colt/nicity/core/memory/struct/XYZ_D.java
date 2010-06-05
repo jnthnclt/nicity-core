@@ -24,58 +24,127 @@ import com.colt.nicity.core.lang.UDouble;
 import com.colt.nicity.core.lang.UVector;
 import java.util.Arrays;
 
+/**
+ *
+ * @author Administrator
+ */
 public class XYZ_D extends ASetObject implements Comparable, IXYZ {
 
+    /**
+     *
+     */
     public double x;
+    /**
+     *
+     */
     public double y;
+    /**
+     *
+     */
     public double z;
 
+    /**
+     *
+     */
     public XYZ_D() {
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param _z
+     */
     public XYZ_D(double _x, double _y, double _z) {
         x = _x;
         y = _y;
         z = _z;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public Object hashObject() {
         return this;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIntX() {
         return x < 0 ? (int) (x - .5) : (int) (x + .5);
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIntY() {
         return y < 0 ? (int) (y - .5) : (int) (y + .5);
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIntZ() {
         return z < 0 ? (int) (z - .5) : (int) (z + .5);
     }
 
     // IXYZ
+    /**
+     *
+     * @return
+     */
+    @Override
     public double x() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public double y() {
         return y;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public double z() {
         return z;
     }
 
+    /**
+     *
+     * @param _x
+     */
+    @Override
     public void x(double _x) {
         x = _x;
     }
 
+    /**
+     *
+     * @param _y
+     */
+    @Override
     public void y(double _y) {
         y = _y;
     }
 
+    /**
+     *
+     * @param _z
+     */
+    @Override
     public void z(double _z) {
         z = _z;
     }
@@ -99,11 +168,16 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         return "" + getIntX() + "," + getIntY() + "," + getIntZ();
     }
 
+    /**
+     *
+     * @return
+     */
     public XYZ_D getClone() {
         return new XYZ_D(x, y, z);
     }
 
     // Comparable
+    @Override
     public int compareTo(Object otherXYZ) {
         double thisVal = this.z;
         double otherVal = ((XYZ_D) otherXYZ).z;
@@ -111,6 +185,13 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
     }
 
     //**
+    /**
+     *
+     * @param eyeX
+     * @param eyeY
+     * @param eyeZ
+     * @return
+     */
     public double getScale(double eyeX, double eyeY, double eyeZ) {
         // returns 0=> infinitely far away; 1=> touching your eye
         double sz = z; //?? z-eyeZ;
@@ -131,11 +212,25 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
     }
 
     // All transforms are static and optimized to manipulate arrays of XYZs
+    /**
+     *
+     * @param _xyz
+     * @param alpha
+     * @param beta
+     * @param theta
+     */
     public static void rotate(XYZ_D _xyz, double alpha, double beta,
         double theta) { // radians; rotate around x,y,z axis
         rotate(new XYZ_D[]{_xyz}, alpha, beta, theta);
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @param alpha
+     * @param beta
+     * @param theta
+     */
     public static void rotate(XYZ_D[] _xyzs, double alpha, double beta,
         double theta) { // radians; rotate around x,y,z axis
 
@@ -174,10 +269,24 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         }
     }
 
+    /**
+     *
+     * @param _xyz
+     * @param _x
+     * @param _y
+     * @param _z
+     */
     public static void translate(XYZ_D _xyz, double _x, double _y, double _z) { // radians; rotate around x,y,z axis
         translate(new XYZ_D[]{_xyz}, _x, _y, _z);
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @param _x
+     * @param _y
+     * @param _z
+     */
     public static void translate(XYZ_D[] _xyzs, double _x, double _y, double _z) {
         for (int i = 0; i < _xyzs.length; i++) {
             XYZ_D xyz = _xyzs[i];
@@ -187,11 +296,31 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         }
     }
 
+    /**
+     *
+     * @param _xyz
+     * @param _rx
+     * @param _ry
+     * @param _rz
+     * @param _x
+     * @param _y
+     * @param _z
+     */
     public static void move(XYZ_D _xyz, double _rx, double _ry, double _rz,
         double _x, double _y, double _z) {
         move(new XYZ_D[]{_xyz}, _rx, _ry, _rz, _x, _y, _z);
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @param _rx
+     * @param _ry
+     * @param _rz
+     * @param _x
+     * @param _y
+     * @param _z
+     */
     public static void move(XYZ_D[] _xyzs, double _rx, double _ry, double _rz,
         double _x, double _y, double _z) {// object's change in position is a function of object's rx,ry,rz
         XYZ_D delta = new XYZ_D(_x, _y, _z);
@@ -199,10 +328,24 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         XYZ_D.translate(_xyzs, delta.x, delta.y, delta.z);
     }
 
+    /**
+     *
+     * @param _xyz
+     * @param _x
+     * @param _y
+     * @param _z
+     */
     public static void scale(XYZ_D _xyz, double _x, double _y, double _z) {
         scale(new XYZ_D[]{_xyz}, _x, _y, _z);
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @param _x
+     * @param _y
+     * @param _z
+     */
     public static void scale(XYZ_D[] _xyzs, double _x, double _y, double _z) {
         for (int i = 0; i < _xyzs.length; i++) {
             XYZ_D xyz = _xyzs[i];
@@ -212,11 +355,21 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         }
     }
 
+    /**
+     *
+     * @param _xyz
+     * @return
+     */
     public static double getLength(XYZ_D _xyz) {
         return Math.sqrt(
             (_xyz.x * _xyz.x) + (_xyz.y * _xyz.y) + (_xyz.z * _xyz.z));
     }
 
+    /**
+     *
+     * @param _xyz
+     * @param _length
+     */
     public static void setLength(XYZ_D _xyz, double _length) {
         double d = UDouble.check(
             _length / Math.sqrt(
@@ -227,6 +380,11 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         _xyz.z *= d;
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @return
+     */
     public static XYZ_D[] getClone(XYZ_D[] _xyzs) {
         XYZ_D[] results = new XYZ_D[_xyzs.length];
         for (int i = 0; i < _xyzs.length; i++) {
@@ -236,10 +394,22 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         return results;
     }
 
+    /**
+     *
+     * @param _xyzs
+     */
     public static void sort(XYZ_D[] _xyzs) {
         Arrays.sort(_xyzs);
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @param x
+     * @param y
+     * @param z
+     * @param distance
+     */
     public static void perspective(XYZ_D[] _xyzs,
         double x, double y, double z,
         double distance) {
@@ -253,6 +423,14 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         }
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @param eyeX
+     * @param eyeY
+     * @param eyeZ
+     * @param distance
+     */
     public static void undoPerspective(XYZ_D[] _xyzs,
         double eyeX, double eyeY, double eyeZ,
         double distance) {
@@ -265,14 +443,39 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
             xyz.y = -(xyz.y * xyz.z / distance);
         }
     }
+    /**
+     *
+     */
     public static final XYZ_D cOrigin = new XYZ_D(0, 0, 0);
+    /**
+     *
+     */
     public static final XYZ_D cX = new XYZ_D(1, 0, 0);
+    /**
+     *
+     */
     public static final XYZ_D cY = new XYZ_D(0, 1, 0);
+    /**
+     *
+     */
     public static final XYZ_D cZ = new XYZ_D(0, 0, 1);
+    /**
+     *
+     */
     public static final XYZ_D cNegX = new XYZ_D(-1, 0, 0);
+    /**
+     *
+     */
     public static final XYZ_D cNegY = new XYZ_D(0, -1, 0);
+    /**
+     *
+     */
     public static final XYZ_D cNegZ = new XYZ_D(0, 0, -1);
 
+    /**
+     *
+     * @param _r
+     */
     public void setXR(double _r) {
         XYZ_D vector = get3D(cX, cNegY, this).setAbs();
         double hypotenuse = Math.sqrt(
@@ -281,6 +484,10 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         y = UDouble.check((Math.cos(_r) / hypotenuse), 0);
     }
 
+    /**
+     *
+     * @param _r
+     */
     public void setYR(double _r) {
         XYZ_D vector = get3D(cY, cNegZ, this).setAbs();
         double hypotenuse = Math.sqrt(
@@ -289,6 +496,10 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         z = UDouble.check((Math.cos(_r) / hypotenuse), 0);
     }
 
+    /**
+     *
+     * @param _r
+     */
     public void setZR(double _r) {
         XYZ_D vector = get3D(cZ, cNegY, this).setAbs();
         double hypotenuse = Math.sqrt(
@@ -297,6 +508,10 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         y = UDouble.check((Math.cos(_r) / hypotenuse), 0);
     }
 
+    /**
+     *
+     * @return
+     */
     public double getXR() {
         XYZ_D vector = get3D(cX, cNegY, this);
         if (vector.x > 0) {
@@ -321,6 +536,10 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public double getYR() {
         XYZ_D vector = get3D(cY, cNegZ, this);
         if (vector.x > 0) {
@@ -345,6 +564,10 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public double getZR() {
         XYZ_D vector = get3D(cZ, cNegY, this);
         if (vector.x > 0) {
@@ -369,6 +592,10 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public XYZ_D setAbs() {
         if (x < 0) {
             x = -x;
@@ -382,10 +609,20 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         return this;
     }
 
+    /**
+     *
+     * @param _v
+     * @return
+     */
     public double getDot(XYZ_D _v) {
         return x * _v.x + y * _v.y + z * _v.z;
     }
 
+    /**
+     *
+     * @param _v
+     * @return
+     */
     public double getAngle(XYZ_D _v) {
         double d = UDouble.check((getDot(_v) / (getLength() * _v.getLength())),
             0);
@@ -398,10 +635,18 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         return Math.acos(d);
     }
 
+    /**
+     *
+     * @return
+     */
     public double getLength() {
         return Math.sqrt((x * x) + (y * y) + (z * z));
     }
 
+    /**
+     *
+     * @param _length
+     */
     public void setLength(double _length) {
         double d = UDouble.check(_length / Math.sqrt(x * x + y * y + z * z),
             _length);
@@ -410,21 +655,39 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         z *= d;
     }
 
+    /**
+     *
+     * @return
+     */
     public XYZ_D getReversedVector() {
         return new XYZ_D(-x, -y, -z);
     }
 
     // Methods
+    /**
+     *
+     * @param _v
+     */
     public void add(XYZ_D _v) {
         x += _v.x;
         y += _v.y;
         z += _v.z;
     }
 
+    /**
+     *
+     * @param _axis
+     * @param _angle
+     */
     public void rotate(XYZ_D _axis, double _angle) {
         //!!todo
     }
 
+    /**
+     *
+     * @param _point
+     * @param d
+     */
     public final void interpolate(XYZ_D _point, double d) {
         x = (1.0D - d) * x + d * _point.x;
         y = (1.0D - d) * y + d * _point.y;
@@ -433,6 +696,12 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
 
     //  Static Methods
     // gets cross product
+    /**
+     *
+     * @param _v
+     * @param _v1
+     * @return
+     */
     public static XYZ_D getPlaneNormal(XYZ_D _v, XYZ_D _v1) {
         double x = _v.y * _v1.z - _v.z * _v1.y;
         double y = _v1.x * _v.z - _v1.z * _v.x;
@@ -440,6 +709,12 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         return new XYZ_D(x, y, z);
     }
 
+    /**
+     *
+     * @param _v
+     * @param _v1
+     * @return
+     */
     public static XYZ_D getBisector(XYZ_D _v, XYZ_D _v1) {
         double x = _v.x + _v1.x;
         double y = _v.y + _v1.y;
@@ -447,11 +722,27 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         return new XYZ_D(x, y, z);
     }
 
+    /**
+     *
+     * @return
+     */
     public XYZ_D getUnitVector() {
         double d = UDouble.check(1.0D / Math.sqrt(x * x + y * y + z * z), 0);
         return new XYZ_D(x * d, y * d, z * d);
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @param eyeRX
+     * @param eyeRY
+     * @param eyeRZ
+     * @param eyeX
+     * @param eyeY
+     * @param eyeZ
+     * @param distance
+     * @return
+     */
     public static XYZ_D[] sceneToPOV(XYZ_D[] _xyzs,
         double eyeRX, double eyeRY, double eyeRZ,
         double eyeX, double eyeY, double eyeZ,
@@ -467,6 +758,18 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
         return xyzs;
     }
 
+    /**
+     *
+     * @param _xyzs
+     * @param eyeRX
+     * @param eyeRY
+     * @param eyeRZ
+     * @param eyeX
+     * @param eyeY
+     * @param eyeZ
+     * @param distance
+     * @return
+     */
     public static XYZ_D[] povToScene(XYZ_D[] _xyzs,
         double eyeRX, double eyeRY, double eyeRZ,
         double eyeX, double eyeY, double eyeZ,
@@ -487,6 +790,13 @@ public class XYZ_D extends ASetObject implements Comparable, IXYZ {
     // _orientation = [0,-1,0]
     // _vector = [1,1,1]
     // return = [1,1,1]
+    /**
+     *
+     * @param _lineOfSight
+     * @param _orientation
+     * @param _vector
+     * @return
+     */
     public static XYZ_D get3D(XYZ_D _lineOfSight, XYZ_D _orientation,
         XYZ_D _vector) {
         double vectorLength = UDouble.check(_vector.getLength(), 0);

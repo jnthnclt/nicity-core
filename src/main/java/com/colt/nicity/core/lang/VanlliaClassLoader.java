@@ -6,8 +6,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 
+/**
+ *
+ * @author Administrator
+ */
 public class VanlliaClassLoader extends ClassLoader {
     // Example
+    /**
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String [] args) throws Exception{
         VanlliaClassLoader test = new VanlliaClassLoader();
         test.loadClass("com.test.HelloWorld");
@@ -16,14 +25,19 @@ public class VanlliaClassLoader extends ClassLoader {
 
 
     private Hashtable classes = new Hashtable();
+    /**
+     *
+     */
     public VanlliaClassLoader(){
         super(VanlliaClassLoader.class.getClassLoader());
     }
 
+    @Override
     public Class loadClass(String className) throws ClassNotFoundException {
          return findClass(className);
     }
 
+    @Override
     public Class findClass(String className){
         byte classByte[];
         Class result=null;

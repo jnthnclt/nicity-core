@@ -21,7 +21,14 @@ package com.colt.nicity.core.time;
 
 import com.colt.nicity.core.lang.UDouble;
 
+/**
+ * 
+ * @author Administrator
+ */
 public class RateMonitor {
+    /**
+     *
+     */
     public long count = 0;
     private long lastTime = 0;
     private long lastCount = 0;
@@ -32,19 +39,36 @@ public class RateMonitor {
     private long unitsSize = 1;
     private String unitsName = "";
     private boolean changeVolume;// false change true volume
+    /**
+     *
+     * @param _changeVolume
+     */
     public RateMonitor(boolean _changeVolume) {
         this("", _changeVolume);
     }
+    /**
+     *
+     * @param _name
+     * @param _changeVolume
+     */
     public RateMonitor(String _name, boolean _changeVolume) {
         if (_name != null) {
             name = _name;
         }
         changeVolume = _changeVolume;
     }
+    /**
+     *
+     * @param _unitsName
+     * @param _unitsSize
+     */
     public void setUnits(String _unitsName, long _unitsSize) {
         unitsName = _unitsName;
         unitsSize = _unitsSize;
     }
+    /**
+     *
+     */
     public void reset() {
         lastTime = 0;
         lastCount = 0;
@@ -52,24 +76,51 @@ public class RateMonitor {
         rate = 0;
         count = 0;
     }
+    /**
+     *
+     * @param _count
+     */
     public void count(long _count) {
         count = _count;
     }
+    /**
+     *
+     */
     public void inc() {
         count++;
     }
+    /**
+     *
+     * @param _count
+     */
     public void inc(int _count) {
         count += _count;
     }
+    /**
+     *
+     * @return
+     */
     public long getCount() {
         return count;
     }
+    /**
+     *
+     * @return
+     */
     public double getRate() {
         return rate;
     }
+    /**
+     *
+     * @return
+     */
     public double getMaxRate() {
         return maxRate;
     }
+    /**
+     *
+     * @return
+     */
     public double getZeroToOne() {
         double _rate = rate;
         if (maxRate == 0) {
@@ -77,6 +128,11 @@ public class RateMonitor {
         }
         return _rate / maxRate;
     }
+    /**
+     *
+     * @param _count
+     * @return
+     */
     public String timeRemaining(long _count) {
         double _rate = rate;
         if (_rate == 0) {
@@ -85,9 +141,17 @@ public class RateMonitor {
         long remaining = (long) (((double) _count / (double) _rate) * perTimeUnit);
         return UTime.elapse(remaining);
     }
+    /**
+     *
+     * @param _rate
+     * @return
+     */
     public String format(long _rate) {
         return name + " " + _rate;
     }
+    /**
+     *
+     */
     public void calculate() {
         long time = System.currentTimeMillis();
         if (time > lastTime) {

@@ -19,21 +19,46 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ * @param <K>
+ */
 abstract public class ACompositeKey<K> implements Comparable<ACompositeKey<K>> {
+    /**
+     *
+     */
     protected K[] keys;
 
+    /**
+     *
+     * @param _keys
+     */
     public ACompositeKey(K... _keys) {
         keys = _keys;
     }
 
+    /**
+     *
+     * @param _index
+     * @return
+     */
     public K key(int _index) {
         return keys[_index];
     }
 
+    /**
+     *
+     * @return
+     */
     public K[] getKeys() {
         return keys;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getCount() {
         return keys.length;
     }

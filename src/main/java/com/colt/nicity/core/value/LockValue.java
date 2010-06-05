@@ -19,23 +19,43 @@
  */
 package com.colt.nicity.core.value;
 
+/**
+ *
+ * @author Administrator
+ * @param <V>
+ */
 public class LockValue<V> extends Value {
 
     static private Object cNull = new Object();
     final private Object lock = new Object();
 
+    /**
+     *
+     * @return
+     */
     final public Object lock() {
         return lock;
     }
 
+    /**
+     *
+     */
     public LockValue() {
         super(cNull);
     }
 
+    /**
+     *
+     * @param _value
+     */
     public LockValue(V _value) {
         super(_value);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public V getValue() {
         synchronized (lock) {
@@ -51,6 +71,9 @@ public class LockValue<V> extends Value {
         }
     }
 
+    /**
+     *
+     */
     public void reset() {
         synchronized (lock) {
             super.setValue(cNull);
@@ -58,6 +81,10 @@ public class LockValue<V> extends Value {
         }
     }
 
+    /**
+     *
+     * @param _value
+     */
     @Override
     public void setValue(Object _value) {
         synchronized (lock) {

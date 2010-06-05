@@ -26,14 +26,26 @@ import com.colt.nicity.core.lang.IOut;
 import com.colt.nicity.core.lang.MutableLong;
 import java.lang.reflect.Array;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UBackcall {
 
+    /**
+     *
+     * @param <V>
+     * @param _
+     * @param _backcall
+     * @return
+     */
     public static <V> long getCount(final IOut _, IBackcall<V> _backcall) {
         if (_backcall == null) {
             return -1;
         }
         final MutableLong total = new MutableLong();
         ICallback<V,V> callback = new ICallback<V,V>() {
+            @Override
             public V callback(V _value) {
                 total.inc();
                 return _value;
@@ -43,6 +55,14 @@ public class UBackcall {
         return total.longValue();
     }
 
+    /**
+     *
+     * @param <V>
+     * @param _
+     * @param _backcall
+     * @param _class
+     * @return
+     */
     public static <V> V[] toArray(IOut _, IBackcall<V> _backcall,
         final Class< ? extends V> _class) {
         if (_backcall == null) {
@@ -51,6 +71,7 @@ public class UBackcall {
         final CArray<V> array = new CArray<V>(_class);
         ICallback<V,V> callback = new ICallback<V,V>() {
 
+            @Override
             public V callback(V _value) {
                 if (_class.isInstance(_value)) {
                     array.insertLast(_value);

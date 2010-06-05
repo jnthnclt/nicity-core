@@ -19,6 +19,10 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UBase64 {
     // Mapping table from 6-bit nibbles to Base64 characters.
     private static char[] map1 = new char[64];

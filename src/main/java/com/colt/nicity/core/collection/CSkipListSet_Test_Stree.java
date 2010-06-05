@@ -24,7 +24,15 @@ import com.colt.nicity.core.comparator.UValueComparator;
 import com.colt.nicity.core.lang.URandom;
 import com.colt.nicity.core.time.MilliTimer;
 
+/**
+ *
+ * @author Administrator
+ */
 public class CSkipListSet_Test_Stree {
+    /**
+     *
+     * @param _args
+     */
     public static void main(String[] _args) {
         final CSkipListSet c = new CSkipListSet(UValueComparator.value(AValueComparator.cAscending));
         int adds = 100000;

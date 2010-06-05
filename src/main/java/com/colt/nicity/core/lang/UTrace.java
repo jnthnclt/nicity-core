@@ -24,10 +24,17 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.IOException;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UTrace extends OutputStream {
 
     private CArray<String> callers = new CArray<String>(String.class);
 
+    /**
+     *
+     */
     public static void traceCaller() {
         try {
             throw new Exception();
@@ -38,6 +45,10 @@ public class UTrace extends OutputStream {
         }
     }
 
+    /**
+     *
+     * @param _depth
+     */
     public static void traceCaller(int _depth) {
         try {
             throw new Exception();
@@ -54,10 +65,18 @@ public class UTrace extends OutputStream {
         }
     }
 
+    /**
+     *
+     * @param x
+     */
     public UTrace(Throwable x) {
         x.printStackTrace(new PrintStream(this));
     }
 
+    /**
+     *
+     * @return
+     */
     public static String[] traceCalls() {
         try {
             throw new Exception();
@@ -67,18 +86,34 @@ public class UTrace extends OutputStream {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCaller() {
         return callers.getAt(1);
     }
 
+    /**
+     *
+     * @param depth
+     * @return
+     */
     public String getCaller(int depth) {
         return callers.getAt(depth);
     }
 
+    /**
+     *
+     * @return
+     */
     public String[] getCalls() {
         return callers.getAll();
     }
 
+    /**
+     *
+     */
     public void printCaller() {
         System.out.println(callers.getAt(1));
         System.out.println(callers.getAt(2));
@@ -88,6 +123,7 @@ public class UTrace extends OutputStream {
     }
 
     // OutputStream
+    @Override
     public void write(int b) throws IOException {
         //System.out.println("int b("+b+")");
     }

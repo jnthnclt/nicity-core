@@ -21,6 +21,15 @@ package com.colt.nicity.core.process;
 
 import com.colt.nicity.core.lang.IOut;
 
+/**
+ *
+ * @author Administrator
+ */
 public interface ICallQueue {
+    /**
+     *
+     * @param _
+     * @param _call
+     */
     public void enqueueCall(IOut _, ICall _call);
 }

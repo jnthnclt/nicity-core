@@ -19,18 +19,46 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public interface IXYZ {
 
+    /**
+     *
+     * @return
+     */
     public double x();
 
+    /**
+     *
+     * @return
+     */
     public double y();
 
+    /**
+     *
+     * @return
+     */
     public double z();
 
+    /**
+     *
+     * @param _x
+     */
     public void x(double _x);
 
+    /**
+     *
+     * @param _y
+     */
     public void y(double _y);
 
+    /**
+     *
+     * @param _z
+     */
     public void z(double _z);
 }
 

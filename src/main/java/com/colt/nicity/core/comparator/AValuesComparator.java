@@ -26,15 +26,31 @@ package com.colt.nicity.core.comparator;
  */
 abstract public class AValuesComparator<T> implements IComparator<T> {
 
+    /**
+     *
+     * @param _value
+     * @return
+     */
     abstract public Object[] value(T _value);
+    /**
+     *
+     */
     public static final boolean cAscending = true;
+    /**
+     *
+     */
     public static final boolean cDescending = false;
     boolean direction = true;
 
+    /**
+     *
+     * @param _direction
+     */
     public AValuesComparator(boolean _direction) {
         direction = _direction;
     }
 
+    @Override
     public int compare(T o1, T o2) {
         int c = -1;
         Object[] a = value(o1);
@@ -95,6 +111,7 @@ abstract public class AValuesComparator<T> implements IComparator<T> {
         return 0;
     }
 
+    @Override
     public String getName() {
         return "values comparator";
     }

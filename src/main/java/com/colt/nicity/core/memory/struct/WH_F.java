@@ -19,59 +19,121 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public class WH_F {
 
+    /**
+     *
+     */
     public float w;
+    /**
+     *
+     */
     public float h;
 
+    /**
+     *
+     */
     public WH_F() {
     }
 
+    /**
+     *
+     * @param _w
+     * @param _h
+     */
     public WH_F(float _w, float _h) {
         h = _h;
         w = _w;
     }
 
+    /**
+     *
+     * @return
+     */
     public float w() {
         return w;
     }
 
+    /**
+     *
+     * @return
+     */
     public float h() {
         return h;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getW() {
         return w;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getH() {
         return h;
     }
 
+    /**
+     *
+     * @param _w
+     */
     public void setW(float _w) {
         w = _w;
     }
 
+    /**
+     *
+     * @param _h
+     */
     public void setH(float _h) {
         h = _h;
     }
 
+    /**
+     *
+     * @param _w
+     * @param _h
+     */
     public void translate(float _w, float _h) {
         w += _w;
         h += _h;
     }
 
+    /**
+     *
+     * @param _w
+     * @return
+     */
     public float translateW(float _w) {
         w += _w;
         return w;
     }
 
+    /**
+     *
+     * @param _h
+     * @return
+     */
     public float translateH(float _h) {
         h += _h;
         return h;
     }
 
     // Takes the incoming dimension and sets it's "w" and "h" if this dimension's "w" and "h" are larger
+    /**
+     *
+     * @param size
+     * @return
+     */
     public WH_F max(WH_F size) {
         if (size.w < w) {
             size.w = w;
@@ -82,6 +144,11 @@ public class WH_F {
         return size;
     }
 
+    /**
+     *
+     * @param _w
+     * @param _h
+     */
     public void max(float _w, float _h) {
         if (w < _w) {
             w = _w;
@@ -91,6 +158,11 @@ public class WH_F {
         }
     }
 
+    /**
+     *
+     * @param _w
+     * @return
+     */
     public float maxW(float _w) {
         if (w < _w) {
             w = _w;
@@ -98,6 +170,11 @@ public class WH_F {
         return w;
     }
 
+    /**
+     *
+     * @param _h
+     * @return
+     */
     public float maxH(float _h) {
         if (h < _h) {
             h = _h;
@@ -106,6 +183,11 @@ public class WH_F {
     }
 
     // Takes the incoming dimension and sets it's "w" and "h" if this dimension's "w" and "h" are smaller
+    /**
+     *
+     * @param size
+     * @return
+     */
     public WH_F min(WH_F size) {
         if (size.w > w) {
             size.w = w;

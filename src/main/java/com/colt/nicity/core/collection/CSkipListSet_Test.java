@@ -25,7 +25,15 @@ import com.colt.nicity.core.lang.ICallback;
 import com.colt.nicity.core.lang.SysOut;
 import com.colt.nicity.core.lang.URandom;
 
+/**
+ *
+ * @author Administrator
+ */
 public class CSkipListSet_Test {
+    /**
+     *
+     * @param _args
+     */
     public static void main(String[] _args) {
         final CSkipListSet c = new CSkipListSet(UValueComparator.value(AValueComparator.cAscending));
         for (int i = 0; i < 30; i++) {
@@ -34,6 +42,7 @@ public class CSkipListSet_Test {
         }
         c.getAllInOrder(new SysOut(), new ICallback() {
             int i=0;
+            @Override
             public Object callback(Object _value) {
                 System.out.println(i+":"+_value);
                 i++;
@@ -49,6 +58,7 @@ public class CSkipListSet_Test {
         c.getAllInOrder(new SysOut(), new ICallback() {
             int i=0;
             Integer lastValue = -1;
+            @Override
             public Object callback(Object _value) {
                 System.out.println(i+":"+_value);
                 i++;

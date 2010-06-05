@@ -27,38 +27,86 @@ import com.colt.nicity.core.observer.AObservable;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+/**
+ *
+ * @author Administrator
+ * @param <E>
+ */
 public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
 
+    /**
+     *
+     */
     protected Class contentClass = Object.class;
+    /**
+     *
+     */
     protected int count = 0;
+    /**
+     *
+     */
     protected E[] objects;//!! performance hack should be private
+    /**
+     *
+     */
     protected int growth = 30;//!! might should implement a 10% growth model
     // Contructors
 
+    /**
+     *
+     */
     public CArray() {
         init(contentClass, 0, growth);
     }
 
+    /**
+     *
+     * @param size
+     */
     public CArray(int size) {
         init(contentClass, size, growth);
     }
 
+    /**
+     *
+     * @param size
+     * @param growth
+     */
     public CArray(int size, int growth) {
         init(contentClass, size, growth);
     }
 
+    /**
+     *
+     * @param contentClass
+     */
     public CArray(Class<? extends E> contentClass) {
         init(contentClass, 0, growth);
     }
 
+    /**
+     *
+     * @param contentClass
+     * @param size
+     */
     public CArray(Class<? extends E> contentClass, int size) {
         init(contentClass, size, growth);
     }
 
+    /**
+     *
+     * @param contentClass
+     * @param size
+     * @param growth
+     */
     public CArray(Class<? extends E> contentClass, int size, int growth) {
         init(contentClass, size, growth);
     }
 
+    /**
+     *
+     * @param _objects
+     */
     public CArray(E[] _objects) {
         objects = _objects;
         contentClass = objects.getClass();
@@ -83,6 +131,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         Arrays.sort(objects, 0, getCount(), _comparator);
     }
 
+    /**
+     *
+     * @param _values
+     * @return
+     */
     synchronized public Object[] removeAt(Object[] _values) {
         if (_values != null) {
             for (int i = 0; i < _values.length; i++) {
@@ -92,6 +145,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return null;
     }
 
+    /**
+     *
+     * @param _key
+     * @return
+     */
     public E getAt(Object _key) {
         int i = getIndex(_key);
         if (i == -1) {
@@ -100,6 +158,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return getAt(i);
     }
 
+    /**
+     *
+     * @param keys
+     * @return
+     */
     public E[] getAt(Object[] keys) {
         E[] got = (E[]) Array.newInstance(contentClass, keys.length);
         for (int i = 0; i < keys.length; i++) {
@@ -158,10 +221,19 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return contentClass;
     }
 
+    /**
+     *
+     * @return
+     */
     synchronized public int getSize() {
         return objects.length;
     }
 
+    /**
+     *
+     * @param suggestion
+     * @return
+     */
     synchronized public int setSize(int suggestion) {
         if (suggestion < count) { //shrink
             E[] array = (E[]) Array.newInstance(
@@ -178,10 +250,18 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return objects.length;
     }
 
+    /**
+     *
+     * @return
+     */
     synchronized public int getCount() {
         return count;
     }
 
+    /**
+     *
+     * @return
+     */
     synchronized public E[] getAll() {
         Object[] gotValues = (contentClass == Object.class) ? new Object[count] : (Object[]) Array.newInstance(
             contentClass, count);
@@ -192,6 +272,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return (E[]) gotValues;
     }
 
+    /**
+     *
+     * @return
+     */
     synchronized public Object[] removeAll() {
         Object[] removedObjects = _removeAll();
         if (isBeingObserved()) {
@@ -210,6 +294,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return gotValues;
     }
 
+    /**
+     *
+     * @param _replace
+     * @return
+     */
     synchronized public Object[] replaceAll(E[] _replace) {
         Object[] removedObjects = _removeAll();
         insertLast(_replace);
@@ -241,6 +330,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     // IIndexedData
     // Indexing
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     synchronized public int getIndex(Object value) {
         if (count == 0) {
             return -1;
@@ -267,6 +361,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return -1;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     synchronized public int[] getIndexes(Object value) {
         if (count == 0) {
             return null;
@@ -298,6 +397,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     // Getting
     // return null if count == 0 else return objects[0]
 
+    /**
+     *
+     * @return
+     */
     synchronized public E getFirst() { // peekShift();
         Object gotValue = (count > 0) ? objects[0] : null;
         if (isBeingObserved()) {
@@ -307,6 +410,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // return null if count == 0 else return objects[count-1]
 
+    /**
+     *
+     * @return
+     */
     synchronized public E getLast() { // peekPop();
         Object gotValue = (count > 0) ? objects[count - 1] : null;
         if (isBeingObserved()) {
@@ -317,6 +424,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     // If index < 0 throws RuntimeException!
     // If index > count CArray grows to accomedate index!
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     synchronized public E getAt(int index) {
         if (index >= count) {
             return null;
@@ -332,6 +444,12 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return (E) gotValue;
     }
 
+    /**
+     *
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     synchronized public Object[] getFromTo(int fromIndex, int toIndex) {
         if (count == 0 || fromIndex < 0 || fromIndex > toIndex || toIndex >= count) {
             throw new RuntimeException("Index Out of Bounds");
@@ -352,10 +470,18 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // Removing
 
+    /**
+     *
+     * @param _remove
+     */
     public void remove(CArray _remove) {
         remove(_remove.getAll());
     }
 
+    /**
+     *
+     * @param _remove
+     */
     synchronized public void remove(Object[] _remove) {
         CSet<E> set = new CSet<E>(count);
         set.add(objects);
@@ -367,6 +493,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     synchronized public E removeFirst() { //unshift
         if (count == 0) {
             return null; // doesn't modify data so I don't fire a Task
@@ -381,6 +511,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return (E) removedValue;
     }
 
+    /**
+     *
+     * @return
+     */
     synchronized public E removeLast() { //pop
         if (count == 0) {
             return null; // doesn't modify data so I don't fire a Task
@@ -396,6 +530,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // If index < 0 || index >= count  throws RuntimeException
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     synchronized public E removeAt(int index) {
         if (count == 0) {
             return null; // doesn't modify data so I don't fire a Task
@@ -417,6 +556,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // No synchronized because removeAt(int index) handles synchronized
 
+    /**
+     *
+     * @param key
+     * @return
+     */
     synchronized public E removeAt(Object key) {
         if (key instanceof Integer) {
             return (E) removeAt(((Integer) key).intValue());
@@ -433,6 +577,12 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     // If fromIndex > count || toIndex > count CArray grows to accomedate!
     // If fromIndex == toIndex  return null;
 
+    /**
+     *
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     synchronized public Object[] removeFromTo(int fromIndex, int toIndex) {
         if (fromIndex < 0 || fromIndex > toIndex) {
             throw new RuntimeException("Index Out of Bounds");
@@ -460,6 +610,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // Inserting
 
+    /**
+     *
+     * @param value
+     */
     synchronized public void insertFirst(E value) {//shift
         if (count == 0) {
             ensureCapacity(count + 1);
@@ -479,6 +633,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return;
     }
 
+    /**
+     *
+     * @param values
+     */
     synchronized public void insertFirst(E[] values) {//shiftArray
         if (values == null || values.length == 0) {
             return; // doesn't modify data so I don't fire a Task
@@ -503,6 +661,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // if index < 0 throws RuntimeException
 
+    /**
+     *
+     * @param value
+     * @param index
+     */
     synchronized public void insertAt(E value, int index) {//insert
         if (index < 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -530,6 +693,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return;
     }
 
+    /**
+     *
+     * @param indexA
+     * @param indexB
+     */
     synchronized public void swap(int indexA, int indexB) {//insert
         if (indexA < 0 || indexB < 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -551,6 +719,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // if index < 0 throws RuntimeException
 
+    /**
+     *
+     * @param values
+     * @param index
+     */
     synchronized public void insertAt(E[] values, int index) {//insertArray
         if (index < 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -586,6 +759,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
 
     }
 
+    /**
+     *
+     * @param value
+     */
     synchronized public void insertLast(E value) {// push
         ensureCapacity(count + 1);
         objects[count - 1] = value;
@@ -594,6 +771,10 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         }
     }
 
+    /**
+     *
+     * @param _values
+     */
     synchronized public void insertLast(E[] _values) { //pushArray
         if (_values == null) {
             return;// doesn't modify data so I don't fire a Task
@@ -607,6 +788,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // Replacing
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     synchronized public Object replaceFirst(E value) {
         if (count == 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -619,6 +805,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return replacedValue;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     synchronized public Object replaceLast(E value) {
         if (count == 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -631,6 +822,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return replacedValue;
     }
 
+    /**
+     *
+     * @param values
+     * @return
+     */
     synchronized public Object replaceFirst(E[] values) {
         if (count == 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -650,6 +846,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return replacedValue;
     }
 
+    /**
+     *
+     * @param values
+     * @return
+     */
     synchronized public Object replaceLast(E[] values) {
         if (count == 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -668,6 +869,12 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return replacedValue;
     }
 
+    /**
+     *
+     * @param value
+     * @param index
+     * @return
+     */
     synchronized public Object replaceAt(E value, int index) {
         if (index < 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -687,6 +894,12 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return replacedValue;
     }
 
+    /**
+     *
+     * @param values
+     * @param index
+     * @return
+     */
     synchronized public Object replaceAt(E[] values, int index) {
         if (count == 0 || index < 0) {
             throw new RuntimeException("Index Out of Bounds");
@@ -719,6 +932,12 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         return replacedValue;
     }
 
+    /**
+     *
+     * @param value
+     * @param fromIndex
+     * @param toIndex
+     */
     synchronized public void replaceFromTo(E value, int fromIndex, int toIndex) {
         if (count == 0 || fromIndex < 0 || fromIndex > toIndex) {
             throw new RuntimeException("Index Out of Bounds");
@@ -741,6 +960,12 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         }
     }
 
+    /**
+     *
+     * @param values
+     * @param fromIndex
+     * @param toIndex
+     */
     synchronized public void replaceFromTo(E[] values, int fromIndex,
         int toIndex) {
         if (count == 0 || fromIndex < 0 || fromIndex > toIndex) {
@@ -771,6 +996,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         }
     }
 
+    /**
+     *
+     * @param _object
+     * @return
+     */
     synchronized public boolean contains(E _object) {
         for (int i = 0; i < count; i++) {
             if (objects[i].equals(_object)) {
@@ -781,6 +1011,7 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
     }
     // IBackcall
 
+    @Override
     public void backcall(IOut _, ICallback<E, E> _callback) {
         try {
             E[] _objects = objects;
@@ -806,6 +1037,11 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
         }
     }
 
+    /**
+     *
+     * @param _class
+     * @return
+     */
     public E[] toArray(Class<E> _class) {
         if (_class == contentClass) {
             return getAll();

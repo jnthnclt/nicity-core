@@ -23,8 +23,17 @@ package com.colt.nicity.core.lang;
 // new OrderedKeys(new Object[]{a,b}).equals(new OrderedKeys(new Object[]{b,a})) == false
 // new OrderedKeys(new Object[]{a,b}).hashCode() == new OrderedKeys(new Object[]{b,a}).hashCode() == false
 
+/**
+ *
+ * @author Administrator
+ * @param <K>
+ */
 public class OrderedKeys<K> extends ACompositeKey<K> implements Comparable<ACompositeKey<K>> {
 
+    /**
+     *
+     * @param _keys
+     */
     public OrderedKeys(K... _keys) {
         super(_keys);
     }
@@ -79,6 +88,7 @@ public class OrderedKeys<K> extends ACompositeKey<K> implements Comparable<AComp
         return true;
     }
 
+    @Override
     public int compareTo(ACompositeKey<K> o) {
         if (!(o instanceof OrderedKeys)) {
             return -1;

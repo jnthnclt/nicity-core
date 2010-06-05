@@ -21,13 +21,27 @@ package com.colt.nicity.core.observer;
 
 import com.colt.nicity.core.lang.ASetObject;
 
+/**
+ *
+ * @author Administrator
+ */
 public abstract class AObservable extends ASetObject implements IObservable {
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public Object hashObject() {
         return this;
     }
     private Observers observers = null;
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public boolean isBeingObserved() {
         Observers _local = observers;
         if (_local == null) {
@@ -36,6 +50,12 @@ public abstract class AObservable extends ASetObject implements IObservable {
         return _local.numberOfObservers() > 0;
     }
 
+    /**
+     *
+     * @param _observer
+     * @return
+     */
+    @Override
     public IObserver bind(IObserver _observer) {
         Observers _local = null;
         synchronized (this) {
@@ -56,6 +76,11 @@ public abstract class AObservable extends ASetObject implements IObservable {
         return _local.bind(_observer);
     }
 
+    /**
+     *
+     * @param _observer
+     */
+    @Override
     public void release(IObserver _observer) {
         Observers _local = null;
         synchronized (this) {
@@ -67,6 +92,11 @@ public abstract class AObservable extends ASetObject implements IObservable {
         _local.release(_observer);
     }
 
+    /**
+     *
+     * @param _key
+     * @param _value
+     */
     final public void change(Object _key, Object _value) {
         Observers _local = null;
         synchronized (this) {

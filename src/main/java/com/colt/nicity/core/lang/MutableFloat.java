@@ -19,50 +19,107 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class MutableFloat extends ASetObject implements Comparable {
     private float unit = 0;
+    /**
+     *
+     */
     public MutableFloat() {
     }
+    /**
+     *
+     * @param _unit
+     */
     public MutableFloat(float _unit) {
         unit = _unit;
     }
+    /**
+     *
+     * @return
+     */
+    @Override
     public Object hashObject() {
         return unit;
     }
+    /**
+     *
+     * @return
+     */
     public float floatValue() {
         return unit;
     }
+    /**
+     *
+     * @return
+     */
     public float get() {
         return unit;
     }
+    /**
+     *
+     * @param _val
+     */
     public void set(float _val) {
         unit = _val;
     }
+    /**
+     *
+     * @param _val
+     */
     public void min(float _val) {
         if (_val < unit) {
             unit = _val;
         }
     }
+    /**
+     *
+     * @param _val
+     */
     public void max(float _val) {
         if (_val > unit) {
             unit = _val;
         }
     }
+    /**
+     *
+     * @param _amount
+     */
     public void inc(float _amount) {
         unit += _amount;
     }
+    /**
+     *
+     */
     public void inc() {
         unit++;
     }
+    /**
+     *
+     */
     public void dec() {
         unit--;
     }
+    /**
+     *
+     * @param _amount
+     */
     public void multiply(float _amount) {
         unit *= _amount;
     }
+    /**
+     *
+     * @param _amount
+     */
     public void divide(float _amount) {
         unit /= _amount;
     }
+    /**
+     *
+     */
     public void reset() {
         unit = 0;
     }
@@ -74,6 +131,7 @@ public class MutableFloat extends ASetObject implements Comparable {
         }
         return o.toString() + "=" + unit;
     }
+    @Override
     public int compareTo(Object o) {
         float a = this.unit;
         float b = ((MutableFloat) o).unit;

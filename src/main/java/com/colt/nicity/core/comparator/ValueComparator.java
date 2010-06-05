@@ -21,18 +21,39 @@ package com.colt.nicity.core.comparator;
 
 import com.colt.nicity.core.lang.ICallback;
 
+/**
+ *
+ * @author Administrator
+ * @param <T>
+ */
 public class ValueComparator<T> implements IComparator<T> {
 
+    /**
+     *
+     */
     public static final boolean cAscending = true;
+    /**
+     *
+     */
     public static final boolean cDescending = false;
     boolean direction = true;
     ICallback value;
 
+    /**
+     *
+     * @param _direction
+     * @param _value
+     */
     public ValueComparator(boolean _direction, ICallback _value) {
         value = _value;
         direction = _direction;
     }
 
+    /**
+     *
+     * @param _value
+     * @return
+     */
     public Object value(Object _value) {
         if (value == null) {
             return _value;
@@ -40,6 +61,7 @@ public class ValueComparator<T> implements IComparator<T> {
         return value.callback(_value);
     }
 
+    @Override
     public int compare(Object o1, Object o2) {
         int c = -1;
         Object a = value(o1);
@@ -72,6 +94,7 @@ public class ValueComparator<T> implements IComparator<T> {
         return 0;
     }
 
+    @Override
     public String getName() {
         return "value compare";
     }

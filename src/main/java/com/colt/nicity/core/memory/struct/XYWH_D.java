@@ -19,16 +19,42 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public class XYWH_D {
 
+    /**
+     *
+     */
     public double x;
+    /**
+     *
+     */
     public double y;
+    /**
+     *
+     */
     public double w;
+    /**
+     *
+     */
     public double h;
 
+    /**
+     *
+     */
     public XYWH_D() {
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     */
     public XYWH_D(double _x, double _y, double _w, double _h) {
         x = _x;
         y = _y;
@@ -36,6 +62,13 @@ public class XYWH_D {
         w = _w;
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     */
     public XYWH_D(float _x, float _y, float _w, float _h) {
         x = (double) _x;
         y = (double) _y;
@@ -43,6 +76,14 @@ public class XYWH_D {
         w = (double) _w;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @return
+     */
     public static XYWH_D newInstance(double x, double y, double w, double h) {
         XYWH_D r = new XYWH_D();
         r.setX(x);
@@ -52,38 +93,75 @@ public class XYWH_D {
         return r;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getX() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getY() {
         return y;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getW() {
         return w;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getH() {
         return h;
     }
 
+    /**
+     *
+     * @param _x
+     */
     public void setX(double _x) {
         x = _x;
     }
 
+    /**
+     *
+     * @param _y
+     */
     public void setY(double _y) {
         y = _y;
     }
 
+    /**
+     *
+     * @param _w
+     */
     public void setW(double _w) {
         w = _w;
     }
 
+    /**
+     *
+     * @param _h
+     */
     public void setH(double _h) {
         h = _h;
     }
 
+    /**
+     *
+     * @param _p
+     * @return
+     */
     public boolean contains(XY_I _p) {
         if (_p == null) {
             return false;
@@ -91,20 +169,46 @@ public class XYWH_D {
         return contains(_p.x, _p.y);
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @return
+     */
     public boolean contains(double _x, double _y) {
         return (_x >= x) && ((_x - x) < w) && (_y >= y) && ((_y - y) < h);
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @return
+     */
     public static boolean contains(double _x, double _y, double x, double y,
         double w, double h) {
         return (_x >= x) && ((_x - x) < w) && (_y >= y) && ((_y - y) < h);
     }
 
+    /**
+     *
+     * @param _amount
+     * @return
+     */
     public XYWH_D growFromCenter(double _amount) {
         return new XYWH_D(x - _amount, y - _amount, w + _amount * 2,
             h + _amount * 2);
     }
 
+    /**
+     *
+     * @param _r
+     * @return
+     */
     public XYWH_D union(XYWH_D _r) {
         double x1 = Math.min(x, _r.x);
         double x2 = Math.max(x + w, _r.x + _r.w);
@@ -114,6 +218,13 @@ public class XYWH_D {
             x1, y1, x2 - x1, y2 - y1);
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     */
     public void union(double _x, double _y, double _w, double _h) {
         if (x == Integer.MIN_VALUE) {//!! hack boandary condition for painting
             x = _x;
@@ -134,6 +245,11 @@ public class XYWH_D {
         h = y2 - y1;
     }
 
+    /**
+     *
+     * @param b
+     * @return
+     */
     public boolean intersects(XYWH_D b) {
         double aw = this.w;
         double ah = this.h;

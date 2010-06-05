@@ -19,11 +19,25 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public abstract class URandom {// holder for static utility methods; do not instantiate
 //	vars for fastRand
 
+    /**
+     *
+     */
     static public class Seed {
+        /**
+         *
+         */
         public long randSeed;
+        /**
+         *
+         * @param _seed
+         */
         public Seed(long _seed) {
             randSeed = _seed;
         }
@@ -33,19 +47,46 @@ public abstract class URandom {// holder for static utility methods; do not inst
     private final static long randAdd = 0xBL;
     private final static long randMask = (1L << 48) - 1;
     // public so you can set your own randSeed for repeatability
+    /**
+     *
+     */
     public static Seed defaultSeed = new Seed((System.currentTimeMillis() ^ randMult) & randMask);
 
+    /**
+     *
+     * @param max
+     * @return
+     */
     public static double signedRand(double max) {// 0 <= return < max
         return signedRand(defaultSeed, max);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param max
+     * @return
+     */
     public static double signedRand(Seed _longSeed,double max) {// 0 <= return < max
         return max * ((double) signedRand(_longSeed,Integer.MAX_VALUE) / (double) Integer.MAX_VALUE);
     }
     
 
+    /**
+     *
+     * @param max
+     * @param _count
+     * @return
+     */
     public static double[] signedRand(double max, int _count) {// 0 <= return < max
         return signedRand(defaultSeed, max, _count);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param max
+     * @param _count
+     * @return
+     */
     public static double[] signedRand(Seed _longSeed,double max, int _count) {// 0 <= return < max
         double[] rands = new double[_count];
         for (int i = 0; i < rands.length; i++) {
@@ -54,16 +95,40 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return rands;
     }
 
+    /**
+     *
+     * @param max
+     * @return
+     */
     public static double rand(double max) {// 0 <= return < max
         return rand(defaultSeed, max);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param max
+     * @return
+     */
     public static double rand(Seed _longSeed,double max) {// 0 <= return < max
         return max * ((double) rand(_longSeed,Integer.MAX_VALUE) / (double) Integer.MAX_VALUE);
     }
 
+    /**
+     *
+     * @param max
+     * @param _count
+     * @return
+     */
     public static double[] rand(double max, int _count) {// 0 <= return < max
         return rand(max, _count);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param max
+     * @param _count
+     * @return
+     */
     public static double[] rand(Seed _longSeed,double max, int _count) {// 0 <= return < max
         double[] rands = new double[_count];
         for (int i = 0; i < rands.length; i++) {
@@ -72,9 +137,20 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return rands;
     }
 
+    /**
+     *
+     * @param max
+     * @return
+     */
     public static int signedRand(int max) {// 0 <= return < max
         return signedRand(defaultSeed, max);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param max
+     * @return
+     */
     public static int signedRand(Seed _longSeed,int max) {// 0 <= return < max
         int sign = 1;
         if (rand(_longSeed,max) > max / 2) {
@@ -83,9 +159,18 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return rand(_longSeed,max) * sign;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int nextInt() {
         return nextInt(defaultSeed);
     }
+    /**
+     *
+     * @param _longSeed
+     * @return
+     */
     public static int nextInt(Seed _longSeed) {
         long x = (_longSeed.randSeed * randMult + randAdd) & randMask;
         _longSeed.randSeed = x;
@@ -93,9 +178,18 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return rand;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int rand() {
         return rand(defaultSeed);
     }
+    /**
+     *
+     * @param _longSeed
+     * @return
+     */
     public static int rand(Seed _longSeed) {
         long x = (_longSeed.randSeed * randMult + randAdd) & randMask;
         _longSeed.randSeed = x;
@@ -103,9 +197,20 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return rand;
     }
 
+    /**
+     *
+     * @param max
+     * @return
+     */
     public static int rand(int max) {// 0 <= return < max
         return rand(defaultSeed, max);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param max
+     * @return
+     */
     public static int rand(Seed _longSeed,int max) {// 0 <= return < max
         long x = (_longSeed.randSeed * randMult + randAdd) & randMask;
         _longSeed.randSeed = x;
@@ -117,9 +222,22 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return rand;
     }
 
+    /**
+     *
+     * @param count
+     * @param max
+     * @return
+     */
     public static int[] randInts(int count, int max) {
         return randInts(defaultSeed, count, max);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param count
+     * @param max
+     * @return
+     */
     public static int[] randInts(Seed _longSeed,int count, int max) {
         int[] ints = new int[count];
         for (int i = 0; i < count; i++) {
@@ -135,9 +253,22 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return ints;
     }
 
+    /**
+     *
+     * @param count
+     * @param max
+     * @return
+     */
     public static int[] randUniqueInts(int count, int max) {
         return randUniqueInts(defaultSeed, count, max);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param count
+     * @param max
+     * @return
+     */
     public static int[] randUniqueInts(Seed _longSeed,int count, int max) {
         //!! works fastest when max > count; excellent if max > 2*count
         //!! works slowest when max <= count, especially if max is large
@@ -166,9 +297,20 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return ints;
     }
 
+    /**
+     *
+     * @param count
+     * @return
+     */
     public static int[] randIndexes(int count) {
         return randIndexes(defaultSeed, count);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param count
+     * @return
+     */
     public static int[] randIndexes(Seed _longSeed,int count) {
         int[] ints = new int[count];
         for (int i = 0; i < count; i++) {
@@ -186,61 +328,150 @@ public abstract class URandom {// holder for static utility methods; do not inst
         return ints;
     }
 
+    /**
+     *
+     * @param _fill
+     * @param _offset
+     * @param _length
+     */
     public static void fill(byte[] _fill, int _offset, int _length) {
         fill(defaultSeed, _fill, _offset, _length);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param _fill
+     * @param _offset
+     * @param _length
+     */
     public static void fill(Seed _longSeed,byte[] _fill, int _offset, int _length) {
         for (int i = _offset; i < _offset + _length; i++) {
             _fill[i] = (byte) rand(_longSeed,256);
         }
     }
 
+    /**
+     *
+     * @param _fill
+     * @param _offset
+     * @param _length
+     * @param _min
+     * @param _max
+     */
     public static void fill(byte[] _fill, int _offset, int _length, int _min, int _max) {
         fill(defaultSeed, _fill, _offset, _length, _min, _max);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param _fill
+     * @param _offset
+     * @param _length
+     * @param _min
+     * @param _max
+     */
     public static void fill(Seed _longSeed,byte[] _fill, int _offset, int _length, int _min, int _max) {
         for (int i = _offset; i < _offset + _length; i++) {
             _fill[i] = (byte) (_min + rand(_longSeed,_max - _min));
         }
     }
 
+    /**
+     *
+     * @param _fill
+     * @param _offset
+     * @param _length
+     * @param _resolution
+     */
     public static void fill(double[] _fill, int _offset, int _length, double _resolution) {
         fill(defaultSeed, _fill, _offset, _length, _resolution);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param _fill
+     * @param _offset
+     * @param _length
+     * @param _resolution
+     */
     public static void fill(Seed _longSeed,double[] _fill, int _offset, int _length, double _resolution) {
         for (int i = _offset; i < _offset + _length; i++) {
             _fill[i] = ((int) (_resolution * rand(_longSeed,1d))) / _resolution;
         }
     }
 
+    /**
+     *
+     * @param _length
+     * @return
+     */
     public static byte[] randomLowerCaseAlphaBytes(int _length) {
         return randomLowerCaseAlphaBytes(defaultSeed, _length);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param _length
+     * @return
+     */
     public static byte[] randomLowerCaseAlphaBytes(Seed _longSeed,int _length) {
         byte[] bytes = new byte[_length];
         URandom.fill(_longSeed,bytes, 0, _length, 97, 122);// 97 122 lowercase a to z ascii
         return bytes;
     }
 
+    /**
+     *
+     * @param _length
+     * @return
+     */
     public static String randomLowerCaseAlphaString(int _length) {
         return randomLowerCaseAlphaString(defaultSeed, _length);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param _length
+     * @return
+     */
     public static String randomLowerCaseAlphaString(Seed _longSeed,int _length) {
         return new String(randomLowerCaseAlphaBytes(_longSeed,_length));
     }
 
+    /**
+     *
+     * @param _length
+     * @return
+     */
     public static byte[] randomNumberBytes(int _length) {
         return randomNumberBytes(defaultSeed, _length);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param _length
+     * @return
+     */
     public static byte[] randomNumberBytes(Seed _longSeed,int _length) {
         byte[] name = new byte[_length];
         URandom.fill(_longSeed,name, 0, _length, 48, 57);// 48 57  0 to 9 ascii
         return name;
     }
 
+    /**
+     *
+     * @param _length
+     * @return
+     */
     public static String randomNumberString(int _length) {
         return randomNumberString(defaultSeed, _length);
     }
+    /**
+     *
+     * @param _longSeed
+     * @param _length
+     * @return
+     */
     public static String randomNumberString(Seed _longSeed,int _length) {
         return new String(randomNumberBytes(_longSeed,_length));
     }

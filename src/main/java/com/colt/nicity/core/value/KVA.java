@@ -23,19 +23,49 @@ package com.colt.nicity.core.value;
 import com.colt.nicity.core.collection.CArray;
 import com.colt.nicity.core.process.IAsyncResponse;
 
+/**
+ *
+ * @author Administrator
+ */
 public class KVA extends KV {
+    /**
+     *
+     * @param _key
+     */
     public KVA(Object _key) {
         super(_key,new CArray(KV.class));
     }
+    /**
+     *
+     * @param _index
+     * @param _kvs
+     */
     public void add(int _index,KV... _kvs) {
 
     }
+    /**
+     *
+     * @param _index
+     * @param _kvs
+     */
     public void remove(int _index,KV... _kvs) {
 
     }
+    /**
+     *
+     * @param _index
+     * @param _kv
+     * @param _took
+     */
     public void take(int _index,KV _kv,IAsyncResponse<KV> _took) {
 
     }
+    /**
+     *
+     * @param _index
+     * @param _kv
+     * @param _copied
+     */
     public void copy(int _index,KV _kv,IAsyncResponse<KV> _copied) {
         
     }

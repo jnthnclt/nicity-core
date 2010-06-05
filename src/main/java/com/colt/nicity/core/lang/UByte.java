@@ -19,7 +19,17 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UByte {
+    /**
+     *
+     * @param src
+     * @param instance
+     * @return
+     */
     public static final byte[] push(byte[] src, byte instance) {
         if (src == null) {
             src = new byte[0];
@@ -29,6 +39,12 @@ public class UByte {
         newSrc[src.length] = instance;
         return newSrc;
     }
+    /**
+     *
+     * @param src
+     * @param amount
+     * @return
+     */
     public static final byte[] pregrow(byte[] src, int amount) {
         if (src == null) {
             return new byte[amount];
@@ -37,6 +53,12 @@ public class UByte {
         System.arraycopy(src, 0, newSrc, amount, src.length);
         return newSrc;
     }
+    /**
+     *
+     * @param src
+     * @param _new
+     * @return
+     */
     public static final byte[] grow(byte[] src, byte[] _new) {
         if (src == null) {
             return null;
@@ -44,6 +66,12 @@ public class UByte {
         System.arraycopy(src, 0, _new, 0, src.length);
         return _new;
     }
+    /**
+     *
+     * @param src
+     * @param amount
+     * @return
+     */
     public static final byte[] grow(byte[] src, int amount) {
         if (src == null) {
             return new byte[amount];
@@ -52,18 +80,42 @@ public class UByte {
         System.arraycopy(src, 0, newSrc, 0, src.length);
         return newSrc;
     }
+    /**
+     *
+     * @param src
+     * @param count
+     * @return
+     */
     public static final byte[] copy(byte[] src, byte[] count) {
         return trim(src, count);
     }
+    /**
+     *
+     * @param src
+     * @return
+     */
     public static final byte[] copy(byte[] src) {
         return trim(src, new byte[src.length]);
     }
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static final byte[] join(byte[] a, byte[] b) {
         byte[] newSrc = new byte[a.length + b.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
         return newSrc;
     }
+    /**
+     *
+     * @param a
+     * @param b
+     * @param c
+     * @return
+     */
     public static final byte[] join(byte[] a, byte[] b, byte[] c) {
         byte[] newSrc = new byte[a.length + b.length + c.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
@@ -71,23 +123,57 @@ public class UByte {
         System.arraycopy(c, 0, newSrc, a.length + b.length, c.length);
         return newSrc;
     }
+    /**
+     *
+     * @param src
+     * @param start
+     * @param count
+     * @return
+     */
     public static final byte[] copy(byte[] src, int start, int count) {
         byte[] dst = new byte[count];
         System.arraycopy(src, start, dst, 0, count);
         return dst;
     }
+    /**
+     *
+     * @param src
+     * @param srcStart
+     * @param dst
+     * @param dstStart
+     * @param count
+     */
     public static final void copy(byte[] src, int srcStart, byte[] dst, int dstStart, int count) {
         System.arraycopy(src, srcStart, dst, dstStart, count);
     }
+    /**
+     *
+     * @param src
+     * @param count
+     * @return
+     */
     public static final byte[] trim(byte[] src, int count) {
         byte[] newSrc = new byte[count];
         System.arraycopy(src, 0, newSrc, 0, count);
         return newSrc;
     }
+    /**
+     *
+     * @param src
+     * @param count
+     * @return
+     */
     public static final byte[] trim(byte[] src, byte[] count) {
         System.arraycopy(src, 0, count, 0, count.length);
         return count;
     }
+    /**
+     *
+     * @param key
+     * @param _modulo
+     * @return
+     * @throws Exception
+     */
     public static long hash(byte[] key, long _modulo) throws Exception {
 
         //!! don't change this function unless testing *proves* you have a better one! this one is the best so far!
@@ -106,6 +192,12 @@ public class UByte {
         }
         return hash % (_modulo - 1); //!! the -1 increases likelihood of a prime, avoids 2 as a factor, and works better than not subtracting.
     }
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static boolean keysEqual(Object a, Object b) {
         if (a == b) {
             return true;
@@ -115,6 +207,12 @@ public class UByte {
         }
         return keysEqual((byte[]) a, (byte[]) b);
     }
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static boolean keysEqual(byte[] a, byte[] b) {
         if (a.length != b.length) {
             return false;
@@ -127,6 +225,11 @@ public class UByte {
         }
         return true;
     }
+    /**
+     *
+     * @param _bytes
+     * @return
+     */
     public static final long checkSum(byte[] _bytes) {
         if (_bytes == null) {
             return -1;
@@ -137,29 +240,59 @@ public class UByte {
         }
         return sum;
     }
+    /**
+     *
+     * @param _byte
+     * @return
+     */
     public static final int toUnsignedInt(byte _byte) {
         int v = (int) _byte;
         v += 128;
         return v;
     }
+    /**
+     *
+     * @param _byte
+     * @return
+     */
     public static final float toUnsignedFloat(byte _byte) {
         int v = (int) _byte;
         v += 128;
         return v / 256f;
     }
+    /**
+     *
+     * @param _byte
+     * @return
+     */
     public static final float toSignedFloat(byte _byte) {
         int v = (int) _byte;
         return v / 128f;
     }
+    /**
+     *
+     * @param _byte
+     * @return
+     */
     public static final double toUnsignedDouble(byte _byte) {
         int v = (int) _byte;
         v += 128;
         return v / 256d;
     }
+    /**
+     *
+     * @param _byte
+     * @return
+     */
     public static final double toSignedDouble(byte _byte) {
         int v = (int) _byte;
         return v / 128d;
     }
+    /**
+     *
+     * @param _bytes
+     * @return
+     */
     public static final float[] toUnsignedFloats(byte[] _bytes) {
         if (_bytes == null) {
             return null;
@@ -170,6 +303,11 @@ public class UByte {
         }
         return floats;
     }
+    /**
+     *
+     * @param _bytes
+     * @return
+     */
     public static final float[] toSignedFloats(byte[] _bytes) {
         if (_bytes == null) {
             return null;
@@ -180,6 +318,11 @@ public class UByte {
         }
         return floats;
     }
+    /**
+     *
+     * @param _bytes
+     * @return
+     */
     public static final double[] toUnsignedDoubles(byte[] _bytes) {
         if (_bytes == null) {
             return null;
@@ -190,6 +333,11 @@ public class UByte {
         }
         return doubles;
     }
+    /**
+     *
+     * @param _bytes
+     * @return
+     */
     public static final double[] toSignedDoubles(byte[] _bytes) {
         if (_bytes == null) {
             return null;
@@ -200,6 +348,13 @@ public class UByte {
         }
         return doubles;
     }
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static final byte range(byte _v, byte _min, byte _max) {
         if (_v < _min) {
             return _min;
@@ -208,6 +363,12 @@ public class UByte {
         }
         return _v;
     }
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static boolean equals(byte[] a, byte[] b) {
         if (a == b) {
             return true;
@@ -226,6 +387,15 @@ public class UByte {
         }
         return true;
     }
+    /**
+     *
+     * @param a
+     * @param _astart
+     * @param b
+     * @param _bstart
+     * @param _length
+     * @return
+     */
     public static boolean equals(byte[] a, int _astart, byte[] b, int _bstart, int _length) {
         if (a == b) {
             return true;
@@ -243,6 +413,13 @@ public class UByte {
 
         return true;
     }
+    /**
+     *
+     * @param _array
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static byte[] scale(byte[] _array, byte _min, byte _max) {// rename to scale
         int l = _array.length;
         MinMaxDouble minMax = new MinMaxDouble();
@@ -264,6 +441,12 @@ public class UByte {
         return array;
     }
     // _distance >= 0.0 && <= 1.0
+    /**
+     *
+     * @param _values
+     * @param _new
+     * @return
+     */
     public static byte[] linearInterpolation(byte[] _values, byte[] _new) {
         for (double i = 0; i < _new.length; i++) {
             _new[(int) i] = linearInterpolation(_values, i / _new.length);
@@ -271,6 +454,12 @@ public class UByte {
         return _new;
     }
     // _distance >= 0.0 && <= 1.0
+    /**
+     *
+     * @param _values
+     * @param _distance
+     * @return
+     */
     public static byte linearInterpolation(byte[] _values, double _distance) {
         if (_distance < 0) {
             _distance = 0;
@@ -294,6 +483,13 @@ public class UByte {
         return linearInterpolation(a, b, distance);
         //return _values[index];
     }
+    /**
+     *
+     * @param _values
+     * @param _distance
+     * @param _offValue
+     * @return
+     */
     public static byte linearInterpolation(byte[] _values, double _distance, byte _offValue) {
         if (_distance < 0) {
             _distance = 0;
@@ -323,18 +519,46 @@ public class UByte {
         return linearInterpolation(a, b, distance);
         //return _values[index];
     }
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _x2
+     * @param _y2
+     * @return
+     */
     public static byte distance(byte _x1, byte _y1, byte _x2, byte _y2) {
         double a = (_x1 - _x2) * (_x1 - _x2);
         double b = (_y1 - _y2) * (_y1 - _y2);
         return (byte) Math.sqrt(a + b);
     }
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @param _distance
+     * @return
+     */
     public static byte linearInterpolation(byte _a, byte _b, double _distance) {
         double v = _a + ((_b - _a) * _distance);
         return (byte) v;
     }
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @param _distance
+     * @return
+     */
     public static byte linearDelta(byte _a, byte _b, double _distance) {
         return (byte) ((_b - _a) * _distance);
     }
+    /**
+     *
+     * @param values
+     * @param delim
+     * @return
+     */
     public static String toString(byte[] values, String delim) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < values.length; i++) {
@@ -345,6 +569,12 @@ public class UByte {
         }
         return string.toString();
     }
+    /**
+     *
+     * @param values
+     * @param delim
+     * @return
+     */
     public static String toHexString(byte[] values, String delim) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < values.length; i++) {

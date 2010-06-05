@@ -19,40 +19,83 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public class XY_D {
 
+    /**
+     *
+     */
     public double x;
+    /**
+     *
+     */
     public double y;
 
+    /**
+     *
+     */
     public XY_D() {
     }
 
+    /**
+     *
+     * @param _xy_d
+     */
     public XY_D(XY_D _xy_d) {
         x = _xy_d.x;
         y = _xy_d.y;
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     */
     public XY_D(double _x, double _y) {
         x = _x;
         y = _y;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getX() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getY() {
         return y;
     }
 
+    /**
+     *
+     * @param _x
+     */
     public void setX(double _x) {
         x = _x;
     }
 
+    /**
+     *
+     * @param _y
+     */
     public void setY(double _y) {
         y = _y;
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     */
     public void setXY(double _x, double _y) {
         x = _x;
         y = _y;

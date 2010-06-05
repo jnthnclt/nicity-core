@@ -19,16 +19,42 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public class XYWH_I {
 
+    /**
+     *
+     */
     public int x;
+    /**
+     *
+     */
     public int y;
+    /**
+     *
+     */
     public int w;
+    /**
+     *
+     */
     public int h;
 
+    /**
+     *
+     */
     public XYWH_I() {
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     */
     public XYWH_I(int _x, int _y, int _w, int _h) {
         x = _x;
         y = _y;
@@ -36,6 +62,13 @@ public class XYWH_I {
         w = _w;
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     */
     public XYWH_I(float _x, float _y, float _w, float _h) {
         x = (int) _x;
         y = (int) _y;
@@ -43,6 +76,14 @@ public class XYWH_I {
         w = (int) _w;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @return
+     */
     public static XYWH_I newInstance(int x, int y, int w, int h) {
         XYWH_I r = new XYWH_I();
         r.setX(x);
@@ -52,38 +93,75 @@ public class XYWH_I {
         return r;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getW() {
         return w;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getH() {
         return h;
     }
 
+    /**
+     *
+     * @param _x
+     */
     public void setX(int _x) {
         x = _x;
     }
 
+    /**
+     *
+     * @param _y
+     */
     public void setY(int _y) {
         y = _y;
     }
 
+    /**
+     *
+     * @param _w
+     */
     public void setW(int _w) {
         w = _w;
     }
 
+    /**
+     *
+     * @param _h
+     */
     public void setH(int _h) {
         h = _h;
     }
 
+    /**
+     *
+     * @param _p
+     * @return
+     */
     public boolean contains(XY_I _p) {
         if (_p == null) {
             return false;
@@ -91,19 +169,45 @@ public class XYWH_I {
         return contains(_p.x, _p.y);
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @return
+     */
     public boolean contains(int _x, int _y) {
         return (_x >= x) && ((_x - x) < w) && (_y >= y) && ((_y - y) < h);
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @return
+     */
     public static boolean contains(int _x, int _y, int x, int y, int w, int h) {
         return (_x >= x) && ((_x - x) < w) && (_y >= y) && ((_y - y) < h);
     }
 
+    /**
+     *
+     * @param _amount
+     * @return
+     */
     public XYWH_I growFromCenter(int _amount) {
         return new XYWH_I(x - _amount, y - _amount, w + _amount * 2,
             h + _amount * 2);
     }
 
+    /**
+     *
+     * @param _r
+     * @return
+     */
     public XYWH_I union(XYWH_I _r) {
         int x1 = Math.min(x, _r.x);
         int x2 = Math.max(x + w, _r.x + _r.w);
@@ -113,6 +217,13 @@ public class XYWH_I {
             x1, y1, x2 - x1, y2 - y1);
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     */
     public void union(int _x, int _y, int _w, int _h) {
         if (x == Integer.MIN_VALUE) {//!! hack boandary condition for painting
             x = _x;
@@ -133,6 +244,11 @@ public class XYWH_I {
         h = y2 - y1;
     }
 
+    /**
+     *
+     * @param b
+     * @return
+     */
     public boolean intersects(XYWH_I b) {
         int aw = this.w;
         int ah = this.h;

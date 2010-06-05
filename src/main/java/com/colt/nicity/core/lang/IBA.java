@@ -20,25 +20,47 @@
 package com.colt.nicity.core.lang;
 
 //(IBA) ImmutableByteArray
+/**
+ *
+ * @author Administrator
+ */
 public class IBA implements Comparable {
 
+    /**
+     *
+     */
     public static final IBA cNull = new IBA(new byte[0]);
     private int hashCode = 0;
     private byte[] bytes;
 
+    /**
+     *
+     */
     public IBA() {
     }
 
+    /**
+     *
+     * @param _bytes
+     */
     public IBA(byte[] _bytes) {
         bytes = _bytes;
     }
 
+    /**
+     *
+     * @return
+     */
     public byte[] immutableBytes() {
         return bytes;
     }
     // this should return a copy to make IBA truly Immutable
     // I have deliberate choosen not to for performance reasons.
 
+    /**
+     *
+     * @return
+     */
     public byte[] getBytes() {
         return bytes;
     }
@@ -52,10 +74,18 @@ public class IBA implements Comparable {
         return new String(bytes);
     }
 
+    /**
+     *
+     * @return
+     */
     public int length() {
         return bytes.length;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getCount() {
         return bytes.length;
     }
@@ -88,6 +118,10 @@ public class IBA implements Comparable {
         return hash;
     }
 
+    /**
+     *
+     * @return
+     */
     public long longHashCode() {
         if ((bytes == null) || (bytes.length == 0)) {
             return 0;
@@ -135,6 +169,12 @@ public class IBA implements Comparable {
         return equals(a, b);
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     static final public boolean equals(byte[] a, byte[] b) {
         if (a == b) {
             return true;
@@ -159,6 +199,7 @@ public class IBA implements Comparable {
         return true;
     }
 
+    @Override
     public int compareTo(Object o) {
         byte[] b = null;
         if (o instanceof byte[]) {

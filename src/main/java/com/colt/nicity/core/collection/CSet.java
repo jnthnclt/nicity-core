@@ -33,6 +33,9 @@ import com.colt.nicity.core.observer.AObservable;
 public class CSet<V> extends AObservable implements IBackcall<V>, IHaveCount {
 
     private static final Object skip = new Object();
+    /**
+     *
+     */
     public static int cMinKeys = 5;
     private int maxKeys;
     private int numKeys;
@@ -137,6 +140,7 @@ public class CSet<V> extends AObservable implements IBackcall<V>, IHaveCount {
      *
      * @return
      */
+    @Override
     public long getCount() {
         return numKeys;
     }
@@ -200,6 +204,10 @@ public class CSet<V> extends AObservable implements IBackcall<V>, IHaveCount {
         return (V[]) UArray.removeNulls(keys, skip, _class);
     }
 
+    /**
+     *
+     * @return
+     */
     synchronized public Object[] removeAll() {
         if (isBeingObserved()) {
             Object[] removedValues = UArray.removeNulls(keys, skip);
@@ -374,6 +382,10 @@ public class CSet<V> extends AObservable implements IBackcall<V>, IHaveCount {
     }
 
     // active entries; assert this is same as cardinality of an iterator on same collection
+    /**
+     *
+     * @return
+     */
     synchronized public V removeOne() {
         int i = 0;
         for (; i < keys.length; i++) {
@@ -506,6 +518,7 @@ public class CSet<V> extends AObservable implements IBackcall<V>, IHaveCount {
      * @param _
      * @param _callback
      */
+    @Override
     public void backcall(IOut _, ICallback<V, V> _callback) {
         try {
             Object[] _keys = keys;

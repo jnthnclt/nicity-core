@@ -19,50 +19,107 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class MutableLong extends ASetObject implements Comparable {
     private long unit = 0;
+    /**
+     *
+     */
     public MutableLong() {
     }
+    /**
+     *
+     * @param _unit
+     */
     public MutableLong(long _unit) {
         unit = _unit;
     }
+    /**
+     *
+     * @return
+     */
+    @Override
     public Object hashObject() {
         return unit;
     }
+    /**
+     *
+     * @return
+     */
     public long longValue() {
         return unit;
     }
+    /**
+     *
+     * @return
+     */
     public long get() {
         return unit;
     }
+    /**
+     *
+     * @param _val
+     */
     public void set(long _val) {
         unit = _val;
     }
+    /**
+     *
+     * @param _val
+     */
     public void min(long _val) {
         if (_val < unit) {
             unit = _val;
         }
     }
+    /**
+     *
+     * @param _val
+     */
     public void max(long _val) {
         if (_val > unit) {
             unit = _val;
         }
     }
+    /**
+     *
+     * @param _amount
+     */
     public void inc(long _amount) {
         unit += _amount;
     }
+    /**
+     *
+     */
     public void inc() {
         unit++;
     }
+    /**
+     *
+     */
     public void dec() {
         unit--;
     }
+    /**
+     *
+     * @param _amount
+     */
     public void multiply(long _amount) {
         unit *= _amount;
     }
+    /**
+     *
+     * @param _amount
+     */
     public void divide(long _amount) {
         unit /= _amount;
     }
+    /**
+     *
+     */
     public void reset() {
         unit = 0;
     }
@@ -74,6 +131,7 @@ public class MutableLong extends ASetObject implements Comparable {
         }
         return o.toString() + "=" + unit;
     }
+    @Override
     public int compareTo(Object o) {
         long a = this.unit;
         long b = ((MutableLong) o).unit;

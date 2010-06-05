@@ -19,12 +19,34 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ * @param <A>
+ * @param <B>
+ * @param <C>
+ */
 public class Tuple3<A, B, C> {
 
+    /**
+     *
+     */
     public A a;
+    /**
+     *
+     */
     public B b;
+    /**
+     *
+     */
     public C c;
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @param _c
+     */
     public Tuple3(A _a, B _b, C _c) {
         a = _a;
         b = _b;

@@ -29,6 +29,10 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UString {
     //!! should use codePoint from unicode
     // Cleanup text
@@ -42,6 +46,11 @@ public class UString {
     _string = _string.replace('"',' ');
     _string = _string.replace(':',' ');
     _string = _string.replace(';',' ');
+     */
+    /**
+     *
+     * @param s
+     * @return
      */
     public static String removePunctuation(String s) {
         if (s == null) {
@@ -146,6 +155,12 @@ public class UString {
     System.out.println(sel[0]+" "+sel[1]+" "+sel[2]);
     }*/
     // returns start, end and source length
+    /**
+     *
+     * @param _source
+     * @param _selection
+     * @return
+     */
     public static int[] bestOverlap(String _source, String _selection) {
         //!! naive brute force
         char[] a = _source.toLowerCase().toCharArray();
@@ -198,6 +213,11 @@ public class UString {
         }
         return new int[]{bestS, bestE, a.length};
     }
+    /**
+     *
+     * @param _names
+     * @return
+     */
     public static Object[] shortestUniqueChunks(Object[] _names) {
         Arrays.sort(_names, UValueComparator.lowercase(AValueComparator.cAscending));
         int l = _names.length;
@@ -248,6 +268,11 @@ public class UString {
             return new String(chars, 0, uniqueHead) + "," + new String(chars, uniqueHead, chars.length - uniqueHead);
         }
     }
+    /**
+     *
+     * @param _tokens
+     * @return
+     */
     public static Object[] duplicates(Object[] _tokens) {
         CSet set = new CSet();
         CSet duplicates = new CSet();
@@ -260,6 +285,11 @@ public class UString {
         }
         return duplicates.getAll(Object.class);
     }
+    /**
+     *
+     * @param _string
+     * @return
+     */
     public static final String noPunctuation(String _string) {
         char[] in = _string.toCharArray();
         char[] out = new char[in.length];
@@ -298,6 +328,11 @@ public class UString {
         }
         return new String(UArray.trim(out, new char[l]));
     }
+    /**
+     *
+     * @param _string
+     * @return
+     */
     public static final long checkSum(String _string) {
         if (_string == null) {
             return -1;
@@ -320,6 +355,12 @@ public class UString {
     // abc d
     // a bcd
     // abcd
+    /**
+     *
+     * @param _strings
+     * @param _delim
+     * @return
+     */
     public static String[][] combinations(String[] _strings, String _delim) {
         CArray solutions = new CArray(String[].class);
         int count = _strings.length;
@@ -351,6 +392,12 @@ public class UString {
     // bcd
     // abc
     // abcd
+    /**
+     *
+     * @param _strings
+     * @param _delim
+     * @return
+     */
     public static String[] permutations(String[] _strings, String _delim) {
         CSet set = new CSet();
         CArray solutions = new CArray(String.class);
@@ -423,6 +470,13 @@ public class UString {
     return false;
     }
      */
+    /**
+     *
+     * @param _source
+     * @param _pattern
+     * @param _replacement
+     * @return
+     */
     public static String replaceAll(String _source, String _pattern, String _replacement) {
         int i = 0;
         int j = -1;
@@ -444,6 +498,11 @@ public class UString {
         buffer.append(_source.substring(i));
         return buffer.toString();
     }
+    /**
+     *
+     * @param _chars
+     * @return
+     */
     public static String[] toStringArray(char[] _chars) {
         String[] s = new String[_chars.length];
         for (int i = 0; i < _chars.length; i++) {
@@ -458,6 +517,11 @@ public class UString {
     System.out.println(replaceAll("01234567890123456789","01","123"));
     System.out.println(replaceAll("01234567890123456789","567","x"));
     }*/
+    /**
+     *
+     * @param string
+     * @return
+     */
     public static boolean isNumeric(String string) {
         for (int i = 0; i < string.length(); i++) {
             char c = string.charAt(i);
@@ -467,6 +531,13 @@ public class UString {
         }
         return false;
     }
+    /**
+     *
+     * @param _s
+     * @param _e
+     * @param _step
+     * @return
+     */
     public static String[] toStringArray(int _s, int _e, int _step) {
         String[] strings = new String[_e - _s / _step];
         for (int i = _s, s = 0; i < _e; i += _step, s++) {
@@ -474,6 +545,13 @@ public class UString {
         }
         return strings;
     }
+    /**
+     *
+     * @param _i
+     * @param _significant
+     * @param _fill
+     * @return
+     */
     public static String toString(int _i, int _significant, char _fill) {
         String s = Integer.toString(_i, 10);
         int pad = _significant - s.length();
@@ -481,6 +559,13 @@ public class UString {
         Arrays.fill(fill, _fill);
         return new String(fill) + s;
     }
+    /**
+     *
+     * @param _s
+     * @param _significant
+     * @param _fill
+     * @return
+     */
     public static String toString(String _s, int _significant, char _fill) {
         String s = _s;
         int pad = _significant - s.length();
@@ -488,8 +573,14 @@ public class UString {
         Arrays.fill(fill, _fill);
         return new String(fill) + s;
     }
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static boolean equalIgnoreWhitespace(String _a, String _b) {
-        if (_a == _b) {
+        if (_a == null ? _b == null : _a.equals(_b)) {
             return true;
         }
         if (_a == null || _b == null) {
@@ -534,6 +625,11 @@ public class UString {
 
         return true;
     }
+    /**
+     *
+     * @param line
+     * @return
+     */
     public static String lowerCaseAtoZ(String line) {
         line = line.toLowerCase();
         char[] chars = line.toCharArray();
@@ -547,6 +643,11 @@ public class UString {
         line = new String(chars);
         return line;
     }
+    /**
+     *
+     * @param string
+     * @return
+     */
     public static String[] toStringArray(String string) {
         StringTokenizer tokenizer = new StringTokenizer(string);
         int tokenCount = tokenizer.countTokens();
@@ -557,6 +658,12 @@ public class UString {
         }
         return tokens;
     }
+    /**
+     *
+     * @param strings
+     * @param delim
+     * @return
+     */
     public static String toString(Object[] strings, String delim) {
         StringBuilder string = new StringBuilder();
         if (strings != null) {
@@ -572,6 +679,12 @@ public class UString {
         }
         return string.toString();
     }
+    /**
+     *
+     * @param strings
+     * @param delim
+     * @return
+     */
     public static String toString(long[] strings, String delim) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < strings.length; i++) {
@@ -582,6 +695,12 @@ public class UString {
         }
         return string.toString();
     }
+    /**
+     *
+     * @param strings
+     * @param delim
+     * @return
+     */
     public static String toString(byte[] strings, String delim) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < strings.length; i++) {
@@ -592,6 +711,12 @@ public class UString {
         }
         return string.toString();
     }
+    /**
+     *
+     * @param strings
+     * @param delim
+     * @return
+     */
     public static String toString(double[] strings, String delim) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < strings.length; i++) {
@@ -602,6 +727,12 @@ public class UString {
         }
         return string.toString();
     }
+    /**
+     *
+     * @param strings
+     * @param delim
+     * @return
+     */
     public static String toString(int[] strings, String delim) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < strings.length; i++) {
@@ -612,6 +743,14 @@ public class UString {
         }
         return string.toString();
     }
+    /**
+     *
+     * @param strings
+     * @param _start
+     * @param _len
+     * @param delim
+     * @return
+     */
     public static String toString(Object[] strings, int _start, int _len, String delim) {
         StringBuilder string = new StringBuilder();
         for (int i = _start; i < (_start + _len); i++) {
@@ -625,6 +764,12 @@ public class UString {
         }
         return string.toString();
     }
+    /**
+     *
+     * @param string
+     * @param delim
+     * @return
+     */
     public static String[] toStringArray(String string, String delim) {
         if (string == null || delim == null) {
             return new String[0];
@@ -638,6 +783,12 @@ public class UString {
         }
         return tokens;
     }
+    /**
+     *
+     * @param _strings
+     * @param _remove
+     * @return
+     */
     public static String[] remove(String[] _strings, String[] _remove) {
         if (_strings == null) {
             return new String[0];
@@ -659,6 +810,11 @@ public class UString {
         }
         return (String[]) array.getAll();
     }
+    /**
+     *
+     * @param _tokens
+     * @return
+     */
     public static Object[] toSet(Object[] _tokens) {
         CSet words = new CSet(_tokens.length * 2);
         for (int i = 0; i < _tokens.length; i++) {
@@ -667,6 +823,11 @@ public class UString {
         }
         return words.getAll(Object.class);
     }
+    /**
+     *
+     * @param _tokens
+     * @return
+     */
     public static Object[] toLowerCaseSet(Object[] _tokens) {
         CSet words = new CSet(_tokens.length * 2);
         for (int i = 0; i < _tokens.length; i++) {
@@ -675,9 +836,19 @@ public class UString {
         }
         return words.getAll(Object.class);
     }
+    /**
+     *
+     * @param _strings
+     * @return
+     */
     public static String[] toSet(String[] _strings) {
         return removeDuplicates(_strings);
     }
+    /**
+     *
+     * @param _strings
+     * @return
+     */
     public static String[] removeDuplicates(String[] _strings) {
         if (_strings == null) {
             return new String[0];
@@ -695,6 +866,11 @@ public class UString {
         }
         return (String[]) array.getAll();
     }
+    /**
+     *
+     * @param _strings
+     * @return
+     */
     public static String[] lowerCaseSet(String[] _strings) {
         if (_strings == null) {
             return new String[0];
@@ -710,11 +886,20 @@ public class UString {
         }
         return (String[]) array.getAll();
     }
+    /**
+     *
+     * @param _readme
+     */
     public static void printCommandLineReadMe(String[] _readme) {
         for (int r = 0; r < _readme.length; r++) {
             System.out.println(_readme[r]);
         }
     }
+    /**
+     *
+     * @param s
+     * @return
+     */
     public static long longHash(String s) {
         byte[] a = s.getBytes();
         long hash = 0;
@@ -728,6 +913,11 @@ public class UString {
         }
         return hash + work;
     }
+    /**
+     *
+     * @param s
+     * @return
+     */
     public static int intHash(String s) {
         byte[] a = s.getBytes();
         int hash = 0;
@@ -741,6 +931,11 @@ public class UString {
         }
         return hash + work;
     }
+    /**
+     *
+     * @param s
+     * @return
+     */
     public static short shortHash(String s) {
         byte[] a = s.getBytes();
         int hash = 0;
@@ -754,6 +949,11 @@ public class UString {
         }
         return (short) (hash + work);
     }
+    /**
+     *
+     * @param s
+     * @return
+     */
     public static byte byteHash(String s) {
         byte[] a = s.getBytes();
         int hash = 0;
@@ -767,6 +967,17 @@ public class UString {
         }
         return (byte) (hash + work);
     }
+    /**
+     *
+     * @param _input
+     * @param _startPattern
+     * @param _endPattern
+     * @param _count
+     * @param _inclusize
+     * @param _os
+     * @param _oe
+     * @return
+     */
     public static String[] getChunks(String _input, String _startPattern, String _endPattern, int _count, boolean _inclusize, int _os, int _oe) {
         CArray chunks = new CArray(String.class);
         Pattern sp = Pattern.compile(_startPattern);
@@ -801,6 +1012,14 @@ public class UString {
         }
         return (String[]) chunks.getAll();
     }
+    /**
+     *
+     * @param _input
+     * @param _s
+     * @param _e
+     * @param _fill
+     * @return
+     */
     public static String removeScope(String _input, char _s, char _e, char _fill) {
         int d = 0;
         int count = 0;
@@ -830,6 +1049,13 @@ public class UString {
         _input = new String(chars, 0, count);
         return _input;
     }
+    /**
+     *
+     * @param _input
+     * @param _s
+     * @param _e
+     * @return
+     */
     public static String keepScope(String _input, char _s, char _e) {
 
         int d = 0;
@@ -876,6 +1102,12 @@ public class UString {
         _input = new String(out, 0, count);
         return _input;
     }
+    /**
+     *
+     * @param _input
+     * @param _count
+     * @return
+     */
     public static String[] wrap(String _input, int _count) {
         if (_input.length() < _count) {
             return new String[]{_input};
@@ -949,6 +1181,11 @@ public class UString {
         result |= hash;
         return result;
     }
+    /**
+     *
+     * @param _long
+     * @return
+     */
     public static String longToString(long _long) {
         if (_long == 0) {
             return null;
@@ -974,6 +1211,12 @@ public class UString {
         return new String(bytes);
     }
     // any run of alphanumeric becomes one token; each special char becomes one token; white space delimited
+    /**
+     *
+     * @param _
+     * @param _data
+     * @return
+     */
     public static String[] tokenizeSpecialChars(IOut _, String _data) {
         if (_data == null) {
             return new String[0];
@@ -1012,6 +1255,12 @@ public class UString {
         return (String[]) words.getAll();
     }
     // any run of alphanumeric becomes one token; each special char becomes one token; white space delimited
+    /**
+     *
+     * @param _
+     * @param _data
+     * @return
+     */
     public static String[] tokenizeSpecialCharsPlusNewLine(IOut _, String _data) {
         if (_data == null) {
             return new String[0];
@@ -1055,6 +1304,12 @@ public class UString {
         return (String[]) words.getAll();
     }
     // any run of alphanumeric becomes one token; each special char becomes one token; white space delimited
+    /**
+     *
+     * @param _
+     * @param _data
+     * @return
+     */
     public static String[] tokenize(IOut _, String _data) {
         if (_data == null) {
             return new String[0];
@@ -1090,6 +1345,12 @@ public class UString {
         }
         return (String[]) words.getAll();
     }
+    /**
+     *
+     * @param _
+     * @param _data
+     * @return
+     */
     public static String[] charStrings(IOut _, String _data) {
         if (_data == null) {
             return new String[0];
@@ -1102,6 +1363,11 @@ public class UString {
         }
         return (String[]) words.getAll();
     }
+    /**
+     *
+     * @param _tokens
+     * @return
+     */
     public static String[] toStrings(Object[] _tokens) {
         if (_tokens == null) {
             return new String[0];
@@ -1157,6 +1423,11 @@ public class UString {
     System.out.println("bytes="+sw1);
     System.out.println("longs="+sw2);
     }*/
+    /**
+     *
+     * @param _string
+     * @return
+     */
     public static boolean isAllUpperCase(String _string) {
         int l = _string.length();
         for (int i = 0; i < l; i++) {
@@ -1170,6 +1441,12 @@ public class UString {
         return true;
     }
     // any run of alphanumeric becomes one token; each special char becomes one token; white space delimited
+    /**
+     *
+     * @param _
+     * @param _data
+     * @return
+     */
     public static String[] sentances(IOut _, String _data) {
         if (_data == null) {
             return new String[0];
@@ -1222,6 +1499,14 @@ public class UString {
         }
         return (String[]) sentances.getAll();
     }
+    /**
+     *
+     * @param _tokens
+     * @param _seperator
+     * @param _step
+     * @param _orderd
+     * @param _results
+     */
     public static void pairs(Object[] _tokens, String _seperator, int _step, boolean _orderd, CSet _results) {
         for (int i = 0; i < _tokens.length - _step; i++) {
             String a = _tokens[i].toString().toLowerCase();

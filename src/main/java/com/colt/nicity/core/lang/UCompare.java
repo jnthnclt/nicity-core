@@ -19,8 +19,18 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UCompare {
 
+    /**
+     *
+     * @param _as
+     * @param _bs
+     * @return
+     */
     final public static double compare(float[] _as, float[] _bs) {
         double r = 0;
         for (int i = 0; i < _as.length; i++) {
@@ -33,18 +43,42 @@ public class UCompare {
     }
 
     // ascending
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     final public static double compare(int _a, int _b) {
         return (_a < _b ? -1d : (_a == _b ? 0d : 1d));
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     final public static double compare(long _a, long _b) {
         return (_a < _b ? -1d : (_a == _b ? 0d : 1d));
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     final public static double compare(double _a, double _b) {
         return (_a < _b ? -1d : (_a == _b ? 0d : 1d));
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     final public static double compare(float _a, float _b) {
         return (_a < _b ? -1d : (_a == _b ? 0d : 1d));
     }

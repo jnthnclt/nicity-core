@@ -19,36 +19,71 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class IntBits {
 
     private int masks;
 
+    /**
+     *
+     */
     public IntBits() {
     }
 
+    /**
+     *
+     * @param _masks
+     */
     public IntBits(int _masks) {
         masks = _masks;
     }
+    /**
+     *
+     * @param _masks
+     */
     public void setMask(int _masks) {
         masks = _masks;
     }
 
+    /**
+     *
+     * @param _addBit
+     */
     public void addBit(int _addBit) {
         addMask(_addBit);
     }
 
+    /**
+     *
+     * @param _addMask
+     */
     public void addMask(int _addMask) {
         masks |= _addMask;
     }
 
+    /**
+     *
+     * @param _removeBit
+     */
     public void removeBit(int _removeBit) {
         removeMask(_removeBit);
     }
 
+    /**
+     *
+     * @param _removeMask
+     */
     public void removeMask(int _removeMask) {
         masks &= ~_removeMask;
     }
 
+    /**
+     *
+     * @param _toggleMask
+     */
     public void toggleMask(int _toggleMask) {
         if (hasMask(_toggleMask)) {
             removeMask(_toggleMask);
@@ -58,19 +93,38 @@ public class IntBits {
         }
     }
 
+    /**
+     *
+     * @param _removeMask
+     * @param _addMask
+     */
     public void replaceMask(int _removeMask, int _addMask) {
         removeMask(_removeMask);
         addMask(_addMask);
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMask() {
         return masks;
     }
 
+    /**
+     *
+     * @param _hasBit
+     * @return
+     */
     public boolean hasBit(int _hasBit) {
         return hasMask(_hasBit);
     }
 
+    /**
+     *
+     * @param _hasMask
+     * @return
+     */
     public boolean hasMask(int _hasMask) {
         return (masks & _hasMask) == _hasMask;
     }

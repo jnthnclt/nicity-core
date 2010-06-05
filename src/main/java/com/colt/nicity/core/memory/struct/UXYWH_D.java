@@ -19,8 +19,20 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UXYWH_D {
 
+    /**
+     *
+     * @param _fx
+     * @param _fy
+     * @param _tx
+     * @param _ty
+     * @return
+     */
     public static final XYWH_D rect(double _fx, double _fy, double _tx,
         double _ty) {
         return new XYWH_D(
@@ -30,11 +42,33 @@ public class UXYWH_D {
             Math.abs(_fy - _ty));
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @return
+     */
     public static final boolean contains(double x, double y, double w, double h,
         double _x, double _y) {
         return (_x >= x) && ((_x - x) < w) && (_y >= y) && ((_y - y) < h);
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static final boolean contains(double x, double y, double w, double h,
         double _x, double _y, double _w, double _h) {
         if (w <= 0 || w <= 0 || _w <= 0 || _h <= 0) {
@@ -43,11 +77,35 @@ public class UXYWH_D {
         return (_x >= x && _y >= y && _x + _w <= x + w && _y + _h <= y + h);
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static final boolean intersects(double x, double y, double w,
         double h, double _x, double _y, double _w, double _h) {
         return !((_x + _w <= x) || (_y + _h <= y) || (_x >= x + w) || (_y >= y + h));
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static final XYWH_D intersection(double x, double y, double w,
         double h, double _x, double _y, double _w, double _h) {
         double x1 = Math.max(x, _x);
@@ -62,6 +120,18 @@ public class UXYWH_D {
         }
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static final XYWH_D union(double x, double y, double w, double h,
         double _x, double _y, double _w, double _h) {
         double x1 = Math.min(x, _x);

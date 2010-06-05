@@ -26,16 +26,36 @@ import java.lang.ref.SoftReference;
 /*
  * Acts as a hub to which an IObserver can bind and then will recieve Change events
  */
+/**
+ *
+ * @author Administrator
+ */
 abstract public class Observers extends ASetObject implements IObserver {
     abstract void dettach();
+    /**
+     *
+     */
     protected SoftReference[] observers;
     private IObservable observable;
+    /**
+     *
+     * @param _observable
+     */
     public Observers(IObservable _observable) {
         observable = _observable;
     }
+    /**
+     *
+     * @return
+     */
+    @Override
     final public Object hashObject() {
         return observable;
     }
+    /**
+     *
+     * @return
+     */
     public int numberOfObservers() {
         SoftReference[] _locol = observers;
         if (_locol == null) {
@@ -45,6 +65,11 @@ abstract public class Observers extends ASetObject implements IObserver {
     }
     // Observers are cached softly therefore you must keep a hard refrence to you observers elsewhere
     // need to sync
+    /**
+     *
+     * @param _observer
+     * @return
+     */
     public IObserver bind(IObserver _observer) {
         if (_observer == null) {
             return _observer;
@@ -73,6 +98,10 @@ abstract public class Observers extends ASetObject implements IObserver {
         return _observer;
     }
     // need to sync
+    /**
+     *
+     * @param _observer
+     */
     public void release(IObserver _observer) {
         SoftReference[] newObservers = new SoftReference[observers.length];
         int j = 0;
@@ -90,6 +119,10 @@ abstract public class Observers extends ASetObject implements IObserver {
         observers = (SoftReference[]) UArray.trim(newObservers, new SoftReference[j]);
         _observer.bound(observable);
     }
+    /**
+     *
+     * @param _change
+     */
     public void broadcast(Change _change) {
         if (observers == null) {
             return;
@@ -111,11 +144,26 @@ abstract public class Observers extends ASetObject implements IObserver {
         }
     }
     // IObserver
+    /**
+     *
+     * @param _observable
+     */
+    @Override
     public void bound(IObservable _observable) {
     }
+    /**
+     *
+     * @param _change
+     */
+    @Override
     public void change(Change _change) {
         broadcast(_change);
     }
+    /**
+     *
+     * @param _observable
+     */
+    @Override
     public void released(IObservable _observable) {
     }
 }

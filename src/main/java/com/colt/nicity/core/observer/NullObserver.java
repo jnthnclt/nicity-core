@@ -19,12 +19,34 @@
  */
 package com.colt.nicity.core.observer;
 
+/**
+ *
+ * @author Administrator
+ */
 public class NullObserver implements IObserver {
+    /**
+     *
+     */
     public static NullObserver cNull = new NullObserver();
+    /**
+     *
+     * @param _observable
+     */
+    @Override
     public void bound(IObservable _observable) {
     }
+    /**
+     *
+     * @param _change
+     */
+    @Override
     public void change(Change _change) {
     }
+    /**
+     *
+     * @param _observable
+     */
+    @Override
     public void released(IObservable _observable) {
     }
 }

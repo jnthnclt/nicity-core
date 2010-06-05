@@ -19,50 +19,107 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class MutableDouble extends ASetObject implements Comparable {
     private double unit = 0;
+    /**
+     *
+     */
     public MutableDouble() {
     }
+    /**
+     *
+     * @param _unit
+     */
     public MutableDouble(double _unit) {
         unit = _unit;
     }
+    /**
+     *
+     * @return
+     */
+    @Override
     public Object hashObject() {
         return unit;
     }
+    /**
+     *
+     * @return
+     */
     public double doubleValue() {
         return unit;
     }
+    /**
+     *
+     * @return
+     */
     public double get() {
         return unit;
     }
+    /**
+     *
+     * @param _val
+     */
     public void set(double _val) {
         unit = _val;
     }
+    /**
+     *
+     * @param _val
+     */
     public void min(double _val) {
         if (_val < unit) {
             unit = _val;
         }
     }
+    /**
+     *
+     * @param _val
+     */
     public void max(double _val) {
         if (_val > unit) {
             unit = _val;
         }
     }
+    /**
+     *
+     * @param _amount
+     */
     public void inc(double _amount) {
         unit += _amount;
     }
+    /**
+     *
+     */
     public void inc() {
         unit++;
     }
+    /**
+     *
+     */
     public void dec() {
         unit--;
     }
+    /**
+     *
+     * @param _amount
+     */
     public void multiply(double _amount) {
         unit *= _amount;
     }
+    /**
+     *
+     * @param _amount
+     */
     public void divide(double _amount) {
         unit /= _amount;
     }
+    /**
+     *
+     */
     public void reset() {
         unit = 0;
     }
@@ -74,6 +131,7 @@ public class MutableDouble extends ASetObject implements Comparable {
         }
         return o.toString() + "=" + unit;
     }
+    @Override
     public int compareTo(Object o) {
         double a = this.unit;
         double b = ((MutableDouble) o).unit;

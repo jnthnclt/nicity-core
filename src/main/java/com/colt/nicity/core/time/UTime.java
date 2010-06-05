@@ -28,15 +28,28 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UTime {
 
     
     
+    /**
+     *
+     * @return
+     */
     public static long currentGMT() {
         return new Date().getTime();
     }
    
     
+    /**
+     *
+     * @param _millis
+     * @return
+     */
     public static String elapseHMS(long _millis) {
         
         long seconds = _millis / 1000;
@@ -55,12 +68,23 @@ public class UTime {
         return time;
     }
     
+    /**
+     *
+     * @param _millis
+     * @param _extension
+     * @return
+     */
     public static String elapseInDays(long _millis, String _extension) {
         long days = _millis / millisInADay;
         String time = days + " " + _extension;
         return time;
     }
     
+    /**
+     *
+     * @param _millis
+     * @return
+     */
     public static String elapse(long _millis) {
         
         long years = _millis / millisInAYear;
@@ -87,6 +111,11 @@ public class UTime {
         return time;
     }
     
+    /**
+     *
+     * @param _millis
+     * @return
+     */
     public static String fixedWidthElapse(long _millis) {
         
         long years = _millis / millisInAYear;
@@ -116,6 +145,11 @@ public class UTime {
         return time;
     }
     
+    /**
+     *
+     * @param _millis
+     * @return
+     */
     public static String elapseYMWDHMS(long _millis) {
         
         long years = _millis / millisInAYear;
@@ -149,14 +183,44 @@ public class UTime {
         return time;
     }
     
+    /**
+     *
+     */
     public static final long millisInASecond = 1000;
+    /**
+     *
+     */
     public static final long millisInAMinute = (long) (millisInASecond * 60);
+    /**
+     *
+     */
     public static final long millisInAHour = (long) (millisInAMinute * 60);
+    /**
+     *
+     */
     public static final long millisInADay = (long) (millisInAHour * 24);
+    /**
+     *
+     */
     public static final long millisInAWeek = (long) (millisInADay * 7);
+    /**
+     *
+     */
     public static final long millisInAMonth = (long) (millisInADay * 30.437);
+    /**
+     *
+     */
     public static final long millisInAYear = (long) (millisInADay * 365.25);
     
+    /**
+     *
+     * @param years
+     * @param days
+     * @param hours
+     * @param minutes
+     * @param seconds
+     * @return
+     */
     public static long ydhms(long years, long days, long hours, long minutes, long seconds) {
         long millis = seconds * millisInASecond;
         millis += minutes * millisInAMinute;
@@ -167,6 +231,11 @@ public class UTime {
     }    
     static DateFormat yearFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String year(long _time) {
         if (yearFormatter == null) {
             yearFormatter = new SimpleDateFormat("yyyy", Locale.getDefault());
@@ -177,6 +246,11 @@ public class UTime {
     
     static DateFormat monthFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String month(long _time) {
         if (monthFormatter == null) {
             monthFormatter = new SimpleDateFormat("MM", Locale.getDefault());
@@ -187,6 +261,11 @@ public class UTime {
     
     static DateFormat monthNameFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String monthName(long _time) {
         if (monthNameFormatter == null) {
             monthNameFormatter = new SimpleDateFormat("MMM", Locale.getDefault());
@@ -197,6 +276,11 @@ public class UTime {
     
     static DateFormat dayFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String day(long _time) {
         if (dayFormatter == null) {
             dayFormatter = new SimpleDateFormat("dd", Locale.getDefault());
@@ -207,6 +291,11 @@ public class UTime {
     
     static DateFormat weekDayFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String weekDay(long _time) {
         if (weekDayFormatter == null) {
             weekDayFormatter = new SimpleDateFormat("E", Locale.getDefault());
@@ -217,6 +306,11 @@ public class UTime {
     
     static DateFormat dayOfYearFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String dayOfYear(long _time) {
         if (dayOfYearFormatter == null) {
             dayOfYearFormatter = new SimpleDateFormat("D", Locale.getDefault());
@@ -227,6 +321,11 @@ public class UTime {
     
     static DateFormat weekOfYearFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String weekOfYear(long _time) {
         if (weekOfYearFormatter == null) {
             weekOfYearFormatter = new SimpleDateFormat("w", Locale.getDefault());
@@ -237,6 +336,11 @@ public class UTime {
     
     static DateFormat weekOfMonthFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String weekOfMonth(long _time) {
         if (weekOfMonthFormatter == null) {
             weekOfMonthFormatter = new SimpleDateFormat("W", Locale.getDefault());
@@ -246,6 +350,11 @@ public class UTime {
     }    
     static DateFormat hourFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String hour(long _time) {
         if (hourFormatter == null) {
             hourFormatter = new SimpleDateFormat("HH", Locale.getDefault());
@@ -255,6 +364,11 @@ public class UTime {
     }    
     static DateFormat minuteFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String minute(long _time) {
         if (minuteFormatter == null) {
             minuteFormatter = new SimpleDateFormat("mm", Locale.getDefault());
@@ -264,6 +378,11 @@ public class UTime {
     }    
     static DateFormat secondFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String second(long _time) {
         if (secondFormatter == null) {
             secondFormatter = new SimpleDateFormat("ss", Locale.getDefault());
@@ -273,6 +392,11 @@ public class UTime {
     }    
     static DateFormat timeOfDayFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String timeOfDay(long _time) {
         if (timeOfDayFormatter == null) {
             timeOfDayFormatter = new SimpleDateFormat("aa", Locale.getDefault());
@@ -282,6 +406,11 @@ public class UTime {
     }    
     static DateFormat fileTimeFormatter = null;
     
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String fileNameTime(long _time) {
         if (fileTimeFormatter == null) {
             fileTimeFormatter = new SimpleDateFormat("MM-dd-yyyy_hh-mm-ss_aa_", Locale.getDefault());
@@ -292,6 +421,11 @@ public class UTime {
     static DateFormat fixedWidthFormatter = null;
     static DateFormat formatter = null;
     
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String basicTime(long _time) {
         if (formatter == null) {
             formatter = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss aa", Locale.getDefault());
@@ -300,6 +434,12 @@ public class UTime {
         return formatter.format(new Date(_time));
     }
     
+    /**
+     *
+     * @param _time
+     * @param _tz
+     * @return
+     */
     public static String basicTime(long _time,TimeZone _tz) {
         if (formatter == null) {
             formatter = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss aa z", Locale.getDefault());
@@ -309,6 +449,12 @@ public class UTime {
     }
     static DateFormat frameFormatter = null;
     
+    /**
+     *
+     * @param _time
+     * @param _fps
+     * @return
+     */
     public static String frameTime(long _time, int _fps) {
         if (frameFormatter == null) {
             frameFormatter = new SimpleDateFormat("SSS", Locale.getDefault());
@@ -325,6 +471,11 @@ public class UTime {
     
     static DateFormat writtenFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String writtenTime(long _time) {
         if (writtenFormatter == null) {
             writtenFormatter = new SimpleDateFormat("MMMM d yyyy h:m:s", Locale.getDefault());
@@ -333,6 +484,11 @@ public class UTime {
         return writtenFormatter.format(new Date(_time));
     }
     
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String fixedWidthTime(long _time) {
         if (fixedWidthFormatter == null) {
             fixedWidthFormatter = new SimpleDateFormat("hh:mm:ss aa", Locale.getDefault());
@@ -343,6 +499,11 @@ public class UTime {
     
     static DateFormat fixedWidthDate = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String fixedWidthDate(long _time) {
         if (fixedWidthDate == null) {
             fixedWidthDate = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
@@ -353,6 +514,11 @@ public class UTime {
     
     static DateFormat yyyyFormatter = null;
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String yyyy(long _time) {
         if (yyyyFormatter == null) {
             yyyyFormatter = new SimpleDateFormat("yyyy", Locale.getDefault());
@@ -362,12 +528,22 @@ public class UTime {
     }
     
     static DateFormat dateFormat = DateFormat.getDateInstance();
+    /**
+     *
+     * @param _time
+     * @return
+     */
     public static String date(long _time) {
         return dateFormat.format(new Date(_time));
     }
     
     static DateFormat mmddyy = null;
 
+    /**
+     *
+     * @param _s
+     * @return
+     */
     public static Date parse_mmddyy(String _s) {
         if (mmddyy == null) {
             mmddyy = new SimpleDateFormat("MMddyy");
@@ -386,6 +562,11 @@ public class UTime {
     
     static DateFormat mmddyyyy = null;
 
+    /**
+     *
+     * @param _s
+     * @return
+     */
     public static Date parse_mmddyyyy(String _s) {
         if (mmddyyyy == null) {
             mmddyyyy = new SimpleDateFormat("MMddyyyy");
@@ -402,6 +583,11 @@ public class UTime {
         return date;
     }
     
+    /**
+     *
+     * @param _millis
+     * @return
+     */
     public static String interval(long _millis) {
         
         
@@ -419,6 +605,12 @@ public class UTime {
     }
     
     
+    /**
+     *
+     * @param _time
+     * @param _direction
+     * @return
+     */
     static public long yearLong(long _time, int _direction) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         GregorianCalendar out = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
@@ -433,6 +625,12 @@ public class UTime {
         }
     }
     
+    /**
+     *
+     * @param _time
+     * @param _direction
+     * @return
+     */
     static public long monthLong(long _time, int _direction) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         GregorianCalendar out = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
@@ -456,6 +654,12 @@ public class UTime {
         }
     }
     
+    /**
+     *
+     * @param _time
+     * @param _direction
+     * @return
+     */
     static public long dayLong(long _time, int _direction) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         GregorianCalendar out = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
@@ -493,6 +697,12 @@ public class UTime {
         }
     }
    
+    /**
+     *
+     * @param _time
+     * @param _direction
+     * @return
+     */
     static public long hourLong(long _time, int _direction) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         GregorianCalendar out = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
@@ -540,6 +750,12 @@ public class UTime {
         }
     }
     
+    /**
+     *
+     * @param _time
+     * @param _direction
+     * @return
+     */
     static public long minuteLong(long _time, int _direction) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         GregorianCalendar out = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
@@ -593,6 +809,12 @@ public class UTime {
         }
     }
     
+    /**
+     *
+     * @param _time
+     * @param _direction
+     * @return
+     */
     static public long secondLong(long _time, int _direction) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         GregorianCalendar out = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
@@ -656,31 +878,56 @@ public class UTime {
         }
     }
 
+    /**
+     *
+     * @param _time
+     * @return
+     */
     static public int gmtYear(long _time) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         calendar.setTimeInMillis(_time);
         int year = calendar.get(Calendar.YEAR);
         return year;
     }
-     static public int gmtMonth(long _time) {
+    /**
+     *
+     * @param _time
+     * @return
+     */
+    static public int gmtMonth(long _time) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         calendar.setTimeInMillis(_time);
         int month = calendar.get(Calendar.MONTH);
         return month;
     }
-      static public int gmtDay(long _time) {
+    /**
+     *
+     * @param _time
+     * @return
+     */
+    static public int gmtDay(long _time) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         calendar.setTimeInMillis(_time);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         return day;
     }
-       static public int gmtHour(long _time) {
+    /**
+     *
+     * @param _time
+     * @return
+     */
+    static public int gmtHour(long _time) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         calendar.setTimeInMillis(_time);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         return hour;
     }
-    static public int gmtMinute(long _time) {
+       /**
+        *
+        * @param _time
+        * @return
+        */
+       static public int gmtMinute(long _time) {
         GregorianCalendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
         calendar.setTimeInMillis(_time);
         int minute = calendar.get(Calendar.MINUTE);
@@ -688,6 +935,11 @@ public class UTime {
     }
 
     static private long oneSecond = 1000000000L;
+    /**
+     *
+     * @param timeNanos
+     * @return
+     */
     public static String nanoTime(long timeNanos) {
         
         long nano = timeNanos;

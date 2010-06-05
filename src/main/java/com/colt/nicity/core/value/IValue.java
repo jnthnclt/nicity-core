@@ -19,10 +19,23 @@
  */
 package com.colt.nicity.core.value;
 
+/**
+ *
+ * @author Administrator
+ * @param <V>
+ */
 public interface IValue<V> {
 
+    /**
+     *
+     * @return
+     */
     public V getValue();
 
+    /**
+     *
+     * @param _value
+     */
     public void setValue(V _value);
 }
 

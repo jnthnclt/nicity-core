@@ -21,7 +21,18 @@ package com.colt.nicity.core.process;
 
 import com.colt.nicity.core.lang.IOut;
 
+/**
+ *
+ * @author Administrator
+ */
 public interface IInvoke {
+    /**
+     *
+     */
     public void start();
+    /**
+     *
+     * @param _
+     */
     public void invoke(IOut _);
 }

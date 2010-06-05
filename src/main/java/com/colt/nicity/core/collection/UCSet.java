@@ -23,6 +23,10 @@ import com.colt.nicity.core.comparator.AValueComparator;
 import com.colt.nicity.core.comparator.UValueComparator;
 import com.colt.nicity.core.lang.UArray;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UCSet {
 
     /**

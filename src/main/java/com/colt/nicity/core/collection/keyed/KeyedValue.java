@@ -31,7 +31,13 @@ import com.colt.nicity.core.lang.ASetObject;
 public class KeyedValue<K, V> extends ASetObject<K> implements
     Comparable<KeyedValue<K, V>> {
 
+    /**
+     *
+     */
     protected K key;
+    /**
+     *
+     */
     protected V value;
 
     /**
@@ -62,6 +68,7 @@ public class KeyedValue<K, V> extends ASetObject<K> implements
      *
      * @return
      */
+    @Override
     public K hashObject() {
         return key;
     }
@@ -88,6 +95,7 @@ public class KeyedValue<K, V> extends ASetObject<K> implements
     }
     // Comparable
 
+    @Override
     public int compareTo(KeyedValue<K, V> o) {
         return -((Comparable<K>) key()).compareTo(o.key());//!! hacky
 

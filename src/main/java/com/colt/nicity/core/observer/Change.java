@@ -19,14 +19,36 @@
  */
 package com.colt.nicity.core.observer;
 
+/**
+ *
+ * @author Administrator
+ */
 final public class Change {
     private Object mode,value,instance;
+    /**
+     *
+     * @param _mode
+     * @param _value
+     * @param _instance
+     */
     public Change(Object _mode,Object _value,Object _instance) {
         mode = _mode;
         value = _value;
         instance = _instance;
     }
+    /**
+     *
+     * @return
+     */
     final public Object mode() { return mode; }
+    /**
+     *
+     * @return
+     */
     final public Object value() { return value; }
+    /**
+     *
+     * @return
+     */
     final public Object instance() { return instance; }
 }

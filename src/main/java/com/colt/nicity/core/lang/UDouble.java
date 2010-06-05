@@ -19,8 +19,18 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UDouble {
 
+    /**
+     *
+     * @param _v
+     * @param _spread
+     * @return
+     */
     public static int spreadIndex(double _v, double[] _spread) {
         for (int i = 0; i < _spread.length - 1; i++) {
             if (_v <= _spread[i + 1]) {
@@ -30,6 +40,12 @@ public class UDouble {
         return _spread.length - 1;
     }
 
+    /**
+     *
+     * @param _index
+     * @param _spread
+     * @return
+     */
     public static double indexSpread(int _index, double[] _spread) {
         if (_index == _spread.length - 1) {
             _index -= 1;
@@ -37,6 +53,12 @@ public class UDouble {
         return (_spread[_index] + _spread[_index + 1]) / 2d;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static boolean equals(double[] a, double[] b) {
         if (a == b) {
             return true;
@@ -56,6 +78,14 @@ public class UDouble {
         return true;
     }
 
+    /**
+     *
+     * @param _sa
+     * @param _ea
+     * @param _sb
+     * @param _eb
+     * @return
+     */
     public static boolean overlap(double _sa, double _ea, double _sb, double _eb) {
         if (_sa + _ea < _sb) {
             return false;
@@ -66,6 +96,11 @@ public class UDouble {
         return true;
     }
 
+    /**
+     *
+     * @param _values
+     * @return
+     */
     public static int[] ints(double[] _values) {
         int[] values = new int[_values.length];
         for (int i = 0; i < _values.length; i++) {
@@ -74,18 +109,32 @@ public class UDouble {
         return values;
     }
 
+    /**
+     *
+     * @param _values
+     */
     public static void unsign(double[] _values) {
         for (int i = 0; i < _values.length; i++) {
             _values[i] = Math.abs(_values[i]);
         }
     }
 
+    /**
+     *
+     * @param _values
+     * @param _amount
+     */
     public static void decay(double[] _values, double _amount) {
         for (int i = 0; i < _values.length; i++) {
             _values[i] *= _amount;
         }
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     */
     public static void max(double[] _a, double[] _b) {
         for (int i = 0; i < _a.length; i++) {
             _a[i] = Math.max(_a[i], _b[i]);
@@ -93,10 +142,22 @@ public class UDouble {
     }
 
     // !!Note: returns an array one entry shorter than input
+    /**
+     *
+     * @param _values
+     * @return
+     */
     public static double[] toDeltas(double[] _values) {
         return toDeltas(_values, 0, _values.length);
     }
 
+    /**
+     *
+     * @param _values
+     * @param _offset
+     * @param _length
+     * @return
+     */
     public static double[] toDeltas(double[] _values, int _offset, int _length) {
         double[] deltas = new double[_length - 1];
         for (int i = _offset; i < _offset + _length - 1; i++) {
@@ -105,10 +166,22 @@ public class UDouble {
         return deltas;
     }
 
+    /**
+     *
+     * @param _values
+     * @return
+     */
     public static double mean(double[] _values) {
         return mean(_values, 0, _values.length);
     }
 
+    /**
+     *
+     * @param _values
+     * @param _offset
+     * @param _length
+     * @return
+     */
     public static double mean(double[] _values, int _offset, int _length) {
         double mean = 0;
         for (int i = _offset; i < _offset + _length; i++) {
@@ -119,11 +192,24 @@ public class UDouble {
     }
 
     // Specific to zero to one
+    /**
+     *
+     * @param _value
+     * @return
+     */
     static public double roleOver(double _value) {
         _value %= 1;
         return _value;
     }
 
+    /**
+     *
+     * @param _hits
+     * @param _ave
+     * @param _smoothing
+     * @param _anticipate
+     * @return
+     */
     static public double[] movingAverage(double[] _hits, int _ave, int _smoothing, boolean _anticipate) {
         // _hits are any values >= zero; _ave defines the window for the moving average.
 
@@ -141,6 +227,12 @@ public class UDouble {
         return _hits;
     }
 
+    /**
+     *
+     * @param _hits
+     * @param _ave
+     * @return
+     */
     static public double[] movingAve(double[] _hits, int _ave) {
         // computes moving average for _ave hits
 
@@ -165,6 +257,12 @@ public class UDouble {
         return result;
     }
 
+    /**
+     *
+     * @param _hits
+     * @param _ave
+     * @return
+     */
     static public double[] movingAve2(double[] _hits, int _ave) {
         // same as movingAve, but does NOT anticipate future
 
@@ -189,6 +287,13 @@ public class UDouble {
         return result;
     }
 
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static final double clamp(double _v, double _min, double _max) {
         if (_v < _min) {
             return _min;
@@ -199,6 +304,13 @@ public class UDouble {
         return _v;
     }
 
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static final double range(double _v, double _min, double _max) {
         if (_v < _min) {
             return _min;
@@ -209,6 +321,13 @@ public class UDouble {
         return _v;
     }
 
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static final double constrain(double _v, double _min, double _max) {
         if (_v < _min) {
             return _min;
@@ -219,6 +338,13 @@ public class UDouble {
         return _v;
     }
 
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static final double limit(double _v, double _min, double _max) {
         if (_v < _min) {
             return _min;
@@ -229,6 +355,12 @@ public class UDouble {
         return _v;
     }
 
+    /**
+     *
+     * @param source
+     * @param alternate
+     * @return
+     */
     static public double check(double source, double alternate) {
         if (source == Double.POSITIVE_INFINITY
             || source == Double.NEGATIVE_INFINITY
@@ -238,6 +370,13 @@ public class UDouble {
         return source;
     }
 
+    /**
+     *
+     * @param _array
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static double[] bound(double[] _array, double _min, double _max) {// rename to scale
         int l = _array.length;
         if (l == 0) {
@@ -250,6 +389,15 @@ public class UDouble {
         return bound(_array, minMax.min(), minMax.max(), _min, _max);
     }
 
+    /**
+     *
+     * @param _array
+     * @param _inMin
+     * @param _inMax
+     * @param _outMin
+     * @param _outMax
+     * @return
+     */
     public static double[] bound(
         double[] _array, double _inMin, double _inMax,
         double _outMin, double _outMax) {// rename to scale
@@ -286,11 +434,22 @@ public class UDouble {
     ((IHaveDouble) _array[i]).setDouble(v);
     }
     }*/
+    /**
+     *
+     * @param _array
+     * @return
+     */
     public static double[] bridgeZeros(double[] _array) {
         return bridgeZeros(_array, -1);
     }
 
     // if array contains
+    /**
+     *
+     * @param _array
+     * @param _decay
+     * @return
+     */
     public static double[] bridgeZeros(double[] _array, int _decay) {
         int start = nextNon(_array, 0, 0);
         if (start == -1) {
@@ -341,6 +500,12 @@ public class UDouble {
     }
 
     // _distance >= 0.0 && <= 1.0
+    /**
+     *
+     * @param _values
+     * @param _new
+     * @return
+     */
     public static double[] linearInterpolation(double[] _values, double[] _new) {
         for (double i = 0; i < _new.length; i++) {
             _new[(int) i] = linearInterpolation(_values, i / (_new.length - 1));//dg
@@ -349,6 +514,14 @@ public class UDouble {
     }
 
     // _distance >= 0.0 && <= 1.0
+    /**
+     *
+     * @param _values
+     * @param _value
+     * @param _fp
+     * @param _tp
+     * @return
+     */
     public static double[] fill(double[] _values, double _value, double _fp, double _tp) {
         int l = _values.length;
         if (l == 1) {
@@ -383,6 +556,12 @@ public class UDouble {
         return _values;
     }
 
+    /**
+     *
+     * @param _values
+     * @param _p
+     * @return
+     */
     public static int index(double[] _values, double _p) {
         int l = _values.length;
         int index = (int) (l * _p);
@@ -393,6 +572,13 @@ public class UDouble {
     }
 
     // good for simple morphs
+    /**
+     *
+     * @param _from
+     * @param _to
+     * @param _p
+     * @return
+     */
     public static double[] linearInterpolation(double[] _from, double[] _to, double _p) {
         if (Double.isNaN(_p)) {
             _p = 0;
@@ -412,6 +598,14 @@ public class UDouble {
     }
 
     //
+    /**
+     *
+     * @param _xs
+     * @param _ys
+     * @param _p
+     * @param _length
+     * @return
+     */
     public static double[] lengthInterpolation(double[] _xs, double[] _ys, double _p, double _length) {
         double totalLength = 0;
         int l = _xs.length;
@@ -431,6 +625,12 @@ public class UDouble {
         return new double[]{_xs[_xs.length - 1], _ys[_ys.length - 1]};
     }
 
+    /**
+     *
+     * @param _xs
+     * @param _ys
+     * @return
+     */
     public static double length(double[] _xs, double[] _ys) {
         double totalLength = 0;
         int l = _xs.length;
@@ -441,6 +641,12 @@ public class UDouble {
     }
 
     // _distance >= 0.0 && <= 1.0
+    /**
+     *
+     * @param _values
+     * @param _distance
+     * @return
+     */
     public static double linearInterpolation(double[] _values, double _distance) {
         if (_values == null) {
             return 0;
@@ -470,6 +676,11 @@ public class UDouble {
     }
 
     // _distance >= 0.0 && <= 1.0
+    /**
+     *
+     * @param _values
+     * @return
+     */
     public static boolean containsNaN(double[] _values) {
         for (int i = 0; i < _values.length; i++) {
             if (Double.isNaN(_values[i])) {
@@ -479,14 +690,35 @@ public class UDouble {
         return false;
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @param _distance
+     * @return
+     */
     public static double linearInterpolation(double _a, double _b, double _distance) {
         return _a + ((_b - _a) * _distance);
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @param _distance
+     * @return
+     */
     public static float linearInterpolation(int _a, int _b, float _distance) {
         return _a + ((_b - _a) * _distance);
     }
 
+    /**
+     *
+     * @param _values
+     * @param _distance
+     * @param _offValue
+     * @return
+     */
     public static double linearInterpolation(double[] _values, double _distance, double _offValue) {
         if (_distance < 0) {
             _distance = 0;
@@ -521,16 +753,37 @@ public class UDouble {
         //return _values[index];
     }
 
+    /**
+     *
+     * @param _x1
+     * @param _y1
+     * @param _x2
+     * @param _y2
+     * @return
+     */
     public static double distance(double _x1, double _y1, double _x2, double _y2) {
         double a = (_x1 - _x2) * (_x1 - _x2);
         double b = (_y1 - _y2) * (_y1 - _y2);
         return Math.sqrt(a + b);
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @param _distance
+     * @return
+     */
     public static double linearDelta(double _a, double _b, double _distance) {
         return (_b - _a) * _distance;
     }
 
+    /**
+     *
+     * @param _d
+     * @param _precision
+     * @return
+     */
     public static double trimPrecision(double _d, double _precision) {
         if (_precision == 0) {
             return (double) (long) _d;
@@ -539,6 +792,12 @@ public class UDouble {
         return l / (10 * _precision);
     }
 
+    /**
+     *
+     * @param _zeroToOne
+     * @param _count
+     * @return
+     */
     public static final double centerSort(double _zeroToOne, int _count) {
         double step = 1d / (double) _count;
         double v = _zeroToOne * _count;
@@ -550,6 +809,12 @@ public class UDouble {
         }
     }
 
+    /**
+     *
+     * @param position
+     * @param count
+     * @return
+     */
     public static final double centerSortPercent(int position, int count) {
         // 0 <= position <= count
         // position=0 returns .5
@@ -568,6 +833,13 @@ public class UDouble {
         }
     }
 
+    /**
+     *
+     * @param _value
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static double percent(double _value, double _min, double _max) {
         if (_value < _min) {
             return 0 - Double.MIN_VALUE;
@@ -584,10 +856,23 @@ public class UDouble {
     Fractional factors between -1 and 1 will modify the speed.
      */
 
+    /**
+     *
+     * @param _percent
+     * @param _factor
+     * @return
+     */
     public static double exponential(double _percent, double _factor) {
         return exponential(_percent, _factor, 1);
     }
 
+    /**
+     *
+     * @param _percent
+     * @param _factor
+     * @param _power
+     * @return
+     */
     public static double exponential(double _percent, double _factor, int _power) {
         // 0 <= _percent <=1; -1 <= _factor <=1; 0 <= result <=1
         // If factor == 0, perfectly linear, and result == _percent.
@@ -602,6 +887,12 @@ public class UDouble {
         return result;
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static double correlate(double[] _a, double[] _b) {
         if (_a.length == _b.length) {
             return unorderedEqualCorrelate(_a, _b);
@@ -609,6 +900,12 @@ public class UDouble {
         return unorderedUnequalCorrelate(_a, _b);
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static double unorderedUnequalCorrelate(double[] _a, double[] _b) {
         int maxLength = Math.max(_a.length, _b.length);
         double rank = 0;
@@ -622,6 +919,12 @@ public class UDouble {
         return rank;
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static double unorderedEqualCorrelate(double[] _a, double[] _b) {
         if (_a.length != _b.length) {
             throw new RuntimeException("requires args of same length");
@@ -636,6 +939,12 @@ public class UDouble {
         return rank;
     }
 
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @return
+     */
     public static double maximizedUnorderedCorrelation(double[] _a, double[] _b) {
         double avgCorrelation = 0;
         for (int i = 0; i < _a.length; i++) {
@@ -654,6 +963,13 @@ public class UDouble {
         return avgCorrelation;
     }
 
+    /**
+     *
+     * @param _count
+     * @param _window
+     * @param _smoothing
+     * @return
+     */
     public static double[] noiseWaveform(int _count, int _window, int _smoothing) {
         double[] wave = new double[_count];
         for (int i = 0; i < _count; i++) {

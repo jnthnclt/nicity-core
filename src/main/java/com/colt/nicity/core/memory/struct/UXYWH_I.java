@@ -19,8 +19,17 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UXYWH_I {
 
+    /**
+     *
+     * @param points
+     * @return
+     */
     public static XYWH_I boundingBox(XY_I... points) {
         int xmin = Integer.MAX_VALUE;
         int ymin = Integer.MAX_VALUE;
@@ -39,6 +48,14 @@ public class UXYWH_I {
         return new XYWH_I(xmin, ymin, xmax - xmin, ymax - ymin);
     }
 
+    /**
+     *
+     * @param _fx
+     * @param _fy
+     * @param _tx
+     * @param _ty
+     * @return
+     */
     public static final XYWH_I rect(int _fx, int _fy, int _tx, int _ty) {
         return new XYWH_I(
             Math.min(_fx, _tx),
@@ -47,11 +64,33 @@ public class UXYWH_I {
             Math.abs(_fy - _ty));
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @return
+     */
     public static final boolean contains(int x, int y, int w, int h, int _x,
         int _y) {
         return (_x >= x) && ((_x - x) < w) && (_y >= y) && ((_y - y) < h);
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static final boolean contains(int x, int y, int w, int h, int _x,
         int _y, int _w, int _h) {
         if (w <= 0 || w <= 0 || _w <= 0 || _h <= 0) {
@@ -60,11 +99,35 @@ public class UXYWH_I {
         return (_x >= x && _y >= y && _x + _w <= x + w && _y + _h <= y + h);
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static final boolean intersects(int x, int y, int w, int h, int _x,
         int _y, int _w, int _h) {
         return !((_x + _w <= x) || (_y + _h <= y) || (_x >= x + w) || (_y >= y + h));
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static final XYWH_I intersection(int x, int y, int w, int h, int _x,
         int _y, int _w, int _h) {
         int x1 = Math.max(x, _x);
@@ -79,6 +142,18 @@ public class UXYWH_I {
         }
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param _x
+     * @param _y
+     * @param _w
+     * @param _h
+     * @return
+     */
     public static final XYWH_I union(int x, int y, int w, int h, int _x, int _y,
         int _w, int _h) {
         int x1 = Math.min(x, _x);

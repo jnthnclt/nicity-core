@@ -19,7 +19,17 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UBoolean {
+    /**
+     *
+     * @param src
+     * @param _new
+     * @return
+     */
     public static final boolean[] grow(boolean[] src, boolean[] _new) {
         if (src == null) {
             return null;
@@ -27,6 +37,13 @@ public class UBoolean {
         System.arraycopy(src, 0, _new, 0, src.length);
         return _new;
     }
+    /**
+     *
+     * @param _src
+     * @param _new
+     * @param _log
+     * @return
+     */
     public static final boolean[] log(boolean[] _src, boolean[] _new, boolean _log) {
         if (_src == null) {
             return null;
@@ -35,6 +52,12 @@ public class UBoolean {
         _new[0] = _log;
         return _new;
     }
+    /**
+     *
+     * @param src
+     * @param amount
+     * @return
+     */
     public static final boolean[] grow(boolean[] src, int amount) {
         if (src == null) {
             return new boolean[amount];
@@ -43,13 +66,31 @@ public class UBoolean {
         System.arraycopy(src, 0, newSrc, 0, src.length);
         return newSrc;
     }
+    /**
+     *
+     * @param src
+     * @param count
+     * @return
+     */
     public static final boolean[] copy(boolean[] src, boolean[] count) {
         return trim(src, count);
     }
+    /**
+     *
+     * @param src
+     * @param count
+     * @return
+     */
     public static final boolean[] trim(boolean[] src, boolean[] count) {
         System.arraycopy(src, 0, count, 0, count.length);
         return count;
     }
+    /**
+     *
+     * @param src
+     * @param amount
+     * @return
+     */
     public static final boolean[] pregrow(boolean[] src, int amount) {
         if (src == null) {
             return new boolean[amount];
@@ -60,6 +101,12 @@ public class UBoolean {
     }
 
     // _distance >= 0.0 && <= 1.0
+    /**
+     *
+     * @param _values
+     * @param _new
+     * @return
+     */
     public static boolean[] linearInterpolation(boolean[] _values, boolean[] _new) {
         for (double i = 0; i < _new.length; i++) {
             _new[(int) i] = linearInterpolation(_values, i / _new.length);
@@ -67,6 +114,12 @@ public class UBoolean {
         return _new;
     }
     // _distance >= 0.0 && <= 1.0
+    /**
+     *
+     * @param _values
+     * @param _distance
+     * @return
+     */
     public static boolean linearInterpolation(boolean[] _values, double _distance) {
         if (_distance < 0) {
             _distance = 0;
@@ -89,6 +142,13 @@ public class UBoolean {
         boolean b = _values[index + 1];
         return linearInterpolation(a, b, distance);
     }
+    /**
+     *
+     * @param _a
+     * @param _b
+     * @param _distance
+     * @return
+     */
     public static boolean linearInterpolation(boolean _a, boolean _b, double _distance) {
         return (_distance < 0.5) ? _a : _b;
     }

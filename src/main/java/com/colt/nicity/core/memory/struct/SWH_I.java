@@ -21,18 +21,39 @@ package com.colt.nicity.core.memory.struct;
 
 import com.colt.nicity.core.lang.ASetObject;
 
+/**
+ *
+ * @author Administrator
+ */
 public class SWH_I extends ASetObject {
 
     private String name;
+    /**
+     *
+     */
     public int w;
+    /**
+     *
+     */
     public int h;
 
+    /**
+     *
+     * @param _name
+     * @param _w
+     * @param _h
+     */
     public SWH_I(String _name, int _w, int _h) {
         name = _name;
         w = _w;
         h = _h;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public Object hashObject() {
         return name;
     }

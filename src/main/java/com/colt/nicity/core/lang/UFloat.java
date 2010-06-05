@@ -19,14 +19,30 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public abstract class UFloat {// holder for static utility methods; do not instantiate
     //----------------------------------------------------------------------------
+    /**
+     *
+     * @param _a
+     * @param _b
+     */
     static public void fill(float[] _a, float[] _b) {
         for (int i = 0; i < _a.length; i++) {
             _a[i] = _b[i];
         }
     }
     //----------------------------------------------------------------------------
+    /**
+     *
+     * @param _hits
+     * @param _ave
+     * @param _smoothing
+     * @return
+     */
     static public float[] movingAverage(float[] _hits, int _ave, int _smoothing) {
         // _hits are any values >= zero; _ave defines the window for the moving average.
         //----------------------------------------------------------------------------
@@ -36,6 +52,12 @@ public abstract class UFloat {// holder for static utility methods; do not insta
         return _hits;
     }
     //----------------------------------------------------------------------------
+    /**
+     *
+     * @param _hits
+     * @param _ave
+     * @return
+     */
     static public float[] movingAve(float[] _hits, int _ave) {
         // computes moving average for _ave hits
         //----------------------------------------------------------------------------
@@ -60,6 +82,13 @@ public abstract class UFloat {// holder for static utility methods; do not insta
         return result;
     }
     //----------------------------------------------------------------------------
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static final float range(float _v, float _min, float _max) {
         if (_v < _min) {
             return _min;
@@ -69,6 +98,13 @@ public abstract class UFloat {// holder for static utility methods; do not insta
         return _v;
     }
     //----------------------------------------------------------------------------
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static final float clamp(float _v, float _min, float _max) {
         if (_v < _min) {
             return _min;
@@ -78,6 +114,13 @@ public abstract class UFloat {// holder for static utility methods; do not insta
         return _v;
     }
     //----------------------------------------------------------------------------
+    /**
+     *
+     * @param _array
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static float[] bound(float[] _array, float _min, float _max) {// rename to scale
         int l = _array.length;
         MinMaxFloat minMax = new MinMaxFloat();
@@ -98,6 +141,12 @@ public abstract class UFloat {// holder for static utility methods; do not insta
         return array;
     }
     //----------------------------------------------------------------------------
+    /**
+     *
+     * @param source
+     * @param alternate
+     * @return
+     */
     static public float checkFloat(float source, float alternate) {
         if (source == Float.POSITIVE_INFINITY ||
                 source == Float.NEGATIVE_INFINITY ||

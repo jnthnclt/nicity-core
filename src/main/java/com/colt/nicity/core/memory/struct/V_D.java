@@ -19,25 +19,48 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public class V_D {
 
     private double v;
 
+    /**
+     *
+     */
     public V_D() {
     }
 
+    /**
+     *
+     * @param _v_d
+     */
     public V_D(V_D _v_d) {
         v = _v_d.v;
     }
 
+    /**
+     *
+     * @param _v
+     */
     public V_D(double _v) {
         v = _v;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getV() {
         return v;
     }
 
+    /**
+     *
+     * @param _v
+     */
     public void setV(double _v) {
         v = _v;
     }

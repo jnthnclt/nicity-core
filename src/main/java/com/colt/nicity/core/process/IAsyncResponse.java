@@ -21,7 +21,22 @@ package com.colt.nicity.core.process;
 
 import com.colt.nicity.core.lang.IOut;
 
+/**
+ *
+ * @author Administrator
+ * @param <R>
+ */
 public interface IAsyncResponse<R> {
+    /**
+     *
+     * @param _
+     * @param _response
+     */
     public void response(IOut _,R _response);
+    /**
+     *
+     * @param _
+     * @param _t
+     */
     public void error(IOut _,Throwable _t);
 }

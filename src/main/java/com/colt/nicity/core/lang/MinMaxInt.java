@@ -19,25 +19,62 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class MinMaxInt {
+    /**
+     *
+     */
     public int min = Integer.MAX_VALUE;
+    /**
+     *
+     */
     public int max = -Integer.MAX_VALUE;
+    /**
+     *
+     */
     public int minIndex = -1;
+    /**
+     *
+     */
     public int maxIndex = -1;
     private float sum = 0;
     private int count = 0;
+    /**
+     *
+     */
     public MinMaxInt() {
     }
+    /**
+     *
+     * @param _min
+     * @param _max
+     */
     public MinMaxInt(int _min, int _max) {
         min = _min;
         max = _max;
     }
+    /**
+     *
+     * @return
+     */
     public int min() {
         return min;
     }
+    /**
+     *
+     * @return
+     */
     public int max() {
         return max;
     }
+    /**
+     *
+     * @param _int
+     * @return
+     */
     public int value(int _int) {
         sum += _int;
         if (_int > max) {
@@ -51,6 +88,9 @@ public class MinMaxInt {
         count++;
         return _int;
     }
+    /**
+     *
+     */
     public void reset() {
         min = Integer.MAX_VALUE;
         max = -Integer.MAX_VALUE;
@@ -61,6 +101,11 @@ public class MinMaxInt {
         sum = 0;
         count = 0;
     }
+    /**
+     *
+     * @param _value
+     * @return
+     */
     public boolean inclusivelyContained(int _value) {
         if (count == 0) {
             return false;
@@ -73,27 +118,58 @@ public class MinMaxInt {
         }
         return true;
     }
+    /**
+     *
+     * @param _value
+     * @return
+     */
     public double std(int _value) {
         double mean = Math.pow(mean(), 2);
         double value = Math.pow((double) _value, 2);
         double variation = Math.max(mean, value) - Math.min(mean, value);
         return Math.sqrt(variation);
     }
+    /**
+     *
+     * @return
+     */
     public int samples() {
         return count;
     }
+    /**
+     *
+     * @return
+     */
     public double mean() {
         return sum / (int) count;
     }
+    /**
+     *
+     * @return
+     */
     public int range() {
         return max() - min();
     }
+    /**
+     *
+     * @return
+     */
     public int middle() {
         return min() + (range() / 2);
     }
+    /**
+     *
+     * @param _int
+     * @return
+     */
     public double zeroToOne(int _int) {
         return zeroToOne(min, max, _int);
     }
+    /**
+     *
+     * @param _int
+     * @return
+     */
     public int unzeroToOne(double _int) {
         return unzeroToOne(min, max, _int);
     }
@@ -101,6 +177,13 @@ public class MinMaxInt {
     public String toString() {
         return "Min:" + min + " Max:" + max;
     }
+    /**
+     *
+     * @param _min
+     * @param _max
+     * @param _int
+     * @return
+     */
     public static double zeroToOne(int _min, int _max, int _int) {
         if (_max == _min) {
             if (_int == _min) {
@@ -113,6 +196,13 @@ public class MinMaxInt {
         }
         return (double) (_int - _min) / (double) (_max - _min);
     }
+    /**
+     *
+     * @param _min
+     * @param _max
+     * @param _p
+     * @return
+     */
     public static int unzeroToOne(int _min, int _max, double _p) {
         int d = _max - _min;
         int pd = (int) (d * _p);

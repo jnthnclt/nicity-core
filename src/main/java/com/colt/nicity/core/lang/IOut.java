@@ -19,11 +19,28 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public interface IOut {
 
+    /**
+     *
+     * @return
+     */
     public boolean canceled();
 
+    /**
+     *
+     * @param _at
+     * @param _outof
+     */
     public void out(double _at, double _outof);
 
+    /**
+     *
+     * @param _status
+     */
     public void out(Object... _status);
 }

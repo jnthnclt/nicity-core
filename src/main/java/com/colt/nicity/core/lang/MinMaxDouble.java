@@ -19,26 +19,60 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class MinMaxDouble {
+    /**
+     *
+     */
     public double min = Double.MAX_VALUE;
+    /**
+     *
+     */
     public double max = -Double.MAX_VALUE;
+    /**
+     *
+     */
     public int minIndex = -1;
+    /**
+     *
+     */
     public int maxIndex = -1;
     private float sum = 0;
     private int count = 0;
+    /**
+     *
+     */
     public MinMaxDouble() {
     }
+    /**
+     *
+     * @param _min
+     * @param _max
+     */
     public MinMaxDouble(double _min, double _max) {
         min = _min;
         max = _max;
         count = 2;
     }
-     public double std(double _value) {
+    /**
+     *
+     * @param _value
+     * @return
+     */
+    public double std(double _value) {
         double mean = Math.pow(mean(), 2);
         double value = Math.pow((double) _value, 2);
         double variation = Math.max(mean, value) - Math.min(mean, value);
         return Math.sqrt(variation);
     }
+    /**
+     *
+     * @param _p
+     * @return
+     */
     public boolean inclusivelyContained(double _p) {
         if (_p < min) {
             return false;
@@ -48,12 +82,25 @@ public class MinMaxDouble {
         }
         return true;
     }
+    /**
+     *
+     * @return
+     */
     public double min() {
         return min;
     }
+    /**
+     *
+     * @return
+     */
     public double max() {
         return max;
     }
+    /**
+     *
+     * @param _double
+     * @return
+     */
     public double value(double _double) {
         sum += _double;
         if (_double > max) {
@@ -67,6 +114,9 @@ public class MinMaxDouble {
         count++;
         return _double;
     }
+    /**
+     *
+     */
     public void reset() {
         min = Double.MAX_VALUE;
         max = -Double.MAX_VALUE;
@@ -77,18 +127,40 @@ public class MinMaxDouble {
         sum = 0;
         count = 0;
     }
+    /**
+     *
+     * @return
+     */
     public long samples() {
         return count;
     }
+    /**
+     *
+     * @return
+     */
     public double mean() {
         return sum / (double) count;
     }
+    /**
+     *
+     * @return
+     */
     public double range() {
         return max - min;
     }
+    /**
+     *
+     * @return
+     */
     public double middle() {
         return min + ((max - min) / 2);
     }
+    /**
+     *
+     * @param _v
+     * @param _inclusive
+     * @return
+     */
     public boolean isBetween(double _v, boolean _inclusive) {
         if (_inclusive) {
             return _v <= max && _v >= min;
@@ -96,18 +168,47 @@ public class MinMaxDouble {
             return _v < max && _v > min;
         }
     }
+    /**
+     *
+     * @param _double
+     * @return
+     */
     public double negativeOneToOne(double _double) {
         return (zeroToOne(_double) - 0.5d) * 2d;
     }
+    /**
+     *
+     * @param _double
+     * @return
+     */
     public double zeroToOne(double _double) {
         return zeroToOne(min, max, _double);
     }
+    /**
+     *
+     * @param _min
+     * @param _max
+     * @param _double
+     * @return
+     */
     final public static double zeroToOne(double _min, double _max, double _double) {
         return (_double - _min) / (_max - _min);
     }
+    /**
+     *
+     * @param _double
+     * @return
+     */
     public double unzeroToOne(double _double) {
         return unzeroToOne(min, max, _double);
     }
+    /**
+     *
+     * @param _min
+     * @param _max
+     * @param _double
+     * @return
+     */
     final public static double unzeroToOne(double _min, double _max, double _double) {
         return ((_max - _min) * _double) + _min;
     }

@@ -30,8 +30,12 @@ import com.colt.nicity.core.lang.IOut;
  */
 public class NullBackcall<V> implements IBackcall<V> {
 
+    /**
+     *
+     */
     public static final IBackcall cNull = new NullBackcall();
 
+    @Override
     public void backcall(IOut _, ICallback<V, V> _callback) {
     }
 }

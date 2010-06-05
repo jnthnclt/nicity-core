@@ -19,15 +19,31 @@
  */
 package com.colt.nicity.core.observer;
 
+/**
+ *
+ * @author Administrator
+ */
 public class Observable extends AObservable {
     private Object key;
+    /**
+     *
+     * @param _key
+     */
     public Observable(Object _key) {
         key = _key;
     }
+    /**
+     *
+     * @return
+     */
     @Override
     public Object hashObject() {
         return key;
     }
+    /**
+     *
+     * @param _value
+     */
     public void change(Object _value) {
         super.change(key, _value);
     }

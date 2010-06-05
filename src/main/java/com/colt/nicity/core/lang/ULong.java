@@ -19,7 +19,16 @@
  */
 package com.colt.nicity.core.lang;
 
+/**
+ *
+ * @author Administrator
+ */
 public class ULong {
+    /**
+     *
+     * @param _longs
+     * @return
+     */
     public static byte[] longsBytes(long[] _longs) {
         int len = _longs.length;
         byte[] bytes = new byte[len * 8];
@@ -28,9 +37,21 @@ public class ULong {
         }
         return bytes;
     }
+    /**
+     *
+     * @param _v
+     * @return
+     */
     final public static byte[] longBytes(long _v) {
         return longBytes(_v, new byte[8], 0);
     }
+    /**
+     *
+     * @param v
+     * @param _bytes
+     * @param _offset
+     * @return
+     */
     final public static byte[] longBytes(long v, byte[] _bytes, int _offset) {
         _bytes[_offset + 0] = (byte) (v >>> 56);
         _bytes[_offset + 1] = (byte) (v >>> 48);
@@ -42,6 +63,13 @@ public class ULong {
         _bytes[_offset + 7] = (byte) v;
         return _bytes;
     }
+    /**
+     *
+     * @param _v
+     * @param _min
+     * @param _max
+     * @return
+     */
     public static final long range(long _v, long _min, long _max) {
         if (_v < _min) {
             return _min;
@@ -50,6 +78,11 @@ public class ULong {
         }
         return _v;
     }
+    /**
+     *
+     * @param values
+     * @return
+     */
     public static long toHash(long[] values) {
         long hash = 0;
         for (int i = 0; i < values.length; i++) {
@@ -57,6 +90,12 @@ public class ULong {
         }
         return hash;
     }
+    /**
+     *
+     * @param values
+     * @param delim
+     * @return
+     */
     public static String toString(long[] values, String delim) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < values.length; i++) {

@@ -188,6 +188,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      *
      * @return
      */
+    @Override
     public long getCount() {
         return numKeys;
     }
@@ -212,6 +213,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      *
      * @return
      */
+    @Override
     synchronized public long[] getAll() {
         return trim(keys);
     }
@@ -237,6 +239,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      *
      * @return
      */
+    @Override
     synchronized public long[] removeAll() {
         long[] removedValues = trim(keys);
         setMinimumAllocation();
@@ -271,6 +274,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      * @param key
      * @return
      */
+    @Override
     synchronized public boolean add(long key) {
         if (key == 0) {
             return false;
@@ -318,6 +322,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      * @param key
      * @return
      */
+    @Override
     synchronized public boolean contains(long key) {
         if (maxKeys == 0) {
             return false;
@@ -345,6 +350,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      * @param key
      * @return
      */
+    @Override
     synchronized public boolean remove(long key) {
         if (maxKeys == 0) {
             return false;
@@ -391,6 +397,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      * @param _
      * @param _callback
      */
+    @Override
     public void backcall(IOut _, ICallback _callback) {
         try {
             long count = getCount();

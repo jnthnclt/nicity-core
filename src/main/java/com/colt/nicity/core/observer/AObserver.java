@@ -21,10 +21,27 @@ package com.colt.nicity.core.observer;
 
 import com.colt.nicity.core.lang.ASetObject;
 
+/**
+ *
+ * @author Administrator
+ */
 abstract public class AObserver extends ASetObject implements IObserver {
+    /**
+     *
+     * @param _change
+     */
+    @Override
     abstract public void change(Change _change);
+    /**
+     *
+     */
     public AObserver() {
     }
+    /**
+     *
+     * @return
+     */
+    @Override
     public Object hashObject() {
         return this;
     }

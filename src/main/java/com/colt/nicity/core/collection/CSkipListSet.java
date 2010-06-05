@@ -27,17 +27,30 @@ import com.colt.nicity.core.lang.UArray;
 import com.colt.nicity.core.lang.URandom;
 import java.util.Arrays;
 
+/**
+ *
+ * @author Administrator
+ * @param <V>
+ */
 public class CSkipListSet<V> {
     
     private AValueComparator valueComparator;
     private SkipListValue head;
      SkipListValue tail;
     final private CSet<SkipListValue<V>> set = new CSet<SkipListValue<V>>();
+    /**
+     *
+     * @param _valueComparator
+     */
     public CSkipListSet(AValueComparator _valueComparator) {
         valueComparator = _valueComparator;
         head = new SkipListValue(this);
     }
 
+    /**
+     *
+     * @return
+     */
     synchronized public long getCount() {
         return set.getCount();
     }
@@ -235,6 +248,11 @@ public class CSkipListSet<V> {
         }
 
     }
+    /**
+     *
+     * @param _
+     * @param _get
+     */
     public void getAllInOrder(IOut _, ICallback _get) {
         SkipListValue at = head.colum[0];
         while (at != null) {
@@ -246,10 +264,18 @@ public class CSkipListSet<V> {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public SkipListValue<V>[] getAll() {
         return set.getAll(SkipListValue.class);
     }
 
+    /**
+     *
+     * @param <V>
+     */
     public class SkipListValue<V> extends ASetObject {
         Object value;
         SkipListValue[] colum;
@@ -270,9 +296,17 @@ public class CSkipListSet<V> {
                 colum = new SkipListValue[newH];
             }
         }
+        /**
+         *
+         * @return
+         */
         public V getValue() {
             return (V)value;
         }
+        /**
+         *
+         * @return
+         */
         @Override
         public Object hashObject() {
             return value;
@@ -281,6 +315,9 @@ public class CSkipListSet<V> {
 
 
     // debugging aids
+    /**
+     *
+     */
     public void toSysOut() {
         SkipListValue at = head;
         while (at != null) {

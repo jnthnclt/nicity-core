@@ -31,7 +31,13 @@ import java.lang.reflect.Array;
 public class KeyedDouble<K> extends ASetObject<K> implements
     Comparable<KeyedDouble<K>> {
 
+    /**
+     *
+     */
     protected K key;
+    /**
+     *
+     */
     protected double value;
 
     /**
@@ -48,10 +54,19 @@ public class KeyedDouble<K> extends ASetObject<K> implements
         key = _key;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public K hashObject() {
         return key;
     }
 
+    /**
+     *
+     * @return
+     */
     public K key() {
         return key;
     }
@@ -64,6 +79,7 @@ public class KeyedDouble<K> extends ASetObject<K> implements
         return value;
     }
 
+    @Override
     public int compareTo(KeyedDouble<K> o) {
         return -((Comparable<K>) key()).compareTo(o.key());//!! hacky
 
@@ -242,6 +258,7 @@ public class KeyedDouble<K> extends ASetObject<K> implements
 
     /**
      * 
+     * @param <K>
      * @param _set
      * @return
      */

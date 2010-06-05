@@ -30,9 +30,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ *
+ * @author Administrator
+ */
 public class UFile {
 
     // Splits a PATH (with ; as separators) and fixes slashes for platform
+    /**
+     *
+     * @param _classPath
+     * @return
+     */
     public static String[] toPaths(String _classPath) {
         if (_classPath == null) return new String[0];
         String[] paths = UString.toStringArray(_classPath,";");
@@ -43,6 +52,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _path
+     * @return
+     */
     public static String fixSlashes(String _path) {
         if (_path == null) return "";
         final StringBuffer result = new StringBuffer(_path);
@@ -61,10 +75,20 @@ public class UFile {
    
 
     
+    /**
+     *
+     * @return
+     */
     public static File[] fsRoots() {
         return File.listRoots();
     }
     
+    /**
+     *
+     * @param _
+     * @param _name
+     * @return
+     */
     public static File find(IOut _, String _name) {
         _name = _name.toLowerCase();
         File found = null;
@@ -104,6 +128,14 @@ public class UFile {
     }
 
     
+    /**
+     *
+     * @param _folder
+     * @param _name
+     * @return
+     * @throws IOException
+     */
+    @SuppressWarnings("empty-statement")
     public static File nextAvailableFile(File _folder, String _name) throws IOException {
         File file = new File(_folder, _name);
         for (int i = 1; file.exists(); file = new File(_folder, i + _name), i++);
@@ -112,6 +144,14 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _folder
+     * @param _name
+     * @return
+     * @throws IOException
+     */
+    @SuppressWarnings("empty-statement")
     public static File nextAvailableFolder(File _folder, String _name) throws IOException {
         File folder = new File(_folder, _name);
         for (int i = 1; folder.isDirectory(); folder = new File(_folder, i + _name), i++);
@@ -121,6 +161,13 @@ public class UFile {
     }
 
     
+    /**
+     *
+     * @param _from
+     * @param _to
+     * @return
+     * @throws Exception
+     */
     public static boolean copyTo(File _from, File _to) throws Exception {
         boolean fromIsDir = _from.isDirectory();
         boolean toIsDir = _to.isDirectory();
@@ -166,6 +213,13 @@ public class UFile {
         return true;
     }
 
+    /**
+     *
+     * @param _from
+     * @param _to
+     * @return
+     * @throws Exception
+     */
     public static boolean replaceTo(File _from, File _to) throws Exception {
         boolean fromIsDir = _from.isDirectory();
         boolean toIsDir = _to.isDirectory();
@@ -212,6 +266,13 @@ public class UFile {
     
 
     
+    /**
+     *
+     * @param _
+     * @param _from
+     * @param _to
+     * @return
+     */
     public static int equal(IOut _, File _from, File _to) {
         boolean fromIsDir = _from.isDirectory();
         boolean toIsDir = _to.isDirectory();
@@ -254,6 +315,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _file
+     * @return
+     */
     public static Exception emptyDirectory(File _file) {
         try {
             if (!_file.isDirectory()) {
@@ -272,6 +338,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _file
+     * @return
+     */
     public static Exception ensureDirectory(File _file) {
         if (_file == null) {
             return null;
@@ -291,6 +362,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _file
+     * @return
+     */
     public static boolean directoryExistsFor(File _file) {
         if (_file == null) {
             return false;
@@ -308,6 +384,13 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _
+     * @param _oldDir
+     * @param _newDir
+     * @return
+     */
     public static Exception extract(IOut _,File _oldDir, File _newDir) {
         // flattens, renames, moves; why? was needed to parse slow truth files.
         // get all files from all _oldDir directories, rename "1001" ... "nnnn"
@@ -327,6 +410,12 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _from
+     * @param _to
+     * @return
+     */
     public static Exception moveTo(File _from, File _to) {
         try {
             _from.renameTo(_to);
@@ -337,6 +426,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _remove
+     * @return
+     */
     public static Exception remove(File _remove) {
         try {
             if (_remove.isDirectory()) {
@@ -355,6 +449,12 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _
+     * @param _file
+     * @param _callback
+     */
     public static void allFiles(IOut _, File _file, ICallback _callback) {
         if (_file == null) {
             return;
@@ -389,6 +489,12 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _
+     * @param _file
+     * @return
+     */
     public static File[] allFiles(IOut _, File _file) {
         if (_file == null) {
             return null;
@@ -425,6 +531,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _files
+     * @return
+     */
     public static String[] toStrings(File[] _files) {
         CArray strings = new CArray(String.class);
         for (int i = 0; i < _files.length; i++) {
@@ -437,16 +548,31 @@ public class UFile {
     }
 
     
+    /**
+     *
+     * @return
+     */
     public static File home() {
         return new File(System.getProperty("user.dir"));
     }
 
     
+    /**
+     *
+     * @param _file
+     * @return
+     */
     public static String getPathRelativeToHome(File _file) {
         return getRelativePath(new File(System.getProperty("user.dir")), _file);
     }
     
 
+    /**
+     *
+     * @param _root
+     * @param _file
+     * @return
+     */
     public static String getRelativePath(File _root, File _file) {
         String home = _root.getAbsolutePath();
         String path = _file.getAbsolutePath();
@@ -459,6 +585,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _name
+     * @return
+     */
     public static String getName(String _name) {
         int p = -1;
         if ((p = _name.lastIndexOf('.')) < 0) {
@@ -468,6 +599,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _name
+     * @return
+     */
     public static String getExtension(String _name) {
         int p = -1;
         if ((p = _name.lastIndexOf('.')) < 0) {
@@ -477,6 +613,12 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _name
+     * @param _ext
+     * @return
+     */
     public static String replaceExtension(String _name, String _ext) {
         int p = -1;
         if ((p = _name.lastIndexOf('.')) < 0) {
@@ -486,6 +628,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _name
+     * @return
+     */
     public static String removeExtension(String _name) {
         int p = -1;
         if ((p = _name.lastIndexOf('.')) < 0) {
@@ -495,6 +642,11 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _name
+     * @return
+     */
     public static String removePath(String _name) {
         int p = -1;
         if ((p = _name.lastIndexOf(File.separatorChar)) < 0) {
@@ -504,11 +656,22 @@ public class UFile {
     }
     
 
+    /**
+     *
+     * @param _name
+     * @return
+     */
     public static String getPath(String _name) {
         return getPath(_name, File.separatorChar);
     }
     
 
+    /**
+     *
+     * @param _name
+     * @param _char
+     * @return
+     */
     public static String getPath(String _name, char _char) {
         int p = -1;
         if ((p = _name.lastIndexOf(_char)) < 0) {

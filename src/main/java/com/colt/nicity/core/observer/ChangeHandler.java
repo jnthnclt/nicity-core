@@ -21,11 +21,28 @@ package com.colt.nicity.core.observer;
 
 import com.colt.nicity.core.lang.ASetObject;
 
+/**
+ *
+ * @author Administrator
+ */
 abstract public class ChangeHandler extends ASetObject {
     private Object mode;
+    /**
+     *
+     * @param _mode
+     */
     public ChangeHandler(Object _mode) {
         mode = _mode;
     }
+    /**
+     *
+     * @return
+     */
+    @Override
     final public Object hashObject() { return mode;}
+    /**
+     *
+     * @param _change
+     */
     abstract public void change(Change _change);
 }

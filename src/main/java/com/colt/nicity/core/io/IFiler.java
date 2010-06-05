@@ -27,8 +27,17 @@ import java.io.IOException;
  */
 public interface IFiler extends IReadable, IWriteable {
 
+    /**
+     *
+     */
     final public static String cRead = "r";
+    /**
+     *
+     */
     final public static String cWrite = "rw";
+    /**
+     *
+     */
     final public static String cReadWrite = "rw";
 
     /**

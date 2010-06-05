@@ -32,6 +32,9 @@ public class KeyedCSet<K, SV> extends ASetObject<K> implements
     Comparable<KeyedCSet<K, SV>> {
 
     private K key;
+    /**
+     *
+     */
     public CSet<SV> set = new CSet<SV>();
 
     /**
@@ -62,6 +65,7 @@ public class KeyedCSet<K, SV> extends ASetObject<K> implements
      * 
      * @return
      */
+    @Override
     public K hashObject() {
         return key;
     }
@@ -82,6 +86,7 @@ public class KeyedCSet<K, SV> extends ASetObject<K> implements
         return set;
     }
     
+    @Override
     public int compareTo(KeyedCSet<K, SV> other) {
         double thisVal = this.set.getCount();
         double otherVal = other.set.getCount();

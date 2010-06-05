@@ -20,13 +20,32 @@
 
 package com.colt.nicity.core.value;
 
+/**
+ *
+ * @author Administrator
+ * @param <K>
+ * @param <V>
+ */
 public class KV<K,V> extends Value<V> {
     private K key;
+    /**
+     *
+     * @param _key
+     * @param _value
+     */
     public KV(K _key,V _value) {
         super(_value);
         key = _key;
     }
+    /**
+     *
+     * @return
+     */
     public K key() { return key; }
+    /**
+     *
+     * @return
+     */
     @Override
     public Object hashObject() {
         return key;

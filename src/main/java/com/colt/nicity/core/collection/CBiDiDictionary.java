@@ -32,12 +32,23 @@ import com.colt.nicity.core.lang.OrderedKeys;
 */
 public class CBiDiDictionary {
     private CSet<BiDi> bidis = new CSet<BiDi>();
+    /**
+     *
+     */
     public CBiDiDictionary() {
         
     }
+    /**
+     *
+     */
     public void removeAll() {
         bidis.removeAll();
     }
+    /**
+     *
+     * @param a
+     * @param b
+     */
     public void add(final Object a,final Object b) {
         bidis.add(new BiDi(b) {
             @Override
@@ -52,6 +63,11 @@ public class CBiDiDictionary {
             }
         });
     }
+    /**
+     *
+     * @param a
+     * @param b
+     */
     public void remove(final Object a,final Object b) {
         bidis.remove(new BiDi(b) {
             @Override
@@ -66,11 +82,21 @@ public class CBiDiDictionary {
             }
         });
     }
+    /**
+     *
+     * @param a
+     * @return
+     */
     public Object forwardLookup(Object a) {
         BiDi bidi = bidis.get(new OrderedKeys<Object>(a,true));
         if (bidi == null) return null;
         return bidi.get();
     }
+    /**
+     *
+     * @param b
+     * @return
+     */
     public Object reverseLookup(Object b) {
         BiDi bidi = bidis.get(new OrderedKeys<Object>(b,false));
         if (bidi == null) return null;

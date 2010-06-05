@@ -19,7 +19,6 @@
  */
 package com.colt.nicity.core.value;
 
-import com.colt.nicity.core.value.IValue;
 import com.colt.nicity.core.collection.CArray;
 import com.colt.nicity.core.collection.CSet;
 import com.colt.nicity.core.collection.keyed.KeyedValue;
@@ -33,17 +32,36 @@ import com.colt.nicity.core.observer.AObservable;
 import com.colt.nicity.core.time.UTime;
 import java.util.HashSet;
 
+/**
+ *
+ * @author Administrator
+ * @param <V>
+ */
 public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
 
+    /**
+     *
+     */
     protected V value;
 
+    /**
+     *
+     */
     public Value() {
     }
 
+    /**
+     *
+     * @param _value
+     */
     public Value(V _value) {
         value = _value;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Object hashObject() {
         if (value instanceof ASetObject) {
@@ -52,10 +70,19 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         return value;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isNull() {
         return value == null;
     }
 
+    /**
+     *
+     * @param _f
+     * @throws Exception
+     */
     final public void saveToFiler(IFiler _f) throws Exception {
         saveValueToFiler(value, _f);
     }
@@ -214,6 +241,11 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         }
     }
 
+    /**
+     *
+     * @param _f
+     * @throws Exception
+     */
     final public void loadFromFiler(IFiler _f) throws Exception {
         value = (V)loadValueFromFiler(_f);
     }
@@ -293,42 +325,84 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     final public boolean booleanValue() {
         return ((Boolean) getValue()).booleanValue();
     }
 
+    /**
+     *
+     * @return
+     */
     final public byte byteValue() {
         return ((Byte) getValue()).byteValue();
     }
 
+    /**
+     *
+     * @return
+     */
     final public char charValue() {
         return ((Character) getValue()).charValue();
     }
 
+    /**
+     *
+     * @return
+     */
     final public int intValue() {
         return ((Integer) getValue()).intValue();
     }
 
+    /**
+     *
+     * @return
+     */
     final public float floatValue() {
         return ((Float) getValue()).floatValue();
     }
 
+    /**
+     *
+     * @return
+     */
     final public long longValue() {
         return ((Long) getValue()).longValue();
     }
 
+    /**
+     *
+     * @return
+     */
     final public double doubleValue() {
         return ((Double) getValue()).doubleValue();
     }
 
+    /**
+     *
+     * @return
+     */
     final public String stringValue() {
         return (String) getValue();
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public V getValue() {
         return value();
     }
 
+    /**
+     *
+     * @param _value
+     */
+    @Override
     public void setValue(V _value) {
         value(_value);
         if (isBeingObserved()) {
@@ -336,6 +410,10 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         }
     }
 
+    /**
+     *
+     * @param _amount
+     */
     public void inc(Object _amount) {
         if (_amount instanceof Byte) {
             setValue((V)new Byte((byte)(byteValue() + (Byte) _amount)));
@@ -357,39 +435,77 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         }
     }
 
+    /**
+     *
+     * @param _value
+     */
     final public void value(byte _value) {
         value(new Byte(_value));
     }
 
+    /**
+     *
+     * @param _value
+     */
     final public void value(char _value) {
         value(new Character(_value));
     }
 
+    /**
+     *
+     * @param _value
+     */
     final public void value(int _value) {
         value(new Integer(_value));
     }
 
+    /**
+     *
+     * @param _value
+     */
     final public void value(float _value) {
         value(new Float(_value));
     }
 
+    /**
+     *
+     * @param _value
+     */
     final public void value(long _value) {
         value(new Long(_value));
     }
 
+    /**
+     *
+     * @param _value
+     */
     final public void value(double _value) {
         value(new Double(_value));
     }
 
+    /**
+     *
+     * @param _value
+     */
     final public void value(V _value) {
         value = _value;
     }
 
+    /**
+     *
+     * @return
+     */
     final public V value() {
         return value;
     }
 
     // ICallback
+    /**
+     *
+     * @param _value
+     * @return
+     */
+    @Override
     public V callback(V _value) {
         _value = value;
         value = null;
@@ -401,6 +517,10 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         return (value == null || value == this) ? "" : value.toString();
     }
 
+    /**
+     *
+     * @return
+     */
     public Object getTimeToString() {
         return new Object() {
 
@@ -411,6 +531,10 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         };
     }
 
+    /**
+     *
+     * @return
+     */
     public Object getDateToString() {
         return new Object() {
 
@@ -421,6 +545,10 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         };
     }
 
+    /**
+     *
+     * @return
+     */
     public Object getCountToString() {
         return new Object() {
 

@@ -31,7 +31,13 @@ import java.lang.reflect.Array;
 public class KeyedLong<K> extends ASetObject<K> implements
     Comparable<KeyedLong<K>> {
 
+    /**
+     *
+     */
     protected K key;
+    /**
+     *
+     */
     protected long value;
 
     /**
@@ -52,6 +58,7 @@ public class KeyedLong<K> extends ASetObject<K> implements
      *
      * @return
      */
+    @Override
     public K hashObject() {
         return key;
     }
@@ -72,11 +79,19 @@ public class KeyedLong<K> extends ASetObject<K> implements
         return value;
     }
 
+    @Override
     public int compareTo(KeyedLong<K> o) {
         return -((Comparable<K>) key()).compareTo(o.key());//!! hacky
 
     }
 
+    /**
+     *
+     * @param <K>
+     * @param _set
+     * @param _key
+     * @param _amount
+     */
     public static <K> void add(CSet<KeyedLong<K>> _set, K _key, long _amount) {
         KeyedLong<K> kl = _get(_set, _key);
         kl.value += _amount;
@@ -236,6 +251,11 @@ public class KeyedLong<K> extends ASetObject<K> implements
         }
     }
 
+    /**
+     *
+     * @param _set
+     * @return
+     */
     public static long[] toValues(CSet _set) {
         synchronized (_set) {
             Object[] all = _set.getAll(Object.class);

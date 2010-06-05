@@ -19,41 +19,85 @@
  */
 package com.colt.nicity.core.memory.struct;
 
+/**
+ *
+ * @author Administrator
+ */
 public class XY_I {
 
+    /**
+     *
+     */
     public int x;
+    /**
+     *
+     */
     public int y;
 
+    /**
+     *
+     */
     public XY_I() {
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public XY_I(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     *
+     * @param x
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     *
+     * @param y
+     */
     public void setY(int y) {
         this.y = y;
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     */
     public void add(int _x, int _y) {
         x += _x;
         y += _y;
     }
     // Takes the incoming point and sets it's "x" and "y" if this point's "x" and "y" are larger
 
+    /**
+     *
+     * @param point
+     * @return
+     */
     public XY_I max(XY_I point) {
         if (point.x < x) {
             point.x = x;
@@ -65,6 +109,11 @@ public class XY_I {
     }
     // Takes the incoming point and sets it's "x" and "y" if this point's "x" and "y" are smaller
 
+    /**
+     *
+     * @param point
+     * @return
+     */
     public XY_I min(XY_I point) {
         if (point.x > x) {
             point.x = x;
@@ -75,10 +124,20 @@ public class XY_I {
         return point;
     }
 
+    /**
+     *
+     * @param _point
+     * @return
+     */
     public XY_I getDelta(XY_I _point) {
         return new XY_I(x - _point.x, y - _point.y);
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public void translate(int x, int y) {
         this.x += x;
         this.y += y;
