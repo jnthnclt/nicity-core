@@ -220,6 +220,26 @@ public class KeyedCSet<K, SV> extends ASetObject<K> implements
      * @param <K>
      * @param <SV>
      * @param _set
+     * @param _value
+     * @param _key
+     * @return
+     */
+    public static <K, SV> Object get(CSet<KeyedCSet<K, SV>> _set,
+        SV _value, K _key) {
+        synchronized (_set) {
+            KeyedCSet<K, SV> set = _set.get(_key);
+            if (set == null) {
+                return null;
+            }
+            return set.set.get(_value);
+        }
+    }
+
+    /**
+     *
+     * @param <K>
+     * @param <SV>
+     * @param _set
      * @param _key
      * @return
      */
