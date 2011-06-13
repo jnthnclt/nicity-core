@@ -30,7 +30,7 @@ import colt.nicity.core.lang.OrderedKeys;
 *
 * @author Jonathan Colt
 */
-public class CBiDiDictionary {
+public class CBiDiDictionary<A,B> {
     private CSet<BiDi> bidis = new CSet<BiDi>();
     /**
      *
@@ -49,7 +49,7 @@ public class CBiDiDictionary {
      * @param a
      * @param b
      */
-    public void add(final Object a,final Object b) {
+    public void add(final A a,final B b) {
         bidis.add(new BiDi(b) {
             @Override
             public Object hashObject() {
@@ -68,7 +68,7 @@ public class CBiDiDictionary {
      * @param a
      * @param b
      */
-    public void remove(final Object a,final Object b) {
+    public void remove(final A a,final B b) {
         bidis.remove(new BiDi(b) {
             @Override
             public Object hashObject() {
@@ -87,23 +87,23 @@ public class CBiDiDictionary {
      * @param a
      * @return
      */
-    public Object forwardLookup(Object a) {
+    public B forwardLookup(A a) {
         BiDi bidi = bidis.get(new OrderedKeys<Object>(a,true));
         if (bidi == null) return null;
-        return bidi.get();
+        return (B)bidi.get();
     }
     /**
      *
      * @param b
      * @return
      */
-    public Object reverseLookup(Object b) {
+    public A reverseLookup(B b) {
         BiDi bidi = bidis.get(new OrderedKeys<Object>(b,false));
         if (bidi == null) return null;
-        return bidi.get();
+        return (A)bidi.get();
     }
 
-    abstract class BiDi extends ASetObject<Object> {
+    static abstract class BiDi extends ASetObject<Object> {
         Object _v;
         BiDi(Object v) {
             _v = v;
