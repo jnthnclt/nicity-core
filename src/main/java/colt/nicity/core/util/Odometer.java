@@ -2,6 +2,7 @@ package colt.nicity.core.util;
 
 import colt.nicity.core.lang.UArray;
 import colt.nicity.core.value.Value;
+import java.util.Arrays;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Odometer {
      * @param _values
      */
     public Odometer(Object[] _values) {
-        values = _values;
+        values = Arrays.copyOf(_values, _values.length);
     }
 
     /**
@@ -77,7 +78,7 @@ public class Odometer {
             index = 0;
             if (next == null) {
                 if (done != null) {
-                    done.setValue(new Long(System.currentTimeMillis()));
+                    done.setValue(Long.valueOf(System.currentTimeMillis()));
                 }
                 return false;
             }

@@ -22,6 +22,7 @@ package colt.nicity.core.backcall;
 import colt.nicity.core.collection.IBackcall;
 import colt.nicity.core.lang.ICallback;
 import colt.nicity.core.lang.IOut;
+import java.util.Arrays;
 
 /**
  * 
@@ -30,23 +31,15 @@ import colt.nicity.core.lang.IOut;
  */
 public class ArrayBackcall<V> implements IBackcall<V> {
 
-    private V[] array;
+    final private V[] array;
 
     /**
      *
      * @param _array
      */
     public ArrayBackcall(V[] _array) {
-        setArray(_array);
-    }
-
-    /**
-     *
-     * @param _array
-     */
-    public void setArray(V[] _array) {
         if (_array == null) throw new RuntimeException("null not supported");
-        array = _array;
+        array = Arrays.copyOf(_array, _array.length);
     }
 
     /**
@@ -56,10 +49,9 @@ public class ArrayBackcall<V> implements IBackcall<V> {
      */
     @Override
     public void backcall(IOut _, ICallback<V, V> _callback) {
-        V[] _array = array;
-        for (int i = 0; i < _array.length; i++) {
-            _.out(i, _array.length);
-            _callback.callback(_array[i]);
+        for (int i = 0; i < array.length; i++) {
+            _.out(i, array.length);
+            _callback.callback(array[i]);
         }
 
     }

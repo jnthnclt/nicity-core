@@ -27,7 +27,7 @@ package colt.nicity.core.value;
  * @param <V>
  */
 public class KV<K,V> extends Value<V> {
-    private K key;
+    final private K key;
     /**
      *
      * @param _key

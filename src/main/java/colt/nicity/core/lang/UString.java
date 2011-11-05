@@ -1440,6 +1440,11 @@ public class UString {
         }
         return true;
     }
+    
+    public static String upperCaseFirstLetter(String s) {
+        return s.substring(0,1).toUpperCase()+s.substring(1);
+    }
+    
     // any run of alphanumeric becomes one token; each special char becomes one token; white space delimited
     /**
      *

@@ -29,12 +29,12 @@ import colt.nicity.core.process.IAsyncResponse;
  *
  * @author Administrator
  */
-public class KVO extends KV {
+public class KVO<K> extends KV<K,CSet> {
     /**
      *
      * @param _key
      */
-    public KVO(Object _key) {
+    public KVO(K _key) {
         super(_key,new CSet());
     }
     /**
@@ -43,7 +43,7 @@ public class KVO extends KV {
      * @param _kvs
      */
     public void add(IOut _,KV... _kvs) {
-        ((CSet)value).add(_kvs);
+        value.add(_kvs);
     }
     /**
      *
@@ -51,7 +51,7 @@ public class KVO extends KV {
      * @param _kvs
      */
     public void remove(IOut _,KV... _kvs) {
-        ((CSet)value).remove(_kvs);
+        value.remove(_kvs);
     }
     // _wait in millis.. 0 == wait forever
     /**
@@ -63,7 +63,7 @@ public class KVO extends KV {
      */
     public void take(IOut _,KV _kv,long _wait,IAsyncResponse<KV> _took) {
         synchronized(value) {
-            KV take = (KV)((CSet)value).remove(_kv);
+            KV take = (KV)value.remove(_kv);
             if (take == null) {
 
             }
@@ -87,16 +87,15 @@ public class KVO extends KV {
         
     }
 
-    class Took extends KV {
+    static class Took extends KV {
         Took(Object _key,KV _took) {
             super(_key,_took);
         }
     }
 
-    class WaitToTake extends KV {
+    static class WaitToTake extends KV {
         WaitToTake(Object _key,IAsyncResponse _took) {
             super(_key,_took);
         }
-        
     }
 }

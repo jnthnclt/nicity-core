@@ -87,7 +87,7 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         saveValueToFiler(value, _f);
     }
 
-    static final void saveValueToFiler(Object _value, IFiler _f) throws Exception {
+    static void saveValueToFiler(Object _value, IFiler _f) throws Exception {
         if (_value == null) {
             UIO.writeByte(_f, 0, "type");
             return;
@@ -250,7 +250,7 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
         value = (V)loadValueFromFiler(_f);
     }
 
-    static final Object loadValueFromFiler(IFiler _f) throws Exception {
+    static Object loadValueFromFiler(IFiler _f) throws Exception {
         byte t = UIO.readByte(_f, "type");
         if (t == 0) {
             return null;
@@ -416,22 +416,22 @@ public class Value<V> extends AObservable implements IValue<V>, ICallback<V,V> {
      */
     public void inc(Object _amount) {
         if (_amount instanceof Byte) {
-            setValue((V)new Byte((byte)(byteValue() + (Byte) _amount)));
+            setValue((V)Byte.valueOf((byte)(byteValue() + (Byte) _amount)));
         }
         if (_amount instanceof Character) {
-            setValue((V)new Character((char)(charValue() + (Character) _amount)));
+            setValue((V)Character.valueOf((char)(charValue() + (Character) _amount)));
         }
         if (_amount instanceof Integer) {
-            setValue((V)new Integer(intValue() + (Integer) _amount));
+            setValue((V)Integer.valueOf(intValue() + (Integer) _amount));
         }
         if (_amount instanceof Float) {
-            setValue((V)new Float(floatValue() + (Float) _amount));
+            setValue((V)Float.valueOf(floatValue() + (Float) _amount));
         }
         if (_amount instanceof Long) {
-            setValue((V)new Long(longValue() + (Long) _amount));
+            setValue((V)Long.valueOf(longValue() + (Long) _amount));
         }
         if (_amount instanceof Double) {
-            setValue((V)new Double(doubleValue() + (Double) _amount));
+            setValue((V)Double.valueOf(doubleValue() + (Double) _amount));
         }
     }
 

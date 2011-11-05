@@ -27,12 +27,12 @@ import colt.nicity.core.process.IAsyncResponse;
  *
  * @author Administrator
  */
-public class KVA extends KV {
+public class KVA<K> extends KV<K,CArray> {
     /**
      *
      * @param _key
      */
-    public KVA(Object _key) {
+    public KVA(K _key) {
         super(_key,new CArray(KV.class));
     }
     /**
