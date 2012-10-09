@@ -5,9 +5,9 @@
     <groupId>com.colt</groupId>
     <artifactId>nicity-core</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2</version>
     <name>nicity-core</name>
-
+   
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>

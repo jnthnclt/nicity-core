@@ -20,9 +20,9 @@
 package colt.nicity.core.lang;
 
 import colt.nicity.core.collection.CArray;
+import colt.nicity.core.memory.struct.Poly_I;
 import colt.nicity.core.memory.struct.XYWH_I;
 import colt.nicity.core.memory.struct.XY_I;
-import java.awt.Polygon;
 
 /**
  *
@@ -2192,7 +2192,7 @@ public class UMath {
      * @param _b
      * @return
      */
-    public static Polygon removeAFromB(Polygon _a, Polygon _b) {
+    public static Poly_I removeAFromB(Poly_I _a, Poly_I _b) {
         if (_b == null) {
             return null;
         }
@@ -2210,7 +2210,7 @@ public class UMath {
         ys = UArray.push(ys, _a.ypoints, _a.npoints);
         ys = UArray.push(ys, _b.ypoints, _b.npoints);
 
-        return new Polygon(xs, ys, xs.length);
+        return new Poly_I(xs, ys, xs.length);
     }
 
     /**
@@ -2218,8 +2218,8 @@ public class UMath {
      * @param _poly
      * @return
      */
-    public static Polygon reverse(Polygon _poly) {
-        Polygon poly = new Polygon();
+    public static Poly_I reverse(Poly_I _poly) {
+        Poly_I poly = new Poly_I();
         for (int i = _poly.npoints - 1; i > -1; i--) {
             poly.addPoint(_poly.xpoints[i], _poly.ypoints[i]);
         }
@@ -2232,14 +2232,14 @@ public class UMath {
      * @param _closed
      * @return
      */
-    public static Polygon toPoly(CArray _points, boolean _closed) {
+    public static Poly_I toPoly(CArray _points, boolean _closed) {
         if (_points == null) {
             return null;
         }
         if (_points.getCount() == 0) {
             return null;
         }
-        Polygon poly = new Polygon();
+        Poly_I poly = new Poly_I();
         for (int i = 0; i < _points.getCount(); i++) {
             XY_I p = (XY_I) _points.getAt(i);
             poly.addPoint(p.x, p.y);
