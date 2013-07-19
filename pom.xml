@@ -36,6 +36,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <developers>
+        <developer>
+            <name>jonathan.colt</name>
+        </developer>
+    </developers>
 
     <build>
         <plugins>
