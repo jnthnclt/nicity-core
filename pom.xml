@@ -19,10 +19,10 @@
         <connection>https://github.com/jnthnclt/nicity-core.git</connection>
     </scm>
 
-    <groupId>com.colt</groupId>
+    <groupId>com.jonathancolt</groupId>
     <artifactId>nicity-core</artifactId>
     <packaging>jar</packaging>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.4</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
