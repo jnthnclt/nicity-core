@@ -19,7 +19,6 @@
  */
 package colt.nicity.core.lang;
 
-
 import colt.nicity.core.collection.CArray;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -43,14 +42,15 @@ public class UFile {
      * @return
      */
     public static String[] toPaths(String _classPath) {
-        if (_classPath == null) return new String[0];
-        String[] paths = UString.toStringArray(_classPath,";");
-        for(int i=0;i<paths.length;i++) {
+        if (_classPath == null) {
+            return new String[0];
+        }
+        String[] paths = UString.toStringArray(_classPath, ";");
+        for (int i = 0; i < paths.length; i++) {
             paths[i] = fixSlashes(paths[i]);
         }
         return paths;
     }
-    
 
     /**
      *
@@ -58,9 +58,13 @@ public class UFile {
      * @return
      */
     public static String fixSlashes(String _path) {
-        if (_path == null) return "";
+        if (_path == null) {
+            return "";
+        }
         final StringBuffer result = new StringBuffer(_path);
-        for (int i = 0; i < result.length(); i++) fixSlash(result, i);
+        for (int i = 0; i < result.length(); i++) {
+            fixSlash(result, i);
+        }
         return result.toString();
     }
 
@@ -72,9 +76,6 @@ public class UFile {
         return false;
     }
 
-   
-
-    
     /**
      *
      * @return
@@ -82,7 +83,7 @@ public class UFile {
     public static File[] fsRoots() {
         return File.listRoots();
     }
-    
+
     /**
      *
      * @param _
@@ -105,7 +106,6 @@ public class UFile {
         }
         return found;
     }
-    
 
     private static File _find(IOut _, File _directory, String _name) {
         File[] array = _directory.listFiles();
@@ -127,7 +127,6 @@ public class UFile {
         return null;
     }
 
-    
     /**
      *
      * @param _folder
@@ -142,7 +141,6 @@ public class UFile {
         file.createNewFile();
         return file;
     }
-    
 
     /**
      *
@@ -160,7 +158,6 @@ public class UFile {
 
     }
 
-    
     /**
      *
      * @param _from
@@ -171,7 +168,7 @@ public class UFile {
     public static boolean copyTo(File _from, File _to) throws Exception {
         boolean fromIsDir = _from.isDirectory();
         boolean toIsDir = _to.isDirectory();
-        
+
         if (fromIsDir != toIsDir) {
             throw new Exception(_from + " isn't the same type as " + _to);
         }
@@ -194,20 +191,19 @@ public class UFile {
             File parent = _to.getParentFile();
             if (parent != null) {
                 parent.mkdirs();
-            //_to.createNewFile();
+                //_to.createNewFile();
             }
-            InputStream from = new FileInputStream(_from);
-            OutputStream to = new FileOutputStream(_to);
-            BufferedInputStream f = new BufferedInputStream(from, 16384);
-            BufferedOutputStream t = new BufferedOutputStream(to, 16384);
-
-            int i = -1;
-            while ((i = f.read()) != -1) {
-                t.write(i);
+            OutputStream to;
+            try (InputStream from = new FileInputStream(_from)) {
+                to = new FileOutputStream(_to);
+                BufferedInputStream f = new BufferedInputStream(from, 16384);
+                BufferedOutputStream t = new BufferedOutputStream(to, 16384);
+                int i = -1;
+                while ((i = f.read()) != -1) {
+                    t.write(i);
+                }
+                t.flush();
             }
-            t.flush(); //dg
-
-            from.close();
             to.close();
         }
         return true;
@@ -223,7 +219,7 @@ public class UFile {
     public static boolean replaceTo(File _from, File _to) throws Exception {
         boolean fromIsDir = _from.isDirectory();
         boolean toIsDir = _to.isDirectory();
-        
+
         if (fromIsDir != toIsDir) {
             throw new Exception(_from + " isn't the same type as " + _to);
         }
@@ -243,29 +239,24 @@ public class UFile {
             File parent = _to.getParentFile();
             if (parent != null) {
                 parent.mkdirs();
-            //_to.createNewFile();
+                //_to.createNewFile();
             }
-            InputStream from = new FileInputStream(_from);
-            OutputStream to = new FileOutputStream(_to);
-            BufferedInputStream f = new BufferedInputStream(from, 16384);
-            BufferedOutputStream t = new BufferedOutputStream(to, 16384);
-
-            int i = -1;
-            while ((i = f.read()) != -1) {
-                t.write(i);
+            OutputStream to;
+            try (InputStream from = new FileInputStream(_from)) {
+                to = new FileOutputStream(_to);
+                BufferedInputStream f = new BufferedInputStream(from, 16384);
+                BufferedOutputStream t = new BufferedOutputStream(to, 16384);
+                int i = -1;
+                while ((i = f.read()) != -1) {
+                    t.write(i);
+                }
+                t.flush();
             }
-            t.flush(); //dg
-
-            from.close();
             to.close();
         }
         return true;
     }
 
-    
-    
-
-    
     /**
      *
      * @param _
@@ -287,24 +278,28 @@ public class UFile {
         }
         _.out(" Testing " + _from.getName() + " against " + _to.getName());
         try {
-            InputStream from = new FileInputStream(_from);
-            InputStream to = new FileInputStream(_to);
-            BufferedInputStream f = new BufferedInputStream(from, 16384);
-            BufferedInputStream t = new BufferedInputStream(to, 16384);
-            long l = _from.length();
-            int run = 0;
-            int fr = -1;
-            int tr = -1;
-            while (((fr = f.read()) != -1) && ((tr = t.read()) != -1)) {
-                if (fr != tr) {
-                    return run;
-                }
-                run++;
-                if (run % 1024 == 0) {
-                    _.out(run, (int) l);
+            InputStream to;
+            int run;
+            int fr;
+            int tr;
+            try (InputStream from = new FileInputStream(_from)) {
+                to = new FileInputStream(_to);
+                BufferedInputStream f = new BufferedInputStream(from, 16384);
+                BufferedInputStream t = new BufferedInputStream(to, 16384);
+                long l = _from.length();
+                run = 0;
+                fr = -1;
+                tr = -1;
+                while (((fr = f.read()) != -1) && ((tr = t.read()) != -1)) {
+                    if (fr != tr) {
+                        return run;
+                    }
+                    run++;
+                    if (run % 1024 == 0) {
+                        _.out(run, (int) l);
+                    }
                 }
             }
-            from.close();
             to.close();
             return (fr == tr) ? run : 0;
         } catch (Exception x) {
@@ -313,7 +308,6 @@ public class UFile {
             return 0;
         }
     }
-    
 
     /**
      *
@@ -336,7 +330,6 @@ public class UFile {
             return x;
         }
     }
-    
 
     /**
      *
@@ -360,7 +353,6 @@ public class UFile {
             return x;
         }
     }
-    
 
     /**
      *
@@ -382,7 +374,6 @@ public class UFile {
             return false;
         }
     }
-    
 
     /**
      *
@@ -391,7 +382,7 @@ public class UFile {
      * @param _newDir
      * @return
      */
-    public static Exception extract(IOut _,File _oldDir, File _newDir) {
+    public static Exception extract(IOut _, File _oldDir, File _newDir) {
         // flattens, renames, moves; why? was needed to parse slow truth files.
         // get all files from all _oldDir directories, rename "1001" ... "nnnn"
         // and relocate under _newDir, which should exist before extract  
@@ -408,7 +399,6 @@ public class UFile {
             return x;
         }
     }
-    
 
     /**
      *
@@ -424,7 +414,6 @@ public class UFile {
             return x;
         }
     }
-    
 
     /**
      *
@@ -447,46 +436,7 @@ public class UFile {
             return x;
         }
     }
-    
 
-    /**
-     *
-     * @param _
-     * @param _file
-     * @param _callback
-     */
-    public static void allFiles(IOut _, File _file, ICallback _callback) {
-        if (_file == null) {
-            return;
-        }
-        if (_file.isDirectory()) {
-            _allFiles(_, _file, _callback);
-        } else {
-            _callback.callback(_file);
-        }
-    }
-    
-
-    private static void _allFiles(IOut _, File _directory, ICallback _callback) {
-        File[] array = _directory.listFiles();
-        if (array != null) {
-            for (int i = 0; i < array.length; i++) {
-                if (_.canceled()) {
-                    break;
-                }
-                _.out(i, array.length);
-                File _file = array[i];
-                _.out(_file);
-                if (_file.isDirectory()) {
-                    //_.pushProgress();
-                    _allFiles(_, _file, _callback);
-                //_.popProgress();
-                } else {
-                    _callback.callback(_file);
-                }
-            }
-        }
-    }
     
 
     /**
@@ -507,7 +457,6 @@ public class UFile {
             return new File[]{_file};
         }
     }
-    
 
     private static void _allFiles(IOut _, File _directory, CArray _all) {
         File[] array = _directory.listFiles();
@@ -522,14 +471,13 @@ public class UFile {
                 if (_file.isDirectory()) {
                     //_.pushProgress();
                     _allFiles(_, _file, _all);
-                //_.popProgress();
+                    //_.popProgress();
                 } else {
                     _all.insertLast(_file);
                 }
             }
         }
     }
-    
 
     /**
      *
@@ -547,7 +495,6 @@ public class UFile {
         return (String[]) strings.getAll();
     }
 
-    
     /**
      *
      * @return
@@ -556,7 +503,6 @@ public class UFile {
         return new File(System.getProperty("user.dir"));
     }
 
-    
     /**
      *
      * @param _file
@@ -565,7 +511,6 @@ public class UFile {
     public static String getPathRelativeToHome(File _file) {
         return getRelativePath(new File(System.getProperty("user.dir")), _file);
     }
-    
 
     /**
      *
@@ -583,7 +528,6 @@ public class UFile {
 
         return relative;
     }
-    
 
     /**
      *
@@ -597,7 +541,6 @@ public class UFile {
         }
         return (_name.substring(0, p)).toLowerCase();
     }
-    
 
     /**
      *
@@ -611,7 +554,6 @@ public class UFile {
         }
         return (_name.substring(p + 1)).toLowerCase();
     }
-    
 
     /**
      *
@@ -626,7 +568,6 @@ public class UFile {
         }
         return _name.substring(0, p + 1) + _ext;
     }
-    
 
     /**
      *
@@ -640,7 +581,6 @@ public class UFile {
         }
         return _name.substring(0, p);
     }
-    
 
     /**
      *
@@ -654,7 +594,6 @@ public class UFile {
         }
         return (_name.substring(p + 1));
     }
-    
 
     /**
      *
@@ -664,7 +603,6 @@ public class UFile {
     public static String getPath(String _name) {
         return getPath(_name, File.separatorChar);
     }
-    
 
     /**
      *
@@ -680,4 +618,54 @@ public class UFile {
         return (_name.substring(0, p + 1));
     }
     
+    /**
+     *
+     * @param _
+     * @param _file
+     * @param _callback
+     */
+    public static void allFiles(IOut _, File _file, ICallback<File, File> _callback) {
+        _allFilesAndFolders(_, _file, true, false, _callback);
+    }
+
+    public static void allFolders(IOut status, File _directory, ICallback<File, File> _callback) {
+        _allFilesAndFolders(status, _directory, false, true, _callback);
+    }
+
+    public static void allFilesAndFolders(IOut _, File _directory, ICallback<File, File> _callback) {
+        _allFilesAndFolders(_, _directory, true, true, _callback);
+    }
+
+    private static void _allFilesAndFolders(IOut _, File f, boolean _files, boolean _folders, final ICallback<File, File> _callback) {
+        if (f == null) {
+            return;
+        }
+        if (!f.isDirectory()) {
+            if (_files) {
+                _callback.callback(f);
+            }
+        } else {
+            File[] array = f.listFiles();
+            if (array != null) {
+                for (int i = 0; i < array.length; i++) {
+                    if (_.canceled()) {
+                        break;
+                    }
+                    _.out(i, array.length);
+                    File _file = array[i];
+                    _.out(_file);
+                    if (_file.isDirectory()) {
+                        File callback = _callback.callback(_file);
+                        if (callback == _file && _folders) {
+                            _allFilesAndFolders(_, _file, _files, _folders, _callback);
+                        }
+                    } else {
+                        if (_files) {
+                            _callback.callback(_file);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

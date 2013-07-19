@@ -149,7 +149,7 @@ public class UInteger {// holder for static utility methods; do not instantiate
      * @param _max
      * @return
      */
-    public static final int range(int _v, int _min, int _max) {
+    public static int range(int _v, int _min, int _max) {
         if (_v < _min) {
             return _min;
         } else if (_v > _max) {

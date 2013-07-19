@@ -31,7 +31,7 @@ import colt.nicity.core.lang.OrderedKeys;
 * @author Jonathan Colt
 */
 public class CBiDiDictionary<A,B> {
-    private CSet<BiDi> bidis = new CSet<BiDi>();
+    private CSet<BiDi> bidis = new CSet<>();
     /**
      *
      */
@@ -53,13 +53,13 @@ public class CBiDiDictionary<A,B> {
         bidis.add(new BiDi(b) {
             @Override
             public Object hashObject() {
-                return new OrderedKeys<Object>(a,true);
+                return new OrderedKeys<>(a,true);
             }
         });
         bidis.add(new BiDi(a) {
             @Override
             public Object hashObject() {
-                return new OrderedKeys<Object>(b,false);
+                return new OrderedKeys<>(b,false);
             }
         });
     }
@@ -72,13 +72,13 @@ public class CBiDiDictionary<A,B> {
         bidis.remove(new BiDi(b) {
             @Override
             public Object hashObject() {
-                return new OrderedKeys<Object>(a,true);
+                return new OrderedKeys<>(a,true);
             }
         });
         bidis.remove(new BiDi(a) {
             @Override
             public Object hashObject() {
-                return new OrderedKeys<Object>(b,false);
+                return new OrderedKeys<>(b,false);
             }
         });
     }
@@ -88,7 +88,7 @@ public class CBiDiDictionary<A,B> {
      * @return
      */
     public B forwardLookup(A a) {
-        BiDi bidi = bidis.get(new OrderedKeys<Object>(a,true));
+        BiDi bidi = bidis.get(new OrderedKeys<>(a,true));
         if (bidi == null) return null;
         return (B)bidi.get();
     }
@@ -98,7 +98,7 @@ public class CBiDiDictionary<A,B> {
      * @return
      */
     public A reverseLookup(B b) {
-        BiDi bidi = bidis.get(new OrderedKeys<Object>(b,false));
+        BiDi bidi = bidis.get(new OrderedKeys<>(b,false));
         if (bidi == null) return null;
         return (A)bidi.get();
     }

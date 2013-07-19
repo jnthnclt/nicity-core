@@ -42,7 +42,7 @@ public class ULong {
      * @param _v
      * @return
      */
-    final public static byte[] longBytes(long _v) {
+    public static byte[] longBytes(long _v) {
         return longBytes(_v, new byte[8], 0);
     }
     /**
@@ -52,7 +52,7 @@ public class ULong {
      * @param _offset
      * @return
      */
-    final public static byte[] longBytes(long v, byte[] _bytes, int _offset) {
+    public static byte[] longBytes(long v, byte[] _bytes, int _offset) {
         _bytes[_offset + 0] = (byte) (v >>> 56);
         _bytes[_offset + 1] = (byte) (v >>> 48);
         _bytes[_offset + 2] = (byte) (v >>> 40);
@@ -70,7 +70,7 @@ public class ULong {
      * @param _max
      * @return
      */
-    public static final long range(long _v, long _min, long _max) {
+    public static long range(long _v, long _min, long _max) {
         if (_v < _min) {
             return _min;
         } else if (_v > _max) {

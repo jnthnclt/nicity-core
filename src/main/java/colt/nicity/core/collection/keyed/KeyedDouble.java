@@ -187,7 +187,7 @@ public class KeyedDouble<K> extends ASetObject<K> implements
         synchronized (_set) {
             KeyedDouble<K> record = _set.get(_key);
             if (record == null) {
-                record = new KeyedDouble<K>(_key);
+                record = new KeyedDouble<>(_key);
                 _set.add(record);
             }
             return record;

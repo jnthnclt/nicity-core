@@ -68,7 +68,7 @@ public class UBackcall {
         if (_backcall == null) {
             return (V[]) Array.newInstance(_class, 0);
         }
-        final CArray<V> array = new CArray<V>(_class);
+        final CArray<V> array = new CArray<>(_class);
         ICallback<V,V> callback = new ICallback<V,V>() {
 
             @Override

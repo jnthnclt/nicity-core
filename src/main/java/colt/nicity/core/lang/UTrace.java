@@ -20,9 +20,9 @@
 package colt.nicity.core.lang;
 
 import colt.nicity.core.collection.CArray;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.io.IOException;
 
 /**
  *
@@ -30,7 +30,7 @@ import java.io.IOException;
  */
 public class UTrace extends OutputStream {
 
-    private CArray<String> callers = new CArray<String>(String.class);
+    private CArray<String> callers = new CArray<>(String.class);
 
     /**
      *

@@ -82,7 +82,7 @@ public class CSet<V> extends AObservable implements IBackcall<V>, IHaveCount {
             setMinimumAllocation();
             return;
         }
-        CSet<V> grown = new CSet<V>(maxKeys + maxKeys / 2);
+        CSet<V> grown = new CSet<>(maxKeys + maxKeys / 2);
         for (int i = 0; i < keys.length; i++) {
             if (keys[i] == null) {
                 continue;
@@ -103,7 +103,7 @@ public class CSet<V> extends AObservable implements IBackcall<V>, IHaveCount {
      *
      */
     synchronized public void rehash() {
-        CSet<V> grown = new CSet<V>(maxKeys);
+        CSet<V> grown = new CSet<>(maxKeys);
         for (int i = 0; i < keys.length; i++) {
             if (keys[i] == null) {
                 continue;

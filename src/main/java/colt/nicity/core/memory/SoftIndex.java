@@ -33,7 +33,7 @@ import java.lang.ref.ReferenceQueue;
  */
 public class SoftIndex<V, K, P> {
 
-    final private CSet<SoftIndexRef<V, K, P>> set = new CSet<SoftIndexRef<V, K, P>>();
+    final private CSet<SoftIndexRef<V, K, P>> set = new CSet<>();
     private ReferenceQueue softIndexQueue;
     /**
      *

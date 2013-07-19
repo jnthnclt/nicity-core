@@ -191,7 +191,7 @@ public class MinMaxDouble {
      * @param _double
      * @return
      */
-    final public static double zeroToOne(double _min, double _max, double _double) {
+    public static double zeroToOne(double _min, double _max, double _double) {
         return (_double - _min) / (_max - _min);
     }
     /**
@@ -209,7 +209,7 @@ public class MinMaxDouble {
      * @param _double
      * @return
      */
-    final public static double unzeroToOne(double _min, double _max, double _double) {
+    public static double unzeroToOne(double _min, double _max, double _double) {
         return ((_max - _min) * _double) + _min;
     }
     @Override

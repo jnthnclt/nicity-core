@@ -294,7 +294,7 @@ public class UDouble {
      * @param _max
      * @return
      */
-    public static final double clamp(double _v, double _min, double _max) {
+    public static double clamp(double _v, double _min, double _max) {
         if (_v < _min) {
             return _min;
         }
@@ -311,7 +311,7 @@ public class UDouble {
      * @param _max
      * @return
      */
-    public static final double range(double _v, double _min, double _max) {
+    public static double range(double _v, double _min, double _max) {
         if (_v < _min) {
             return _min;
         }
@@ -328,7 +328,7 @@ public class UDouble {
      * @param _max
      * @return
      */
-    public static final double constrain(double _v, double _min, double _max) {
+    public static double constrain(double _v, double _min, double _max) {
         if (_v < _min) {
             return _min;
         }
@@ -345,7 +345,7 @@ public class UDouble {
      * @param _max
      * @return
      */
-    public static final double limit(double _v, double _min, double _max) {
+    public static double limit(double _v, double _min, double _max) {
         if (_v < _min) {
             return _min;
         }
@@ -480,7 +480,7 @@ public class UDouble {
         return _array;
     }
 
-    final private static int nextNon(double[] _array, int _s, double _value) {
+    private static int nextNon(double[] _array, int _s, double _value) {
         for (int i = _s; i < _array.length; i++) {
             if (_array[i] == _value) {
                 continue;
@@ -490,7 +490,7 @@ public class UDouble {
         return -1;
     }
 
-    final private static int lastNotNon(double[] _array, int _s, double _value) {
+    private static int lastNotNon(double[] _array, int _s, double _value) {
         for (int i = _s; i < _array.length - 1; i++) {
             if (_array[i] != _value && _array[i + 1] == _value) {
                 return i;
@@ -798,7 +798,7 @@ public class UDouble {
      * @param _count
      * @return
      */
-    public static final double centerSort(double _zeroToOne, int _count) {
+    public static double centerSort(double _zeroToOne, int _count) {
         double step = 1d / (double) _count;
         double v = _zeroToOne * _count;
         if ((int) v % 2 == 0) {
@@ -815,7 +815,7 @@ public class UDouble {
      * @param count
      * @return
      */
-    public static final double centerSortPercent(int position, int count) {
+    public static double centerSortPercent(int position, int count) {
         // 0 <= position <= count
         // position=0 returns .5
         // position=count returns 0 or 1 depending on whether count is even or odd

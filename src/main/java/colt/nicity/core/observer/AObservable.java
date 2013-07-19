@@ -65,7 +65,7 @@ public abstract class AObservable extends ASetObject implements IObservable {
 
                     @Override
                     public void dettach() {
-                        synchronized (this) {
+                        synchronized (AObservable.this) {
                             observers = null;
                         }
                     }

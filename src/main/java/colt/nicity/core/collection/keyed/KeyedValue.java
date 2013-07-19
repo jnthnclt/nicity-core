@@ -111,7 +111,7 @@ public class KeyedValue<K, V> extends ASetObject<K> implements
      * @param _value
      */
     public static <K, V> void add(CSet<KeyedValue<K, V>> _set, K _key, V _value) {
-        _set.add(new KeyedValue<K, V>(_key, _value));
+        _set.add(new KeyedValue<>(_key, _value));
     }
 
     /**

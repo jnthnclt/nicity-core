@@ -192,7 +192,7 @@ public class MinMaxFloat {
      * @param _float
      * @return
      */
-    final public static float zeroToOne(float _min, float _max, float _float) {
+    public static float zeroToOne(float _min, float _max, float _float) {
         return (_float - _min) / (_max - _min);
     }
     /**
@@ -210,7 +210,7 @@ public class MinMaxFloat {
      * @param _float
      * @return
      */
-    final public static float unzeroToOne(float _min, float _max, float _float) {
+    public static float unzeroToOne(float _min, float _max, float _float) {
         return ((_max - _min) * _float) + _min;
     }
     @Override

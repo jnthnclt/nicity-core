@@ -30,7 +30,7 @@ public class UBoolean {
      * @param _new
      * @return
      */
-    public static final boolean[] grow(boolean[] src, boolean[] _new) {
+    public static boolean[] grow(boolean[] src, boolean[] _new) {
         if (src == null) {
             return null;
         }
@@ -44,7 +44,7 @@ public class UBoolean {
      * @param _log
      * @return
      */
-    public static final boolean[] log(boolean[] _src, boolean[] _new, boolean _log) {
+    public static boolean[] log(boolean[] _src, boolean[] _new, boolean _log) {
         if (_src == null) {
             return null;
         }
@@ -58,7 +58,7 @@ public class UBoolean {
      * @param amount
      * @return
      */
-    public static final boolean[] grow(boolean[] src, int amount) {
+    public static boolean[] grow(boolean[] src, int amount) {
         if (src == null) {
             return new boolean[amount];
         }
@@ -72,7 +72,7 @@ public class UBoolean {
      * @param count
      * @return
      */
-    public static final boolean[] copy(boolean[] src, boolean[] count) {
+    public static boolean[] copy(boolean[] src, boolean[] count) {
         return trim(src, count);
     }
     /**
@@ -81,7 +81,7 @@ public class UBoolean {
      * @param count
      * @return
      */
-    public static final boolean[] trim(boolean[] src, boolean[] count) {
+    public static boolean[] trim(boolean[] src, boolean[] count) {
         System.arraycopy(src, 0, count, 0, count.length);
         return count;
     }
@@ -91,7 +91,7 @@ public class UBoolean {
      * @param amount
      * @return
      */
-    public static final boolean[] pregrow(boolean[] src, int amount) {
+    public static boolean[] pregrow(boolean[] src, int amount) {
         if (src == null) {
             return new boolean[amount];
         }

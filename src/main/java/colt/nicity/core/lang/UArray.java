@@ -34,7 +34,7 @@ public final class UArray {
      * @param instance
      * @return
      */
-    public static final byte[] push(byte[] src, byte instance) {
+    public static byte[] push(byte[] src, byte instance) {
         if (src == null) {
             src = new byte[0];
         }
@@ -50,7 +50,7 @@ public final class UArray {
      * @param instance
      * @return
      */
-    public static final char[] push(char[] src, char instance) {
+    public static char[] push(char[] src, char instance) {
         if (src == null) {
             src = new char[0];
         }
@@ -66,7 +66,7 @@ public final class UArray {
      * @param instance
      * @return
      */
-    public static final int[] push(int[] src, int instance) {
+    public static int[] push(int[] src, int instance) {
         if (src == null) {
             src = new int[0];
         }
@@ -82,7 +82,7 @@ public final class UArray {
      * @param instance
      * @return
      */
-    public static final float[] push(float[] src, int instance) {
+    public static float[] push(float[] src, int instance) {
         if (src == null) {
             src = new float[0];
         }
@@ -98,7 +98,7 @@ public final class UArray {
      * @param instance
      * @return
      */
-    public static final long[] push(long[] src, long instance) {
+    public static long[] push(long[] src, long instance) {
         if (src == null) {
             src = new long[0];
         }
@@ -114,7 +114,7 @@ public final class UArray {
      * @param instance
      * @return
      */
-    public static final double[] push(double[] src, double instance) {
+    public static double[] push(double[] src, double instance) {
         if (src == null) {
             src = new double[0];
         }
@@ -130,7 +130,7 @@ public final class UArray {
      * @param instance
      * @return
      */
-    public static final Object[] push(Object[] src, Object instance) {
+    public static Object[] push(Object[] src, Object instance) {
         if (src == null) {
             src = new Object[0];
         }
@@ -146,7 +146,7 @@ public final class UArray {
      * @param instance
      * @return
      */
-    public static final String[] push(String[] src, String instance) {
+    public static String[] push(String[] src, String instance) {
         if (src == null) {
             src = new String[0];
         }
@@ -164,7 +164,7 @@ public final class UArray {
      * @param arrayClass
      * @return
      */
-    public static final <E> E[] push(E[] src, E instance, Class<? extends E> arrayClass) {
+    public static <E> E[] push(E[] src, E instance, Class<? extends E> arrayClass) {
         if (src == null) {
             src = (E[]) Array.newInstance(arrayClass, 0);
         }
@@ -182,7 +182,7 @@ public final class UArray {
      * @param newSrc
      * @return
      */
-    public static final <E> E[] push(E[] src, E instance, E[] newSrc) {
+    public static <E> E[] push(E[] src, E instance, E[] newSrc) {
         if (src == null)
             return newSrc;
         System.arraycopy(src, 0, newSrc, 0, src.length);
@@ -198,7 +198,7 @@ public final class UArray {
      * @param newSrc
      * @return
      */
-    public static final <E> E[] push(E[] src, E[] array, E[] newSrc) {
+    public static <E> E[] push(E[] src, E[] array, E[] newSrc) {
         return join(src, array, newSrc);
     }
 
@@ -208,7 +208,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final byte[] pregrow(byte[] src, int amount) {
+    public static byte[] pregrow(byte[] src, int amount) {
         if (src == null) {
             return new byte[amount];
         }
@@ -223,7 +223,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final char[] pregrow(char[] src, int amount) {
+    public static char[] pregrow(char[] src, int amount) {
         if (src == null) {
             return new char[amount];
         }
@@ -238,7 +238,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final int[] pregrow(int[] src, int amount) {
+    public static int[] pregrow(int[] src, int amount) {
         if (src == null) {
             return new int[amount];
         }
@@ -253,7 +253,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final long[] pregrow(long[] src, int amount) {
+    public static long[] pregrow(long[] src, int amount) {
         if (src == null) {
             return new long[amount];
         }
@@ -268,7 +268,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final float[] pregrow(float[] src, int amount) {
+    public static float[] pregrow(float[] src, int amount) {
         if (src == null) {
             return new float[amount];
         }
@@ -283,7 +283,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final double[] pregrow(double[] src, int amount) {
+    public static double[] pregrow(double[] src, int amount) {
         if (src == null) {
             return new double[amount];
         }
@@ -298,7 +298,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final String[] pregrow(String[] src, int amount) {
+    public static String[] pregrow(String[] src, int amount) {
         if (src == null) {
             return new String[amount];
         }
@@ -315,7 +315,7 @@ public final class UArray {
      * @param arrayClass
      * @return
      */
-    public static final <E> E[] grow(E[] src, int size, Class<? extends E> arrayClass) {
+    public static <E> E[] grow(E[] src, int size, Class<? extends E> arrayClass) {
         if (src == null) {
             return (E[]) Array.newInstance(arrayClass, size);
         }
@@ -331,7 +331,7 @@ public final class UArray {
      * @param _new
      * @return
      */
-    public static final <E> E[] grow(E[] src, E[] _new) {
+    public static <E> E[] grow(E[] src, E[] _new) {
         if (src == null) {
             return null;
         }
@@ -345,7 +345,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final Object[] grow(Object[] src, int amount) {
+    public static Object[] grow(Object[] src, int amount) {
         if (src == null) {
             return new Object[amount];
         }
@@ -360,7 +360,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final byte[] grow(byte[] src, int amount) {
+    public static byte[] grow(byte[] src, int amount) {
         if (src == null) {
             return new byte[amount];
         }
@@ -375,7 +375,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final char[] grow(char[] src, int amount) {
+    public static char[] grow(char[] src, int amount) {
         if (src == null) {
             return new char[amount];
         }
@@ -390,7 +390,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final int[] grow(int[] src, int amount) {
+    public static int[] grow(int[] src, int amount) {
         if (src == null) {
             return new int[amount];
         }
@@ -405,7 +405,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final long[] grow(long[] src, int amount) {
+    public static long[] grow(long[] src, int amount) {
         if (src == null) {
             return new long[amount];
         }
@@ -420,7 +420,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final float[] grow(float[] src, int amount) {
+    public static float[] grow(float[] src, int amount) {
         if (src == null) {
             return new float[amount];
         }
@@ -435,7 +435,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final double[] grow(double[] src, int amount) {
+    public static double[] grow(double[] src, int amount) {
         if (src == null) {
             return new double[amount];
         }
@@ -450,7 +450,7 @@ public final class UArray {
      * @param amount
      * @return
      */
-    public static final String[] grow(String[] src, int amount) {
+    public static String[] grow(String[] src, int amount) {
         if (src == null) {
             return new String[amount];
         }
@@ -465,7 +465,7 @@ public final class UArray {
      * @param _new
      * @return
      */
-    public static final long[] grow(long[] src, long[] _new) {
+    public static long[] grow(long[] src, long[] _new) {
         if (src == null) {
             return null;
         }
@@ -479,7 +479,7 @@ public final class UArray {
      * @param _new
      * @return
      */
-    public static final double[] grow(double[] src, double[] _new) {
+    public static double[] grow(double[] src, double[] _new) {
         if (src == null) {
             return null;
         }
@@ -495,7 +495,7 @@ public final class UArray {
      * @param dstStart
      * @param count
      */
-    public static final void copy(byte[] src, int srcStart, byte[] dst, int dstStart, int count) {
+    public static void copy(byte[] src, int srcStart, byte[] dst, int dstStart, int count) {
         System.arraycopy(src, srcStart, dst, dstStart, count);
     }
 
@@ -504,7 +504,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final double[] copy(double[] src) {
+    public static double[] copy(double[] src) {
         return grow(src, 0);
     }
 
@@ -515,7 +515,7 @@ public final class UArray {
      * @param _length
      * @return
      */
-    public static final byte[] copy(byte[] src, int _start, int _length) {
+    public static byte[] copy(byte[] src, int _start, int _length) {
         byte[] copy = new byte[_length];
         System.arraycopy(src, _start, copy, 0, _length);
         return copy;
@@ -528,7 +528,7 @@ public final class UArray {
      * @param _length
      * @return
      */
-    public static final double[] copy(double[] src, int _start, int _length) {
+    public static double[] copy(double[] src, int _start, int _length) {
         double[] copy = new double[_length];
         System.arraycopy(src, _start, copy, 0, _length);
         return copy;
@@ -541,7 +541,7 @@ public final class UArray {
      * @param _length
      * @return
      */
-    public static final char[] copy(char[] src, int _start, int _length) {
+    public static char[] copy(char[] src, int _start, int _length) {
         char[] copy = new char[_length];
         System.arraycopy(src, _start, copy, 0, _length);
         return copy;
@@ -553,7 +553,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final float[] copy(float[] src, float[] count) {
+    public static float[] copy(float[] src, float[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -565,7 +565,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final byte[] copy(byte[] src, byte[] count) {
+    public static byte[] copy(byte[] src, byte[] count) {
         return trim(src, count);
     }
 
@@ -575,7 +575,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final char[] copy(char[] src, char[] count) {
+    public static char[] copy(char[] src, char[] count) {
         return trim(src, count);
     }
 
@@ -585,7 +585,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final long[] copy(long[] src, long[] count) {
+    public static long[] copy(long[] src, long[] count) {
         return trim(src, count);
     }
 
@@ -594,7 +594,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final boolean[] copy(boolean[] src) {
+    public static boolean[] copy(boolean[] src) {
         return trim(src, new boolean[src.length]);
     }
 
@@ -603,7 +603,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final byte[] copy(byte[] src) {
+    public static byte[] copy(byte[] src) {
         return trim(src, new byte[src.length]);
     }
 
@@ -612,7 +612,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final char[] copy(char[] src) {
+    public static char[] copy(char[] src) {
         return trim(src, new char[src.length]);
     }
 
@@ -621,7 +621,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final int[] copy(int[] src) {
+    public static int[] copy(int[] src) {
         return trim(src, new int[src.length]);
     }
 
@@ -630,7 +630,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final float[] copy(float[] src) {
+    public static float[] copy(float[] src) {
         return trim(src, new float[src.length]);
     }
 
@@ -640,7 +640,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final long[] copy(long[] src) {
+    public static long[] copy(long[] src) {
         return trim(src, new long[src.length]);
     }
 
@@ -650,7 +650,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final double[] copy(double[] src, double[] count) {
+    public static double[] copy(double[] src, double[] count) {
         return trim(src, count);
     }
 
@@ -660,7 +660,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final String[] copy(String[] src, String[] count) {
+    public static String[] copy(String[] src, String[] count) {
         return trim(src, count);
     }
 
@@ -672,7 +672,7 @@ public final class UArray {
      * @param dst
      * @return
      */
-    public static final int[] copy(int[] src, int[] dst) {
+    public static int[] copy(int[] src, int[] dst) {
         if (dst == null) {
             dst = new int[src.length];
         }
@@ -686,7 +686,7 @@ public final class UArray {
      * @param _unshift
      * @return
      */
-    public static final double[] unshift(double[] _src, double[] _new, double _unshift) {
+    public static double[] unshift(double[] _src, double[] _new, double _unshift) {
         if (_src == null) {
             return null;
         }
@@ -700,7 +700,7 @@ public final class UArray {
      * @param _src
      * @return
      */
-    public static final long[] shift(long[] _src) {
+    public static long[] shift(long[] _src) {
         if (_src == null) {
             return null;
         }
@@ -714,7 +714,7 @@ public final class UArray {
      * @param _src
      * @return
      */
-    public static final Object[] shift(Object[] _src) {
+    public static Object[] shift(Object[] _src) {
         if (_src == null) {
             return null;
         }
@@ -730,7 +730,7 @@ public final class UArray {
      * @param arrayClass
      * @return
      */
-    public static final <E> E[] shift(E[] _src, Class<? extends E> arrayClass) {
+    public static <E> E[] shift(E[] _src, Class<? extends E> arrayClass) {
         if (_src == null) {
             return null;
         }
@@ -749,7 +749,7 @@ public final class UArray {
      * @param _skip
      * @return
      */
-    public static final Object[] skip(double[] _a, double[] _b, double _skip) {
+    public static Object[] skip(double[] _a, double[] _b, double _skip) {
         double[] _newA = new double[_a.length];
         double[] _newB = new double[_a.length];
         int c = 0;
@@ -775,7 +775,7 @@ public final class UArray {
      * @param _log
      * @return
      */
-    public static final double[] log(double[] _src, double[] _new, double _log) {
+    public static double[] log(double[] _src, double[] _new, double _log) {
         if (_src == null) {
             return null;
         }
@@ -791,7 +791,7 @@ public final class UArray {
      * @param _log
      * @return
      */
-    public static final long[] log(long[] _src, long[] _new, long _log) {
+    public static long[] log(long[] _src, long[] _new, long _log) {
         if (_src == null) {
             return null;
         }
@@ -806,7 +806,7 @@ public final class UArray {
      * @param _new
      * @return
      */
-    public static final int[] clone(int[] src, int[] _new) {
+    public static int[] clone(int[] src, int[] _new) {
         if (src == null) {
             return null;
         }
@@ -820,7 +820,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final boolean[] trim(boolean[] src, boolean[] count) {
+    public static boolean[] trim(boolean[] src, boolean[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -832,7 +832,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final byte[] trim(byte[] src, byte[] count) {
+    public static byte[] trim(byte[] src, byte[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -844,7 +844,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final char[] trim(char[] src, char[] count) {
+    public static char[] trim(char[] src, char[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -856,7 +856,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final int[] trim(int[] src, int[] count) {
+    public static int[] trim(int[] src, int[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -868,7 +868,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final long[] trim(long[] src, long[] count) {
+    public static long[] trim(long[] src, long[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -880,7 +880,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final float[] trim(float[] src, float[] count) {
+    public static float[] trim(float[] src, float[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -892,7 +892,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final double[] trim(double[] src, double[] count) {
+    public static double[] trim(double[] src, double[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -904,7 +904,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final String[] trim(String[] src, String[] count) {
+    public static String[] trim(String[] src, String[] count) {
         int l = count.length;
         System.arraycopy(src, 0, count, 0, l);
         return count;
@@ -915,7 +915,7 @@ public final class UArray {
      * @param a
      * @return
      */
-    public static final Object[] flip(Object[] a) {
+    public static Object[] flip(Object[] a) {
         if (a == null) {
             return new Object[0];
         }
@@ -931,7 +931,7 @@ public final class UArray {
      * @param a
      * @return
      */
-    public static final double[] flip(double[] a) {
+    public static double[] flip(double[] a) {
         if (a == null) {
             return new double[0];
         }
@@ -949,7 +949,7 @@ public final class UArray {
      * @param c
      * @return
      */
-    public static final byte[] join(byte[] a, byte[] b, byte[] c) {
+    public static byte[] join(byte[] a, byte[] b, byte[] c) {
         byte[] newSrc = new byte[a.length + b.length +c.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -963,7 +963,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final byte[] join(byte[] a, byte[] b) {
+    public static byte[] join(byte[] a, byte[] b) {
         byte[] newSrc = new byte[a.length + b.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -976,7 +976,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final int[] join(int[] a, int[] b) {
+    public static int[] join(int[] a, int[] b) {
         int[] newSrc = new int[a.length + b.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -989,7 +989,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final long[] join(long[] a, long[] b) {
+    public static long[] join(long[] a, long[] b) {
         long[] newSrc = new long[a.length + b.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -1002,7 +1002,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final double[] join(double[] a, double[] b) {
+    public static double[] join(double[] a, double[] b) {
         double[] newSrc = new double[a.length + b.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -1015,7 +1015,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final Object[] join(Object[] a, Object[] b) {
+    public static Object[] join(Object[] a, Object[] b) {
         if (a == null && b == null) {
             return new Object[0];
         }
@@ -1045,7 +1045,7 @@ public final class UArray {
      * @param newSrc
      * @return
      */
-    public static final <E> E[] join(E[] a, E[] b, E[] newSrc) {
+    public static <E> E[] join(E[] a, E[] b, E[] newSrc) {
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
         return newSrc;
@@ -1059,7 +1059,7 @@ public final class UArray {
      * @param arrayClass
      * @return
      */
-    public static final <E> E[] join(E[] a, E[] b, Class<? extends E> arrayClass) {
+    public static <E> E[] join(E[] a, E[] b, Class<? extends E> arrayClass) {
         if (a == null || a.length == 0) {
             return b;
         }
@@ -1078,7 +1078,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final String[] join(String[] a, String[] b) {
+    public static String[] join(String[] a, String[] b) {
         String[] newSrc = new String[a.length + b.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -1091,7 +1091,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final long[] trim(long[] src, int count) {
+    public static long[] trim(long[] src, int count) {
         long[] newSrc = new long[count];
         System.arraycopy(src, 0, newSrc, 0, count);
         return newSrc;
@@ -1103,7 +1103,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final Long[] trim(Long[] src, int count) {
+    public static Long[] trim(Long[] src, int count) {
         Long[] newSrc = new Long[count];
         System.arraycopy(src, 0, newSrc, 0, count);
         return newSrc;
@@ -1115,7 +1115,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final Object[] trim(Object[] src, int count) {
+    public static Object[] trim(Object[] src, int count) {
         Object[] newSrc = new Object[count];
         System.arraycopy(src, 0, newSrc, 0, count);
         return newSrc;
@@ -1128,7 +1128,7 @@ public final class UArray {
      * @param dst
      * @return
      */
-    public static final <E> E[] trim(E[] src, E[] dst) {
+    public static <E> E[] trim(E[] src, E[] dst) {
         int count = dst.length;
         System.arraycopy(src, 0, dst, 0, count);
         return dst;
@@ -1142,7 +1142,7 @@ public final class UArray {
      * @param arrayClass
      * @return
      */
-    public static final <E> E[] trim(E[] src, int count, Class<? extends E> arrayClass) {
+    public static <E> E[] trim(E[] src, int count, Class<? extends E> arrayClass) {
         if (src == null) {
             return (E[]) Array.newInstance(arrayClass, count);
         }
@@ -1158,7 +1158,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final int[] trim(int[] src, int count) {
+    public static int[] trim(int[] src, int count) {
         int[] newSrc = new int[count];
         System.arraycopy(src, 0, newSrc, 0, count);
         return newSrc;
@@ -1171,7 +1171,7 @@ public final class UArray {
      * @param _count
      * @return
      */
-    public static final int[] push(int[] a, int[] b, int _count) {
+    public static int[] push(int[] a, int[] b, int _count) {
         int[] newSrc = new int[a.length + _count];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, _count);
@@ -1184,7 +1184,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final char[] join(char[] a, char[] b) {
+    public static char[] join(char[] a, char[] b) {
         char[] newSrc = new char[a.length + b.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -1197,7 +1197,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final Object[] push(Object[] a, Object[] b) {
+    public static Object[] push(Object[] a, Object[] b) {
         return join(a, b);
     }
 
@@ -1206,7 +1206,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final long[] removeZeros(long[] src) {
+    public static long[] removeZeros(long[] src) {
         int count = 0;
         int len = src.length;
         long[] array = new long[len];
@@ -1227,7 +1227,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final double[] removeZeros(double[] src) {
+    public static double[] removeZeros(double[] src) {
         int count = 0;
         int len = src.length;
         double[] array = new double[len];
@@ -1248,7 +1248,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final Object[] removeNulls(Object[] src) {
+    public static Object[] removeNulls(Object[] src) {
         int count = 0;
         int len = src.length;
         Object[] array = new Object[len];
@@ -1271,7 +1271,7 @@ public final class UArray {
      * @param _class
      * @return
      */
-    public static final <E> E[] removeNulls(E[] src, Class<? extends E> _class) {
+    public static <E> E[] removeNulls(E[] src, Class<? extends E> _class) {
         int count = 0;
         int len = src.length;
         E[] array = (E[]) Array.newInstance(_class, len);
@@ -1294,7 +1294,7 @@ public final class UArray {
      * @param _class
      * @return
      */
-    public static final <E> E[] cast(E[] src, Class<? extends E> _class) {
+    public static <E> E[] cast(E[] src, Class<? extends E> _class) {
         int count = 0;
         int len = src.length;
         E[] array = (E[]) Array.newInstance(_class, len);
@@ -1316,7 +1316,7 @@ public final class UArray {
      * @param _skip
      * @return
      */
-    public static final Object[] removeNulls(Object[] src, Object _skip) {
+    public static Object[] removeNulls(Object[] src, Object _skip) {
         int count = 0;
         int len = src.length;
         Object[] array = new Object[len];
@@ -1340,7 +1340,7 @@ public final class UArray {
      * @param _class
      * @return
      */
-    public static final <E> E[] removeNulls(E[] src, Object _skip, Class<? extends E> _class) {
+    public static <E> E[] removeNulls(E[] src, Object _skip, Class<? extends E> _class) {
         int count = 0;
         int len = src.length;
         E[] array = (E[]) Array.newInstance(_class, len);
@@ -1363,7 +1363,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final Object[] copy(Object[] src) {
+    public static Object[] copy(Object[] src) {
         if (src == null) {
             return null;
         }
@@ -1380,7 +1380,7 @@ public final class UArray {
      * @param arrayClass
      * @return
      */
-    public static final <E> E[] copy(E[] src, Class<? extends E> arrayClass) {
+    public static <E> E[] copy(E[] src, Class<? extends E> arrayClass) {
         if (src == null) {
             return null;
         }
@@ -1396,7 +1396,7 @@ public final class UArray {
      * @param dst
      * @return
      */
-    public static final <E> E[] copy(E[] src, E[] dst) {
+    public static <E> E[] copy(E[] src, E[] dst) {
         int count = dst.length;
         System.arraycopy(src, 0, dst, 0, count);
         return dst;
@@ -1409,7 +1409,7 @@ public final class UArray {
      * @param dst
      * @return
      */
-    public static final Object[] copy(Object[] src, int start, Object[] dst) {
+    public static Object[] copy(Object[] src, int start, Object[] dst) {
         System.arraycopy(src, start, dst, 0, dst.length);
         return dst;
     }
@@ -1421,7 +1421,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final String[] copy(String[] src, int start, int count) {
+    public static String[] copy(String[] src, int start, int count) {
         String[] dst = new String[count];
         System.arraycopy(src, start, dst, 0, count);
         return dst;
@@ -1434,7 +1434,7 @@ public final class UArray {
      * @param count
      * @return
      */
-    public static final Object[] copy(Object[] src, int start, int count) {
+    public static Object[] copy(Object[] src, int start, int count) {
         Object[] dst = new Object[count];
         System.arraycopy(src, start, dst, 0, count);
         return dst;
@@ -1445,7 +1445,7 @@ public final class UArray {
      * @param src
      * @param _shuffle
      */
-    public static final void shuffle(boolean[] src, int _shuffle) {
+    public static void shuffle(boolean[] src, int _shuffle) {
         for (int i = 0; i < _shuffle; i++) {
             int a = URandom.rand(src.length);
             int b = URandom.rand(src.length);
@@ -1460,7 +1460,7 @@ public final class UArray {
      * @param src
      * @param _shuffle
      */
-    public static final void shuffle(byte[] src, int _shuffle) {
+    public static void shuffle(byte[] src, int _shuffle) {
         for (int i = 0; i < _shuffle; i++) {
             int a = URandom.rand(src.length);
             int b = URandom.rand(src.length);
@@ -1475,7 +1475,7 @@ public final class UArray {
      * @param src
      * @param _shuffle
      */
-    public static final void shuffle(char[] src, int _shuffle) {
+    public static void shuffle(char[] src, int _shuffle) {
         for (int i = 0; i < _shuffle; i++) {
             int a = URandom.rand(src.length);
             int b = URandom.rand(src.length);
@@ -1490,7 +1490,7 @@ public final class UArray {
      * @param src
      * @param _shuffle
      */
-    public static final void shuffle(int[] src, int _shuffle) {
+    public static void shuffle(int[] src, int _shuffle) {
         for (int i = 0; i < _shuffle; i++) {
             int a = URandom.rand(src.length);
             int b = URandom.rand(src.length);
@@ -1505,7 +1505,7 @@ public final class UArray {
      * @param src
      * @param _shuffle
      */
-    public static final void shuffle(float[] src, int _shuffle) {
+    public static void shuffle(float[] src, int _shuffle) {
         for (int i = 0; i < _shuffle; i++) {
             int a = URandom.rand(src.length);
             int b = URandom.rand(src.length);
@@ -1520,7 +1520,7 @@ public final class UArray {
      * @param src
      * @param _shuffle
      */
-    public static final void shuffle(long[] src, int _shuffle) {
+    public static void shuffle(long[] src, int _shuffle) {
         for (int i = 0; i < _shuffle; i++) {
             int a = URandom.rand(src.length);
             int b = URandom.rand(src.length);
@@ -1535,7 +1535,7 @@ public final class UArray {
      * @param src
      * @param _shuffle
      */
-    public static final void shuffle(double[] src, int _shuffle) {
+    public static void shuffle(double[] src, int _shuffle) {
         for (int i = 0; i < _shuffle; i++) {
             int a = URandom.rand(src.length);
             int b = URandom.rand(src.length);
@@ -1551,7 +1551,7 @@ public final class UArray {
      * @param src
      * @param _shuffle
      */
-    public static final <E> void shuffle(E[] src, int _shuffle) {
+    public static <E> void shuffle(E[] src, int _shuffle) {
         for (int i = 0; i < _shuffle; i++) {
             int a = URandom.rand(src.length);
             int b = URandom.rand(src.length);
@@ -1594,7 +1594,7 @@ public final class UArray {
      * @param presorted
      * @return
      */
-    public static final boolean[] centerSort(boolean[] presorted) {
+    public static boolean[] centerSort(boolean[] presorted) {
         boolean[] result = new boolean[presorted.length];
         int center = presorted.length / 2;
         for (int i = 0, j = center; i < presorted.length; i += 2, j++) {
@@ -1611,7 +1611,7 @@ public final class UArray {
      * @param presorted
      * @return
      */
-    public static final byte[] centerSort(byte[] presorted) {
+    public static byte[] centerSort(byte[] presorted) {
         byte[] result = new byte[presorted.length];
         int center = presorted.length / 2;
         for (int i = 0, j = center; i < presorted.length; i += 2, j++) {
@@ -1628,7 +1628,7 @@ public final class UArray {
      * @param presorted
      * @return
      */
-    public static final char[] centerSort(char[] presorted) {
+    public static char[] centerSort(char[] presorted) {
         char[] result = new char[presorted.length];
         int center = presorted.length / 2;
         for (int i = 0, j = center; i < presorted.length; i += 2, j++) {
@@ -1645,7 +1645,7 @@ public final class UArray {
      * @param presorted
      * @return
      */
-    public static final int[] centerSort(int[] presorted) {
+    public static int[] centerSort(int[] presorted) {
         int[] result = new int[presorted.length];
         int center = presorted.length / 2;
         for (int i = 0, j = center; i < presorted.length; i += 2, j++) {
@@ -1662,7 +1662,7 @@ public final class UArray {
      * @param presorted
      * @return
      */
-    public static final float[] centerSort(float[] presorted) {
+    public static float[] centerSort(float[] presorted) {
         float[] result = new float[presorted.length];
         int center = presorted.length / 2;
         for (int i = 0, j = center; i < presorted.length; i += 2, j++) {
@@ -1679,7 +1679,7 @@ public final class UArray {
      * @param presorted
      * @return
      */
-    public static final double[] centerSort(double[] presorted) {
+    public static double[] centerSort(double[] presorted) {
         double[] result = new double[presorted.length];
         int center = presorted.length / 2;
         for (int i = 0, j = center; i < presorted.length; i += 2, j++) {
@@ -1696,7 +1696,7 @@ public final class UArray {
      * @param presorted
      * @return
      */
-    public static final long[] centerSort(long[] presorted) {
+    public static long[] centerSort(long[] presorted) {
         long[] result = new long[presorted.length];
         int center = presorted.length / 2;
         for (int i = 0, j = center; i < presorted.length; i += 2, j++) {
@@ -1713,7 +1713,7 @@ public final class UArray {
      * @param presorted
      * @return
      */
-    public static final Object[] centerSort(Object[] presorted) {
+    public static Object[] centerSort(Object[] presorted) {
         Object[] result = new Object[presorted.length];
         int center = presorted.length / 2;
         for (int i = 0, j = center; i < presorted.length; i += 2, j++) {
@@ -1738,7 +1738,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final boolean[] remove(boolean[] src, int a, int b) {
+    public static boolean[] remove(boolean[] src, int a, int b) {
         int l = src.length;
         if (l == 0)
             return src;
@@ -1765,7 +1765,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final byte[] remove(byte[] src, int a, int b) {
+    public static byte[] remove(byte[] src, int a, int b) {
         int l = src.length;
         if (l == 0)
             return src;
@@ -1792,7 +1792,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final char[] remove(char[] src, int a, int b) {
+    public static char[] remove(char[] src, int a, int b) {
         int l = src.length;
         if (l == 0)
             return src;
@@ -1819,7 +1819,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final int[] remove(int[] src, int a, int b) {
+    public static int[] remove(int[] src, int a, int b) {
         int l = src.length;
         if (l == 0)
             return src;
@@ -1846,7 +1846,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final float[] remove(float[] src, int a, int b) {
+    public static float[] remove(float[] src, int a, int b) {
         int l = src.length;
         if (l == 0)
             return src;
@@ -1873,7 +1873,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final long[] remove(long[] src, int a, int b) {
+    public static long[] remove(long[] src, int a, int b) {
         int l = src.length;
         if (l == 0)
             return src;
@@ -1900,7 +1900,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final double[] remove(double[] src, int a, int b) {
+    public static double[] remove(double[] src, int a, int b) {
         int l = src.length;
         if (l == 0)
             return src;
@@ -1927,7 +1927,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final String[] remove(String[] src, int a, int b) {
+    public static String[] remove(String[] src, int a, int b) {
         int l = src.length;
         if (l == 0)
             return src;
@@ -1958,7 +1958,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final boolean[] insert(boolean c, int at, boolean[] src) {
+    public static boolean[] insert(boolean c, int at, boolean[] src) {
         if (src == null) {
             return new boolean[]{c};
         }
@@ -1997,7 +1997,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final byte[] insert(byte c, int at, byte[] src) {
+    public static byte[] insert(byte c, int at, byte[] src) {
         if (src == null) {
             return new byte[]{c};
         }
@@ -2035,7 +2035,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final char[] insert(char c, int at, char[] src) {
+    public static char[] insert(char c, int at, char[] src) {
         if (src == null) {
             return new char[]{c};
         }
@@ -2074,7 +2074,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final int[] insert(int c, int at, int[] src) {
+    public static int[] insert(int c, int at, int[] src) {
         if (src == null) {
             return new int[]{c};
         }
@@ -2113,7 +2113,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final float[] insert(float c, int at, float[] src) {
+    public static float[] insert(float c, int at, float[] src) {
         if (src == null) {
             return new float[]{c};
         }
@@ -2152,7 +2152,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final double[] insert(double c, int at, double[] src) {
+    public static double[] insert(double c, int at, double[] src) {
         if (src == null) {
             return new double[]{c};
         }
@@ -2191,7 +2191,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final long[] insert(long c, int at, long[] src) {
+    public static long[] insert(long c, int at, long[] src) {
         if (src == null) {
             return new long[]{c};
         }
@@ -2230,7 +2230,7 @@ public final class UArray {
      * @param src
      * @return
      */
-    public static final String[] insert(String c, int at, String[] src) {
+    public static String[] insert(String c, int at, String[] src) {
         if (src == null) {
             return new String[]{c};
         }
@@ -2270,7 +2270,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final boolean[] add(boolean[] src, int a, boolean[] add, int b) {
+    public static boolean[] add(boolean[] src, int a, boolean[] add, int b) {
         int l = add.length;
 
         int s_a = a - 0;
@@ -2297,7 +2297,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final byte[] add(byte[] src, int a, byte[] add, int b) {
+    public static byte[] add(byte[] src, int a, byte[] add, int b) {
         int l = add.length;
 
         int s_a = a - 0;
@@ -2324,7 +2324,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final char[] add(char[] src, int a, char[] add, int b) {
+    public static char[] add(char[] src, int a, char[] add, int b) {
         int l = add.length;
 
         int s_a = a - 0;
@@ -2351,7 +2351,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final float[] add(float[] src, int a, float[] add, int b) {
+    public static float[] add(float[] src, int a, float[] add, int b) {
         int l = add.length;
 
         int s_a = a - 0;
@@ -2378,7 +2378,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final int[] add(int[] src, int a, int[] add, int b) {
+    public static int[] add(int[] src, int a, int[] add, int b) {
         int l = add.length;
 
         int s_a = a - 0;
@@ -2405,7 +2405,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final double[] add(double[] src, int a, double[] add, int b) {
+    public static double[] add(double[] src, int a, double[] add, int b) {
         int l = add.length;
 
         int s_a = a - 0;
@@ -2432,7 +2432,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final long[] add(long[] src, int a, long[] add, int b) {
+    public static long[] add(long[] src, int a, long[] add, int b) {
         int l = add.length;
 
         int s_a = a - 0;
@@ -2459,7 +2459,7 @@ public final class UArray {
      * @param b
      * @return
      */
-    public static final String[] add(String[] src, int a, String[] add, int b) {
+    public static String[] add(String[] src, int a, String[] add, int b) {
         int l = add.length;
 
         int s_a = a - 0;

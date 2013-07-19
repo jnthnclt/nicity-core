@@ -483,7 +483,7 @@ public class CArray<E> extends AObservable implements IBackcall<E>, Cloneable {
      * @param _remove
      */
     synchronized public void remove(Object[] _remove) {
-        CSet<E> set = new CSet<E>(count);
+        CSet<E> set = new CSet<>(count);
         set.add(objects);
         set.remove(_remove);
         objects = set.getAll(Object.class);

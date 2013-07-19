@@ -35,7 +35,7 @@ public class UText {
      * @return
      */
     public static String[] loadTextFile(File _file) {
-        CArray<String> lines = new CArray<String>(String.class);
+        CArray<String> lines = new CArray<>(String.class);
         RandomAccessFile filer = null;
         try {
             filer = new RandomAccessFile(_file, "r");
@@ -124,13 +124,13 @@ public class UText {
     public static void appendTextFile(String[] _lines, int _s, int _l, File _file) {
         try {
             UFile.ensureDirectory(_file);
-            RandomAccessFile filer = new RandomAccessFile(_file, "rw");
-            filer.seek(filer.length());
-            filer.setLength(filer.getFilePointer());
-            for (int l = _s; l < _l; l++) {
-                filer.write((_lines[l] + "\n").getBytes());
+            try (RandomAccessFile filer = new RandomAccessFile(_file, "rw")) {
+                filer.seek(filer.length());
+                filer.setLength(filer.getFilePointer());
+                for (int l = _s; l < _l; l++) {
+                    filer.write((_lines[l] + "\n").getBytes());
+                }
             }
-            filer.close();
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -143,11 +143,11 @@ public class UText {
     public static void appendTextFile(StringBuffer _buffer, File _file) {
         try {
             UFile.ensureDirectory(_file);
-            RandomAccessFile filer = new RandomAccessFile(_file, "rw");
-            filer.seek(filer.length());
-            filer.setLength(filer.getFilePointer());
-            filer.write(_buffer.toString().getBytes());
-            filer.close();
+            try (RandomAccessFile filer = new RandomAccessFile(_file, "rw")) {
+                filer.seek(filer.length());
+                filer.setLength(filer.getFilePointer());
+                filer.write(_buffer.toString().getBytes());
+            }
         } catch (Exception x) {
             x.printStackTrace();
         }
@@ -163,7 +163,7 @@ public class UText {
         try {
             filer = new RandomAccessFile(_file, "r");
             for (String line = filer.readLine(); line != null; line = filer.readLine()) {
-                fileString.append(line + "\n");
+                fileString.append(line).append("\n");
             }
             filer.close();
         } catch (IOException e) {

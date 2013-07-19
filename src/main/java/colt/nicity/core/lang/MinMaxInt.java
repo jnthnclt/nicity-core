@@ -141,7 +141,7 @@ public class MinMaxInt {
      * @return
      */
     public double mean() {
-        return sum / (int) count;
+        return sum / count;
     }
     /**
      *

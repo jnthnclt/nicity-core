@@ -165,7 +165,7 @@ public class UMath {
      * @param y
      * @return
      */
-    final public static double computeAngle(double x, double y) {
+    public static double computeAngle(double x, double y) {
         double angle = Math.atan(y / x);
         if (x == 0) {
             if (y > 0) {
@@ -186,7 +186,7 @@ public class UMath {
      * @param y
      * @return
      */
-    final public static double pathagorus(double x, double y) {
+    public static double pathagorus(double x, double y) {
         return Math.sqrt((x * x) + (y * y));
     }
 
@@ -428,7 +428,7 @@ public class UMath {
      * @param b
      * @return
      */
-    final public static double fastMiddle(double a, double b) {
+    public static double fastMiddle(double a, double b) {
         return (a + b) / 2;
     }
 
@@ -439,7 +439,7 @@ public class UMath {
      * @param _percentage
      * @return
      */
-    final public static double fastMiddle(double a, double b, double _percentage) {
+    public static double fastMiddle(double a, double b, double _percentage) {
         return (a + b) * _percentage;
     }
 
@@ -480,7 +480,7 @@ public class UMath {
      * @param ey
      * @return
      */
-    final public static double[] fastMiddle(double sx, double sy, double ex, double ey) {
+    public static double[] fastMiddle(double sx, double sy, double ex, double ey) {
         return new double[]{fastMiddle(sx, ex), fastMiddle(sy, ey)};
     }
 
@@ -637,7 +637,7 @@ public class UMath {
      * @param _z2
      * @return
      */
-    final public static double distance(double _x1, double _y1, double _z1, double _x2, double _y2, double _z2) {
+    public static double distance(double _x1, double _y1, double _z1, double _x2, double _y2, double _z2) {
         double x = _x1 - _x2;
         double y = _y1 - _y2;
         double z = _z1 - _z2;
@@ -1917,7 +1917,7 @@ public class UMath {
      * @param intersect
      * @return
      */
-    final public static int linesIntersect(// does line a-b intersect line c-d?
+    public static int linesIntersect(// does line a-b intersect line c-d?
             double ax, double ay, double bx, double by,
             double cx, double cy, double dx, double dy,
             double[] intersect // if not null, return intersect point
@@ -1965,7 +1965,7 @@ public class UMath {
      * @param dy
      * @return
      */
-    final public static double[] linesIntersect(// does line a-b intersect line c-d?
+    public static double[] linesIntersect(// does line a-b intersect line c-d?
             double ax, double ay, double bx, double by,
             double cx, double cy, double dx, double dy) {
 

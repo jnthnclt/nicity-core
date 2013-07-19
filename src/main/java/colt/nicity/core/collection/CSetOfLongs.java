@@ -41,7 +41,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      * @param src
      * @return
      */
-    public static final long[] trim(long[] src) {
+    public static long[] trim(long[] src) {
         int count = 0;
         int len = src.length;
         long[] array = new long[len];
@@ -65,7 +65,7 @@ public class CSetOfLongs extends AObservable implements ISetOfLongs {
      * @param src
      * @return
      */
-    public static final Long[] trimLongs(long[] src) {
+    public static Long[] trimLongs(long[] src) {
         int count = 0;
         int len = src.length;
         Long[] array = new Long[len];

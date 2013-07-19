@@ -56,7 +56,7 @@ public class VanlliaClassLoader extends ClassLoader {
             result = defineClass(className,classByte,0,classByte.length,null);
             classes.put(className,result);
             return result;
-        }catch(Exception e){
+        }catch(IOException | ClassFormatError e){
             return null;
         }
     }
@@ -68,9 +68,9 @@ public class VanlliaClassLoader extends ClassLoader {
         int size = (int)f.length();
         byte buff[] = new byte[size];
         FileInputStream fis = new FileInputStream(f);
-        DataInputStream dis = new DataInputStream(fis);
-        dis.readFully(buff);
-        dis.close();
+        try (DataInputStream dis = new DataInputStream(fis)) {
+            dis.readFully(buff);
+        }
         return buff;
     }
 }

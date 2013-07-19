@@ -89,7 +89,7 @@ public abstract class UFloat {// holder for static utility methods; do not insta
      * @param _max
      * @return
      */
-    public static final float range(float _v, float _min, float _max) {
+    public static float range(float _v, float _min, float _max) {
         if (_v < _min) {
             return _min;
         } else if (_v > _max) {
@@ -105,7 +105,7 @@ public abstract class UFloat {// holder for static utility methods; do not insta
      * @param _max
      * @return
      */
-    public static final float clamp(float _v, float _min, float _max) {
+    public static float clamp(float _v, float _min, float _max) {
         if (_v < _min) {
             return _min;
         } else if (_v > _max) {

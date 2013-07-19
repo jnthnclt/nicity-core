@@ -30,7 +30,7 @@ public class UByte {
      * @param instance
      * @return
      */
-    public static final byte[] push(byte[] src, byte instance) {
+    public static byte[] push(byte[] src, byte instance) {
         if (src == null) {
             src = new byte[0];
         }
@@ -45,7 +45,7 @@ public class UByte {
      * @param amount
      * @return
      */
-    public static final byte[] pregrow(byte[] src, int amount) {
+    public static byte[] pregrow(byte[] src, int amount) {
         if (src == null) {
             return new byte[amount];
         }
@@ -59,7 +59,7 @@ public class UByte {
      * @param _new
      * @return
      */
-    public static final byte[] grow(byte[] src, byte[] _new) {
+    public static byte[] grow(byte[] src, byte[] _new) {
         if (src == null) {
             return null;
         }
@@ -72,7 +72,7 @@ public class UByte {
      * @param amount
      * @return
      */
-    public static final byte[] grow(byte[] src, int amount) {
+    public static byte[] grow(byte[] src, int amount) {
         if (src == null) {
             return new byte[amount];
         }
@@ -86,7 +86,7 @@ public class UByte {
      * @param count
      * @return
      */
-    public static final byte[] copy(byte[] src, byte[] count) {
+    public static byte[] copy(byte[] src, byte[] count) {
         return trim(src, count);
     }
     /**
@@ -94,7 +94,7 @@ public class UByte {
      * @param src
      * @return
      */
-    public static final byte[] copy(byte[] src) {
+    public static byte[] copy(byte[] src) {
         return trim(src, new byte[src.length]);
     }
     /**
@@ -103,7 +103,7 @@ public class UByte {
      * @param b
      * @return
      */
-    public static final byte[] join(byte[] a, byte[] b) {
+    public static byte[] join(byte[] a, byte[] b) {
         byte[] newSrc = new byte[a.length + b.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -116,7 +116,7 @@ public class UByte {
      * @param c
      * @return
      */
-    public static final byte[] join(byte[] a, byte[] b, byte[] c) {
+    public static byte[] join(byte[] a, byte[] b, byte[] c) {
         byte[] newSrc = new byte[a.length + b.length + c.length];
         System.arraycopy(a, 0, newSrc, 0, a.length);
         System.arraycopy(b, 0, newSrc, a.length, b.length);
@@ -130,7 +130,7 @@ public class UByte {
      * @param count
      * @return
      */
-    public static final byte[] copy(byte[] src, int start, int count) {
+    public static byte[] copy(byte[] src, int start, int count) {
         byte[] dst = new byte[count];
         System.arraycopy(src, start, dst, 0, count);
         return dst;
@@ -143,7 +143,7 @@ public class UByte {
      * @param dstStart
      * @param count
      */
-    public static final void copy(byte[] src, int srcStart, byte[] dst, int dstStart, int count) {
+    public static void copy(byte[] src, int srcStart, byte[] dst, int dstStart, int count) {
         System.arraycopy(src, srcStart, dst, dstStart, count);
     }
     /**
@@ -152,7 +152,7 @@ public class UByte {
      * @param count
      * @return
      */
-    public static final byte[] trim(byte[] src, int count) {
+    public static byte[] trim(byte[] src, int count) {
         byte[] newSrc = new byte[count];
         System.arraycopy(src, 0, newSrc, 0, count);
         return newSrc;
@@ -163,7 +163,7 @@ public class UByte {
      * @param count
      * @return
      */
-    public static final byte[] trim(byte[] src, byte[] count) {
+    public static byte[] trim(byte[] src, byte[] count) {
         System.arraycopy(src, 0, count, 0, count.length);
         return count;
     }
@@ -230,7 +230,7 @@ public class UByte {
      * @param _bytes
      * @return
      */
-    public static final long checkSum(byte[] _bytes) {
+    public static long checkSum(byte[] _bytes) {
         if (_bytes == null) {
             return -1;
         }
@@ -245,7 +245,7 @@ public class UByte {
      * @param _byte
      * @return
      */
-    public static final int toUnsignedInt(byte _byte) {
+    public static int toUnsignedInt(byte _byte) {
         int v = (int) _byte;
         v += 128;
         return v;
@@ -255,7 +255,7 @@ public class UByte {
      * @param _byte
      * @return
      */
-    public static final float toUnsignedFloat(byte _byte) {
+    public static float toUnsignedFloat(byte _byte) {
         int v = (int) _byte;
         v += 128;
         return v / 256f;
@@ -265,7 +265,7 @@ public class UByte {
      * @param _byte
      * @return
      */
-    public static final float toSignedFloat(byte _byte) {
+    public static float toSignedFloat(byte _byte) {
         int v = (int) _byte;
         return v / 128f;
     }
@@ -274,7 +274,7 @@ public class UByte {
      * @param _byte
      * @return
      */
-    public static final double toUnsignedDouble(byte _byte) {
+    public static double toUnsignedDouble(byte _byte) {
         int v = (int) _byte;
         v += 128;
         return v / 256d;
@@ -284,7 +284,7 @@ public class UByte {
      * @param _byte
      * @return
      */
-    public static final double toSignedDouble(byte _byte) {
+    public static double toSignedDouble(byte _byte) {
         int v = (int) _byte;
         return v / 128d;
     }
@@ -293,7 +293,7 @@ public class UByte {
      * @param _bytes
      * @return
      */
-    public static final float[] toUnsignedFloats(byte[] _bytes) {
+    public static float[] toUnsignedFloats(byte[] _bytes) {
         if (_bytes == null) {
             return null;
         }
@@ -308,7 +308,7 @@ public class UByte {
      * @param _bytes
      * @return
      */
-    public static final float[] toSignedFloats(byte[] _bytes) {
+    public static float[] toSignedFloats(byte[] _bytes) {
         if (_bytes == null) {
             return null;
         }
@@ -323,7 +323,7 @@ public class UByte {
      * @param _bytes
      * @return
      */
-    public static final double[] toUnsignedDoubles(byte[] _bytes) {
+    public static double[] toUnsignedDoubles(byte[] _bytes) {
         if (_bytes == null) {
             return null;
         }
@@ -338,7 +338,7 @@ public class UByte {
      * @param _bytes
      * @return
      */
-    public static final double[] toSignedDoubles(byte[] _bytes) {
+    public static double[] toSignedDoubles(byte[] _bytes) {
         if (_bytes == null) {
             return null;
         }
@@ -355,7 +355,7 @@ public class UByte {
      * @param _max
      * @return
      */
-    public static final byte range(byte _v, byte _min, byte _max) {
+    public static byte range(byte _v, byte _min, byte _max) {
         if (_v < _min) {
             return _min;
         } else if (_v > _max) {

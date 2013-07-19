@@ -56,7 +56,7 @@ public class UXYWH_I {
      * @param _ty
      * @return
      */
-    public static final XYWH_I rect(int _fx, int _fy, int _tx, int _ty) {
+    public static XYWH_I rect(int _fx, int _fy, int _tx, int _ty) {
         return new XYWH_I(
             Math.min(_fx, _tx),
             Math.min(_fy, _ty),
@@ -74,7 +74,7 @@ public class UXYWH_I {
      * @param _y
      * @return
      */
-    public static final boolean contains(int x, int y, int w, int h, int _x,
+    public static boolean contains(int x, int y, int w, int h, int _x,
         int _y) {
         return (_x >= x) && ((_x - x) < w) && (_y >= y) && ((_y - y) < h);
     }
@@ -91,7 +91,7 @@ public class UXYWH_I {
      * @param _h
      * @return
      */
-    public static final boolean contains(int x, int y, int w, int h, int _x,
+    public static boolean contains(int x, int y, int w, int h, int _x,
         int _y, int _w, int _h) {
         if (w <= 0 || w <= 0 || _w <= 0 || _h <= 0) {
             return false;
@@ -111,7 +111,7 @@ public class UXYWH_I {
      * @param _h
      * @return
      */
-    public static final boolean intersects(int x, int y, int w, int h, int _x,
+    public static boolean intersects(int x, int y, int w, int h, int _x,
         int _y, int _w, int _h) {
         return !((_x + _w <= x) || (_y + _h <= y) || (_x >= x + w) || (_y >= y + h));
     }
@@ -128,7 +128,7 @@ public class UXYWH_I {
      * @param _h
      * @return
      */
-    public static final XYWH_I intersection(int x, int y, int w, int h, int _x,
+    public static XYWH_I intersection(int x, int y, int w, int h, int _x,
         int _y, int _w, int _h) {
         int x1 = Math.max(x, _x);
         int x2 = Math.min(x + w, _x + _w);
@@ -154,7 +154,7 @@ public class UXYWH_I {
      * @param _h
      * @return
      */
-    public static final XYWH_I union(int x, int y, int w, int h, int _x, int _y,
+    public static XYWH_I union(int x, int y, int w, int h, int _x, int _y,
         int _w, int _h) {
         int x1 = Math.min(x, _x);
         int x2 = Math.max(x + w, _x + _w);

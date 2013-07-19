@@ -72,7 +72,7 @@ abstract public class ACompositeKey<K> implements Comparable<ACompositeKey<K>> {
         }
         for (int i = 0; i < keys.length; i++) {
             if (keys[i] != null) {
-                sb.append("-> " + keys[i].toString());
+                sb.append("-> ").append(keys[i].toString());
             } else {
                 sb.append(" null");
             }

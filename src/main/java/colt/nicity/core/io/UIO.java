@@ -97,7 +97,7 @@ public class UIO {
      * @param _line
      * @throws IOException
      */
-    final public static void writeLine(IWriteable _filer, String _line) throws IOException {
+    public static void writeLine(IWriteable _filer, String _line) throws IOException {
         _filer.write((_line + "\n").getBytes());
     }
 
@@ -108,69 +108,54 @@ public class UIO {
      * @param fieldName
      * @throws IOException
      */
-    final public static void write(IWriteable _filer, int b, String fieldName) throws IOException {
+    public static void write(IWriteable _filer, int b, String fieldName) throws IOException {
         _filer.write(b);
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param bytes
      * @param fieldName
      * @throws IOException
      */
-    final public static void write(IWriteable _filer, byte[] bytes,
+    public static void write(IWriteable _filer, byte[] bytes,
         String fieldName) throws IOException {
         _filer.write(bytes);
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param v
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeBoolean(IWriteable _filer, boolean v,
+    public static void writeBoolean(IWriteable _filer, boolean v,
         String fieldName) throws IOException {
         _filer.write(v ? 1 : 0);
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param v
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeByte(IWriteable _filer, int v,
+    public static void writeByte(IWriteable _filer, int v,
         String fieldName) throws IOException {
         _filer.write(v);
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param v
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeShort(IWriteable _filer, int v,
-        String fieldName) throws IOException {
-        _filer.write(new byte[]{
-                (byte) (v >>> 8),
-                (byte) v
-            });
-    }
-
-    /**
-     * 
-     * @param _filer
-     * @param v
-     * @param fieldName
-     * @throws IOException
-     */
-    final public static void writeChar(IWriteable _filer, int v,
+    public static void writeShort(IWriteable _filer, int v,
         String fieldName) throws IOException {
         _filer.write(new byte[]{
                 (byte) (v >>> 8),
@@ -185,7 +170,22 @@ public class UIO {
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeInt(IWriteable _filer, int v, String fieldName) throws IOException {
+    public static void writeChar(IWriteable _filer, int v,
+        String fieldName) throws IOException {
+        _filer.write(new byte[]{
+                (byte) (v >>> 8),
+                (byte) v
+            });
+    }
+
+    /**
+     *
+     * @param _filer
+     * @param v
+     * @param fieldName
+     * @throws IOException
+     */
+    public static void writeInt(IWriteable _filer, int v, String fieldName) throws IOException {
         _filer.write(new byte[]{
                 (byte) (v >>> 24),
                 (byte) (v >>> 16),
@@ -195,13 +195,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param v
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeLong(IWriteable _filer, long v,
+    public static void writeLong(IWriteable _filer, long v,
         String fieldName) throws IOException {
         _filer.write(new byte[]{
                 (byte) (v >>> 56),
@@ -220,7 +220,7 @@ public class UIO {
      * @param v
      * @return
      */
-    final public static byte[] intsToBytes(int[] v) {
+    public static byte[] intsToBytes(int[] v) {
         byte[] result = new byte[4 * v.length];
         for (int i = 0, j = 0; i < v.length; i++) {
             j = i * 4;
@@ -237,7 +237,7 @@ public class UIO {
      * @param v
      * @return
      */
-    final public static int[] bytesToInts(byte[] v) {
+    public static int[] bytesToInts(byte[] v) {
         int[] result = new int[(v.length + 3) / 4];
         for (int i = 0, j = 0; i < result.length; i++) {
             j = i * 4;
@@ -259,7 +259,7 @@ public class UIO {
      * @param v
      * @return
      */
-    final public static byte[] charBytes(char v) {
+    public static byte[] charBytes(char v) {
         return new byte[]{
                 (byte) (v >>> 8),
                 (byte) v
@@ -267,25 +267,25 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param v
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeFloat(IWriteable _filer, float v,
+    public static void writeFloat(IWriteable _filer, float v,
         String fieldName) throws IOException {
         writeInt(_filer, Float.floatToIntBits(v), fieldName);
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param v
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeDouble(IWriteable _filer, double v,
+    public static void writeDouble(IWriteable _filer, double v,
         String fieldName) throws IOException {
         writeLong(_filer, Double.doubleToLongBits(v), fieldName);
     }
@@ -296,18 +296,18 @@ public class UIO {
      * @param l
      * @throws IOException
      */
-    final public static void writeLength(IWriteable _filer, int l) throws IOException {
+    public static void writeLength(IWriteable _filer, int l) throws IOException {
         writeInt(_filer, l, "length");
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeBooleanArray(IWriteable _filer,
+    public static void writeBooleanArray(IWriteable _filer,
         boolean[] array, String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -331,18 +331,18 @@ public class UIO {
      * @param array
      * @throws IOException
      */
-    final public static void write(IWriteable _filer, byte[] array) throws IOException {
+    public static void write(IWriteable _filer, byte[] array) throws IOException {
         _filer.write(array);
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeByteArray(IWriteable _filer, byte[] array,
+    public static void writeByteArray(IWriteable _filer, byte[] array,
         String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -359,7 +359,7 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param _start
@@ -367,7 +367,7 @@ public class UIO {
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeByteArray(IWriteable _filer, byte[] array,
+    public static void writeByteArray(IWriteable _filer, byte[] array,
         int _start, int _len, String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -384,13 +384,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeCharArray(IWriteable _filer, char[] array,
+    public static void writeCharArray(IWriteable _filer, char[] array,
         String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -414,13 +414,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeShortArray(IWriteable _filer, short[] array,
+    public static void writeShortArray(IWriteable _filer, short[] array,
         String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -444,13 +444,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeIntArray(IWriteable _filer, int[] array,
+    public static void writeIntArray(IWriteable _filer, int[] array,
         String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -476,13 +476,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeStringArray(IWriteable _filer, Object[] array,
+    public static void writeStringArray(IWriteable _filer, Object[] array,
         String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -509,13 +509,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeLongArray(IWriteable _filer, long[] array,
+    public static void writeLongArray(IWriteable _filer, long[] array,
         String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -544,7 +544,7 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param _start
@@ -552,7 +552,7 @@ public class UIO {
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeLongArray(IWriteable _filer, long[] array,
+    public static void writeLongArray(IWriteable _filer, long[] array,
         int _start, int _len, String fieldName) throws IOException {
         writeLength(_filer, _len);
         if (_len < 0) {
@@ -574,13 +574,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeFloatArray(IWriteable _filer, float[] array,
+    public static void writeFloatArray(IWriteable _filer, float[] array,
         String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -605,13 +605,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param array
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeDoubleArray(IWriteable _filer, double[] array,
+    public static void writeDoubleArray(IWriteable _filer, double[] array,
         String fieldName) throws IOException {
         int len;
         if (array == null) {
@@ -640,13 +640,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param s
      * @param fieldName
      * @throws IOException
      */
-    final public static void writeString(IWriteable _filer, String s,
+    public static void writeString(IWriteable _filer, String s,
         String fieldName) throws IOException {
         if (s == null) {
             s = "";
@@ -660,7 +660,7 @@ public class UIO {
      * @param _tag
      * @throws Exception
      */
-    final public static void readBegin(IReadable _filer, String _tag) throws Exception {
+    public static void readBegin(IReadable _filer, String _tag) throws Exception {
     }
 
     /**
@@ -669,7 +669,7 @@ public class UIO {
      * @param _tag
      * @throws Exception
      */
-    final public static void readEnd(IReadable _filer, String _tag) throws Exception {
+    public static void readEnd(IReadable _filer, String _tag) throws Exception {
     }
 
     /**
@@ -678,18 +678,18 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static int readLength(IReadable _filer) throws IOException {
+    public static int readLength(IReadable _filer) throws IOException {
         return readInt(_filer, "length");
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param fieldName
      * @return
      * @throws IOException
      */
-    final public static boolean[] readBooleanArray(IReadable _filer,
+    public static boolean[] readBooleanArray(IReadable _filer,
         String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
@@ -713,7 +713,7 @@ public class UIO {
      * @param array
      * @throws IOException
      */
-    final public static void read(IReadable _filer, byte[] array) throws IOException {
+    public static void read(IReadable _filer, byte[] array) throws IOException {
         _filer.read(array);
     }
 
@@ -724,7 +724,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static byte[] readByteArray(IReadable _filer, String fieldName) throws IOException {
+    public static byte[] readByteArray(IReadable _filer, String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
             return null;
@@ -744,7 +744,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static char[] readCharArray(IReadable _filer, String fieldName) throws IOException {
+    public static char[] readCharArray(IReadable _filer, String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
             return null;
@@ -767,13 +767,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param fieldName
      * @return
      * @throws IOException
      */
-    final public static short[] readShortArray(IReadable _filer,
+    public static short[] readShortArray(IReadable _filer,
         String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
@@ -803,7 +803,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static int[] readIntArray(IReadable _filer, String fieldName) throws IOException {
+    public static int[] readIntArray(IReadable _filer, String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
             return null;
@@ -830,13 +830,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param fieldName
      * @return
      * @throws IOException
      */
-    final public static String[] readStringArray(IReadable _filer,
+    public static String[] readStringArray(IReadable _filer,
         String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
@@ -859,7 +859,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static long[] readLongArray(IReadable _filer, String fieldName) throws IOException {
+    public static long[] readLongArray(IReadable _filer, String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
             return null;
@@ -894,13 +894,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param fieldName
      * @return
      * @throws IOException
      */
-    final public static float[] readFloatArray(IReadable _filer,
+    public static float[] readFloatArray(IReadable _filer,
         String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
@@ -928,13 +928,13 @@ public class UIO {
     }
 
     /**
-     * 
+     *
      * @param _filer
      * @param fieldName
      * @return
      * @throws IOException
      */
-    final public static double[] readDoubleArray(IReadable _filer,
+    public static double[] readDoubleArray(IReadable _filer,
         String fieldName) throws IOException {
         int len = readLength(_filer);
         if (len < 0) {
@@ -976,7 +976,7 @@ public class UIO {
      * @return
      * @throws Exception
      */
-    final public static String readText(IReadable _filer, String fieldName) throws Exception {
+    public static String readText(IReadable _filer, String fieldName) throws Exception {
         return new String(readCharArray(_filer, fieldName));
     }
 
@@ -987,7 +987,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static String readString(IReadable _filer, String fieldName) throws IOException {
+    public static String readString(IReadable _filer, String fieldName) throws IOException {
         return new String(readCharArray(_filer, fieldName));
     }
 
@@ -999,7 +999,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static boolean readBoolean(IReadable _filer, String fieldName) throws IOException {
+    public static boolean readBoolean(IReadable _filer, String fieldName) throws IOException {
         int v = _filer.read();
         if (v < 0) {
             throw new EOFException();
@@ -1014,7 +1014,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static byte readByte(IReadable _filer, String fieldName) throws IOException {
+    public static byte readByte(IReadable _filer, String fieldName) throws IOException {
         return (byte) _filer.read();
     }
 
@@ -1025,7 +1025,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static int readUnsignedByte(IReadable _filer, String fieldName) throws IOException {
+    public static int readUnsignedByte(IReadable _filer, String fieldName) throws IOException {
         return _filer.read();
     }
 
@@ -1036,7 +1036,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static short readShort(IReadable _filer, String fieldName) throws IOException {
+    public static short readShort(IReadable _filer, String fieldName) throws IOException {
         byte[] bytes = new byte[2];
         _filer.read(bytes);
         short v = 0;
@@ -1053,7 +1053,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static int readUnsignedShort(IReadable _filer, String fieldName) throws IOException {
+    public static int readUnsignedShort(IReadable _filer, String fieldName) throws IOException {
         byte[] bytes = new byte[2];
         _filer.read(bytes);
         int v = 0;
@@ -1070,7 +1070,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static char readChar(IReadable _filer, String fieldName) throws IOException {
+    public static char readChar(IReadable _filer, String fieldName) throws IOException {
         byte[] bytes = new byte[2];
         _filer.read(bytes);
         char v = 0;
@@ -1085,7 +1085,7 @@ public class UIO {
      * @param bytes
      * @return
      */
-    final public static char bytesChar(byte[] bytes) {
+    public static char bytesChar(byte[] bytes) {
         char v = 0;
         v |= (bytes[0] & 0xFF);
         v <<= 8;
@@ -1100,7 +1100,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static int readInt(IReadable _filer, String fieldName) throws IOException {
+    public static int readInt(IReadable _filer, String fieldName) throws IOException {
         byte[] bytes = new byte[4];
         _filer.read(bytes);
         int v = 0;
@@ -1121,7 +1121,7 @@ public class UIO {
      * @return
      * @throws IOException
      */
-    final public static long readLong(IReadable _filer, String fieldName) throws IOException {
+    public static long readLong(IReadable _filer, String fieldName) throws IOException {
         byte[] bytes = new byte[8];
         _filer.read(bytes);
         long v = 0;
@@ -1151,7 +1151,7 @@ public class UIO {
      * @return
      * @throws Exception
      */
-    final public static float readFloat(IReadable _filer, String fieldName) throws Exception {
+    public static float readFloat(IReadable _filer, String fieldName) throws Exception {
         byte[] bytes = new byte[4];
         _filer.read(bytes);
         int v = 0;
@@ -1170,7 +1170,7 @@ public class UIO {
      * @param chars
      * @return
      */
-    final public static byte[] charsBytes(char[] chars) {
+    public static byte[] charsBytes(char[] chars) {
         byte[] bytes = new byte[chars.length * 2];
         for (int i = 0; i < chars.length; i++) {
             char v = chars[i];
@@ -1185,7 +1185,7 @@ public class UIO {
      * @param bytes
      * @return
      */
-    final public static char[] bytesChars(byte[] bytes) {
+    public static char[] bytesChars(byte[] bytes) {
         char[] chars = new char[bytes.length / 2];
         for (int i = 0; i < chars.length; i++) {
             char v = 0;
@@ -1204,7 +1204,7 @@ public class UIO {
      * @return
      * @throws Exception
      */
-    final public static double readDouble(IReadable _filer, String fieldName) throws Exception {
+    public static double readDouble(IReadable _filer, String fieldName) throws Exception {
         byte[] bytes = new byte[8];
         _filer.read(bytes);
         long v = 0;
@@ -1231,7 +1231,7 @@ public class UIO {
      * @param bytes
      * @return
      */
-    final public static double byteDouble(byte[] bytes) {
+    public static double byteDouble(byte[] bytes) {
         return Double.longBitsToDouble(bytesLong(bytes));
     }
 
@@ -1242,7 +1242,7 @@ public class UIO {
      * @return
      * @throws Exception
      */
-    final public static String readLine(IFiler _filer, String fieldName) throws Exception {
+    public static String readLine(IFiler _filer, String fieldName) throws Exception {
         StringBuilder input = new StringBuilder();
         int c = -1;
         boolean eol = false;
@@ -1390,7 +1390,7 @@ public class UIO {
      * @param _lengths
      * @return
      */
-    final public static Object[] split(byte[] _bytes, int[] _lengths) {
+    public static Object[] split(byte[] _bytes, int[] _lengths) {
         Object[] splits = new Object[_lengths.length];
         int bp = 0;
         for (int i = 0; i < _lengths.length; i++) {
@@ -1420,7 +1420,7 @@ public class UIO {
      * @param v
      * @return
      */
-    final public static byte[] intBytes(int v) {
+    public static byte[] intBytes(int v) {
         return intBytes(v, new byte[4], 0);
     }
 
@@ -1431,7 +1431,7 @@ public class UIO {
      * @param _offset
      * @return
      */
-    final public static byte[] intBytes(int v, byte[] _bytes, int _offset) {
+    public static byte[] intBytes(int v, byte[] _bytes, int _offset) {
         _bytes[_offset + 0] = (byte) (v >>> 24);
         _bytes[_offset + 1] = (byte) (v >>> 16);
         _bytes[_offset + 2] = (byte) (v >>> 8);
@@ -1444,7 +1444,7 @@ public class UIO {
      * @param _bytes
      * @return
      */
-    final public static int bytesInt(byte[] _bytes) {
+    public static int bytesInt(byte[] _bytes) {
         return bytesInt(_bytes, 0);
     }
 
@@ -1453,7 +1453,7 @@ public class UIO {
      * @param _bytes
      * @return
      */
-    final static public int[] bytesInts(byte[] _bytes) {
+    public static int[] bytesInts(byte[] _bytes) {
         if (_bytes == null || _bytes.length == 0) {
             return null;
         }
@@ -1471,7 +1471,7 @@ public class UIO {
      * @param _offset
      * @return
      */
-    final public static int bytesInt(byte[] bytes, int _offset) {
+    public static int bytesInt(byte[] bytes, int _offset) {
         int v = 0;
         v |= (bytes[_offset + 0] & 0xFF);
         v <<= 8;
@@ -1502,7 +1502,7 @@ public class UIO {
      * @param _v
      * @return
      */
-    final public static byte[] longBytes(long _v) {
+    public static byte[] longBytes(long _v) {
         return longBytes(_v, new byte[8], 0);
     }
 
@@ -1513,7 +1513,7 @@ public class UIO {
      * @param _offset
      * @return
      */
-    final public static byte[] longBytes(long v, byte[] _bytes, int _offset) {
+    public static byte[] longBytes(long v, byte[] _bytes, int _offset) {
         _bytes[_offset + 0] = (byte) (v >>> 56);
         _bytes[_offset + 1] = (byte) (v >>> 48);
         _bytes[_offset + 2] = (byte) (v >>> 40);
@@ -1530,7 +1530,7 @@ public class UIO {
      * @param _bytes
      * @return
      */
-    final public static long bytesLong(byte[] _bytes) {
+    public static long bytesLong(byte[] _bytes) {
         return bytesLong(_bytes, 0);
     }
 
@@ -1539,7 +1539,7 @@ public class UIO {
      * @param _bytes
      * @return
      */
-    final static public long[] bytesLongs(byte[] _bytes) {
+    public static long[] bytesLongs(byte[] _bytes) {
         if (_bytes == null || _bytes.length == 0) {
             return null;
         }
@@ -1557,7 +1557,7 @@ public class UIO {
      * @param _offset
      * @return
      */
-    final public static long bytesLong(byte[] bytes, int _offset) {
+    public static long bytesLong(byte[] bytes, int _offset) {
         if (bytes == null) {
             return 0;
         }
@@ -1599,7 +1599,7 @@ public class UIO {
      * @param v
      * @return
      */
-    final public static byte[] floatBytes(float v) {
+    public static byte[] floatBytes(float v) {
         return intBytes(Float.floatToIntBits(v));
     }
 
@@ -1608,7 +1608,7 @@ public class UIO {
      * @param bytes
      * @return
      */
-    final public static float bytesFloat(byte[] bytes) {
+    public static float bytesFloat(byte[] bytes) {
         return Float.intBitsToFloat(bytesInt(bytes));
     }
 
@@ -1617,7 +1617,7 @@ public class UIO {
      * @param _bytes
      * @return
      */
-    final static public float[] bytesFloats(byte[] _bytes) {
+    public static float[] bytesFloats(byte[] _bytes) {
         if (_bytes == null || _bytes.length == 0) {
             return null;
         }
@@ -1635,7 +1635,7 @@ public class UIO {
      * @param _offset
      * @return
      */
-    final public static float bytesFloat(byte[] _bytes, int _offset) {
+    public static float bytesFloat(byte[] _bytes, int _offset) {
         return Float.intBitsToFloat(bytesInt(_bytes, _offset));
     }
 
@@ -1657,7 +1657,7 @@ public class UIO {
      * @param v
      * @return
      */
-    final public static byte[] doubleBytes(double v) {
+    public static byte[] doubleBytes(double v) {
         return longBytes(Double.doubleToLongBits(v));
     }
 
@@ -1666,7 +1666,7 @@ public class UIO {
      * @param _bytes
      * @return
      */
-    final public static double bytesDouble(byte[] _bytes) {
+    public static double bytesDouble(byte[] _bytes) {
         return Double.longBitsToDouble(bytesLong(_bytes));
     }
 
@@ -1690,12 +1690,12 @@ public class UIO {
      * @param _offset
      * @return
      */
-    final public static double bytesDouble(byte[] _bytes, int _offset) {
+    public static double bytesDouble(byte[] _bytes, int _offset) {
         return Double.longBitsToDouble(bytesLong(_bytes, _offset));
     }
 
     /**
-     * 
+     *
      * @param _length
      * @param _minPower
      * @return
