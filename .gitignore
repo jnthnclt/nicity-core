@@ -1,8 +1,0 @@
-.m2/
-build/
-.classpath
-.settings
-*.class
-src/
-target/
-nbactions.xml

@@ -6,7 +6,6 @@ package colt.nicity.core.lang;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -30,7 +29,7 @@ public class UClass {
         if (packageName == null) {
             packageName = "";
         }
-        ArrayList<Class> classes = new ArrayList<>();
+        ArrayList<Class> classes = new ArrayList<Class>();
         packageName = packageName.replaceAll("\\.", "/");
         try {
             JarInputStream jarFile = new JarInputStream(new FileInputStream(jarName));
@@ -58,7 +57,7 @@ public class UClass {
                     }
                 }
             }
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return classes;

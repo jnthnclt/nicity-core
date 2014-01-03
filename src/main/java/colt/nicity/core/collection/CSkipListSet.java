@@ -37,7 +37,7 @@ public class CSkipListSet<V> {
     private AValueComparator valueComparator;
     private SkipListValue head;
      SkipListValue tail;
-    final private CSet<SkipListValue<V>> set = new CSet<>();
+    final private CSet<SkipListValue<V>> set = new CSet<SkipListValue<V>>();
     /**
      *
      * @param _valueComparator

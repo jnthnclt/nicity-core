@@ -182,7 +182,7 @@ public class KeyedLong<K> extends ASetObject<K> implements
         synchronized (_set) {
             KeyedLong<K> record = _set.get(_key);
             if (record == null) {
-                record = new KeyedLong<>(_key);
+                record = new KeyedLong<K>(_key);
                 _set.add(record);
             }
             return record;

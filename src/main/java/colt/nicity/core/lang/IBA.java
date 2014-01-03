@@ -175,7 +175,7 @@ public class IBA implements Comparable {
      * @param b
      * @return
      */
-    public static boolean equals(byte[] a, byte[] b) {
+    static final public boolean equals(byte[] a, byte[] b) {
         if (a == b) {
             return true;
         }
@@ -201,7 +201,7 @@ public class IBA implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        byte[] b;
+        byte[] b = null;
         if (o instanceof byte[]) {
             b = (byte[]) o;
         }

@@ -35,7 +35,7 @@ public class KeyedCSet<K, SV> extends ASetObject<K> implements
     /**
      *
      */
-    public CSet<SV> set = new CSet<>();
+    public CSet<SV> set = new CSet<SV>();
 
     /**
      *
@@ -124,7 +124,7 @@ public class KeyedCSet<K, SV> extends ASetObject<K> implements
         synchronized (_set) {
             KeyedCSet<K, SV> set = _set.get(_key);
             if (set == null) {
-                set = new KeyedCSet<>(_key);
+                set = new KeyedCSet<K, SV>(_key);
                 _set.add(set);
             }
             set.set.add(_value);
@@ -144,7 +144,7 @@ public class KeyedCSet<K, SV> extends ASetObject<K> implements
         synchronized (_set) {
             KeyedCSet<K, SV> set = _set.get(_key);
             if (set == null) {
-                set = new KeyedCSet<>(_key);
+                set = new KeyedCSet<K, SV>(_key);
                 _set.add(set);
             }
             set.set.add(_value);

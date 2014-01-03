@@ -23,6 +23,7 @@ import colt.nicity.core.collection.CArray;
 import colt.nicity.core.collection.CSet;
 import colt.nicity.core.comparator.AValueComparator;
 import colt.nicity.core.comparator.UValueComparator;
+
 import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
@@ -289,7 +290,7 @@ public class UString {
      * @param _string
      * @return
      */
-    public static String noPunctuation(String _string) {
+    public static final String noPunctuation(String _string) {
         char[] in = _string.toCharArray();
         char[] out = new char[in.length];
         int l = 0;
@@ -332,7 +333,7 @@ public class UString {
      * @param _string
      * @return
      */
-    public static long checkSum(String _string) {
+    public static final long checkSum(String _string) {
         if (_string == null) {
             return -1;
         }

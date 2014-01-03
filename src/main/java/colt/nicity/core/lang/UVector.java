@@ -66,7 +66,7 @@ public class UVector {
      * @param b
      * @return
      */
-    public static double dotProd(double[] a, double[] b) {
+    final static public double dotProd(double[] a, double[] b) {
         return (a[0] * b[0] + a[1] * b[1] + a[2] * b[2]);
     }
 
@@ -76,7 +76,7 @@ public class UVector {
      * @param b
      * @return
      */
-    public static double[] vectorMinus(double[] a, double[] b) {
+    final static public double[] vectorMinus(double[] a, double[] b) {
         double r[] = new double[3];
         r[0] = a[0] - b[0];
         r[1] = a[1] - b[1];
@@ -90,7 +90,7 @@ public class UVector {
      * @param b
      * @return
      */
-    public static double[] vectorPlus(double[] a, double[] b) {
+    final static public double[] vectorPlus(double[] a, double[] b) {
         double r[] = new double[3];
         r[0] = a[0] + b[0];
         r[1] = a[1] + b[1];
@@ -104,7 +104,7 @@ public class UVector {
      * @param t
      * @return
      */
-    public static double[] scalarMult(double[] a, double t) {
+    final static public double[] scalarMult(double[] a, double t) {
         double r[] = new double[3];
         r[0] = a[0] * t;
         r[1] = a[1] * t;
@@ -119,7 +119,7 @@ public class UVector {
      * @param _store
      * @return
      */
-    public static double[] scalarMult(double[] a, double t, double[] _store) {
+    final static public double[] scalarMult(double[] a, double t, double[] _store) {
         _store[0] = a[0] * t;
         _store[1] = a[1] * t;
         _store[2] = a[2] * t;
@@ -132,7 +132,7 @@ public class UVector {
      * @param t
      * @return
      */
-    public static double[] scalarDivide(double[] a, double t) {
+    final static public double[] scalarDivide(double[] a, double t) {
         double r[] = new double[3];
         r[0] = a[0] / t;
         r[1] = a[1] / t;
@@ -147,7 +147,7 @@ public class UVector {
      * @param t
      * @return
      */
-    public static double[] surfacePoint(double v[], double w[], double t) {
+    final static public double[] surfacePoint(double v[], double w[], double t) {
         return vectorPlus(v, scalarMult(w, t));
     }
 
@@ -158,7 +158,7 @@ public class UVector {
      * @param r
      * @return
      */
-    public static double[] surfaceNormal(double s[], double center[], double r) {
+    final static public double[] surfaceNormal(double s[], double center[], double r) {
         return scalarDivide(vectorMinus(s, center), r);
     }
 
@@ -168,7 +168,7 @@ public class UVector {
      * @param normal
      * @return
      */
-    public static double[] reflectionVector(double[] ray, double[] normal) {
+    final static public double[] reflectionVector(double[] ray, double[] normal) {
         return vectorPlus(scalarMult(normal, -2.0 * dotProd(ray, normal)), ray);
     }
 
@@ -179,7 +179,7 @@ public class UVector {
      * @param epsilon
      * @return
      */
-    public static double[] newV(double S[], double R[], double epsilon) {
+    final static public double[] newV(double S[], double R[], double epsilon) {
         return vectorPlus(S, scalarMult(R, epsilon));
     }
 
@@ -189,7 +189,7 @@ public class UVector {
      * @param _to
      * @return
      */
-    public static double[] vector(double[] _from, double[] _to) {
+    final static public double[] vector(double[] _from, double[] _to) {
         return vectorMinus(_to, _from);
     }
 
@@ -198,7 +198,7 @@ public class UVector {
      * @param _vec
      * @return
      */
-    public static double getLength(double[] _vec) {
+    final static public double getLength(double[] _vec) {
         return Math.sqrt((_vec[0] * _vec[0]) + (_vec[1] * _vec[1]) + (_vec[2] * _vec[2]));
     }
 
@@ -209,7 +209,7 @@ public class UVector {
      * @param _vz
      * @return
      */
-    public static double getLength(double _vx, double _vy, double _vz) {
+    final static public double getLength(double _vx, double _vy, double _vz) {
         return Math.sqrt((_vx * _vx) + (_vy * _vy) + (_vz * _vz));
     }
 
@@ -218,7 +218,7 @@ public class UVector {
      * @param _vec
      * @param _length
      */
-    public static void setLength(double[] _vec, double _length) {
+    final static public void setLength(double[] _vec, double _length) {
         double d = UDouble.check(_length / getLength(_vec), _length);
         _vec[0] *= d;
         _vec[1] *= d;
@@ -230,7 +230,7 @@ public class UVector {
      * @param _vec
      * @return
      */
-    public static double[] getUnitVector(double[] _vec) {
+    final static public double[] getUnitVector(double[] _vec) {
         double d = UDouble.check(1.0d / getLength(_vec), 0);
         return new double[]{_vec[0] * d, _vec[1] * d, _vec[2] * d};
     }
@@ -240,7 +240,7 @@ public class UVector {
      * @param _vec
      * @return
      */
-    public static double[] getReversedVector(double[] _vec) {
+    final static public double[] getReversedVector(double[] _vec) {
         return new double[]{-_vec[0], -_vec[1], -_vec[2]};
     }
 

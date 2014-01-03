@@ -26,7 +26,7 @@ import colt.nicity.core.collection.CSet;
  * @author Administrator
  */
 abstract public class ChangeObserver implements IObserver {
-    private CSet<ChangeHandler> handlers = new CSet<>();
+    private CSet<ChangeHandler> handlers = new CSet<ChangeHandler>();
     /**
      *
      * @param _handler
